@@ -1,0 +1,23 @@
+# Hey there,
+#
+# If you're sniffing around this file, and you're not a robot, I'm looking to meet curious folks such as yourself.
+#
+# Run - don't crawl - let's talk!
+#
+# Email me nicolasmendes_developer@outlook.com
+#
+
+User-agent: Googlebot
+Disallow: /nogooglebot/
+Disallow: /Resources/
+Disallow: /Scripts/
+Disallow: /Styles/
+Disallow: /_src/
+User-agent: *
+Disallow: /nogooglebot/
+Disallow: /Resources/
+Disallow: /Scripts/
+Disallow: /Styles/
+Disallow: /_src/
+
+Sitemap: https://filedn.com/lgvQNASoWi1QKeCbvFdVv8y/sitemap.xml
