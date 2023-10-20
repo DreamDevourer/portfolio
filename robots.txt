@@ -20,4 +20,4 @@ Disallow: /Scripts/
 Disallow: /Styles/
 Disallow: /_src/
 
-Sitemap: https://filedn.com/lgvQNASoWi1QKeCbvFdVv8y/sitemap.xml
+Sitemap: https://nickdesign.netlify.app/sitemap.xml
