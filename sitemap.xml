@@ -36,6 +36,11 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://nickdesign.netlify.app/case-studies/case-study-resources-center-hubdb</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://nickdesign.netlify.app/system/password</loc>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
