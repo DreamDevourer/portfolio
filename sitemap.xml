@@ -26,6 +26,11 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://nickdesign.netlify.app/blog/implement-dynamic-news-content-in-hubspot</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://nickdesign.netlify.app/case-studies/case-study-cultura</loc>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
