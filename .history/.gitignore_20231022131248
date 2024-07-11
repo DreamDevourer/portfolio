@@ -2,8 +2,6 @@
 @src/
 @cms/
 *@*
-venv/
-./venv/
 # Possible garbage left by build script or CMS
 _*
 # MacOS directory metadata
