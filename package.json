@@ -1,0 +1,23 @@
+{
+  "name": "static-portfolio-nick-gen2",
+  "version": "3.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nicolas Mendes",
+  "license": "GPL-3.0",
+  "description": "Nicolas Mendes Portfolio project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreamDevourer/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DreamDevourer/portfolio/issues"
+  },
+  "homepage": "https://github.com/DreamDevourer/portfolio#readme",
+  "devDependencies": {
+    "gulp": "^5.0.0"
+  }
+}
