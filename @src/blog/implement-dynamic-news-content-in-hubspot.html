@@ -12,16 +12,22 @@
 {% set internalDirectory = true %}
 {% extends "_layouts/base.html" %}
 {% from '_partials/global.html' import pagesLanguage, imagesPath, systemPath, localDirectPath %}
+
+{# [START] page info #}
+{% set page = {
+    "pageTitle": "Implementing Dynamic News Content for Arpel: A HubSpot Project",
+    "pageMeta": "Creating dynamic, interactive content on your website can significantly enhance user engagement and provide a more personalized experience for your visitors."
+} %}
+{# [END] page info #}
+
 {% block title %}
-
-    Implementing Dynamic News Content for Arpel: A HubSpot Project
-
+    {{ page.pageTitle }}
 {% endblock title %}
+
 {% block meta %}
-
-    Creating dynamic, interactive content on your website can significantly enhance user engagement and provide a more personalized experience for your visitors.
-
+    {{ page.pageMeta }}
 {% endblock meta %}
+
 {% block body %}
     {% set caseStudyIdentifier = "BlogArticle" %}
 
@@ -31,8 +37,8 @@
         <!-- 💬 Main Title -->
         <section class="main--title case--area light-blog-area blog">
             <div class="text--zone initial-case center-it center-section blog-holder">
-                <div class="blog-article__datetime"> 
-                <span class="blog-article__datetime__date">December 8, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
+                <div class="blog-article__datetime">
+                    <span class="blog-article__datetime__date">December 8, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
                 </div>
                 <h1 class="main--title__text blog-article_title">Creating Dynamic Content in HubSpot: A Comprehensive Guide</h1>
                 <p class="readable--area">
@@ -42,7 +48,7 @@
             </div>
             <div>
                 <img src="{{ imagesPath }}dynamicContent.jpg"
-                     alt="Woman using dynamic content">
+                     alt="Woman using dynamic content" />
             </div>
         </section>
 
@@ -79,8 +85,7 @@
             <div class="standard-section rounded-img-content">
                 <img loading="lazy"
                      src="{{ imagesPath }}codeHubDBNewsItem.svg"
-                     alt="HubDB code for the news page."
-                     >
+                     alt="HubDB code for the news page." />
             </div>
             <div class="text--zone">
                 <h3 class="readable--area">JavaScript for Dynamic Interaction</h3>
@@ -91,8 +96,7 @@
             <div class="standard-section rounded-img-content">
                 <img loading="lazy"
                      src="{{ imagesPath }}searchNewsHubDB.svg"
-                     alt="Search functionality for the news page."
-                     >
+                     alt="Search functionality for the news page." />
             </div>
             <div class="text--zone">
                 <h3 class="readable--area">Styling and Responsiveness</h3>
@@ -107,8 +111,7 @@
             <div class="standard-section rounded-img-content">
                 <img loading="lazy"
                      src="{{ imagesPath }}edgeCasesHubDBNews.svg"
-                     alt="Edge cases for the news page."
-                     >
+                     alt="Edge cases for the news page." />
             </div>
             <div class="text--zone">
                 <h3 class="readable--area">Challenges and Solutions</h3>

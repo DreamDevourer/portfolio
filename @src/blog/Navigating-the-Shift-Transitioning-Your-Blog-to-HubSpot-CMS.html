@@ -12,16 +12,22 @@
 {% set internalDirectory = true %}
 {% extends "_layouts/base.html" %}
 {% from '_partials/global.html' import pagesLanguage, imagesPath, systemPath, localDirectPath %}
+
+{# [START] page info #}
+{% set page = {
+    "pageTitle": "Navigating the Shift: Transitioning Your Blog to HubSpot CMS",
+    "pageMeta": "In the digital age, the platform hosting your blog is as crucial as the content itself. With HubSpot's rising popularity, many businesses are contemplating the leap from traditional CMSs like WordPress to HubSpot CMS."
+} %}
+{# [END] page info #}
+
 {% block title %}
-
-    Navigating the Shift: Transitioning Your Blog to HubSpot CMS
-
+    {{ page.pageTitle }}
 {% endblock title %}
+
 {% block meta %}
-
-    In the digital age, the platform hosting your blog is as crucial as the content itself. With HubSpot's rising popularity, many businesses are contemplating the leap from traditional CMSs like WordPress to HubSpot CMS.
-
+    {{ page.pageMeta }}
 {% endblock meta %}
+
 {% block body %}
     {% set caseStudyIdentifier = "BlogArticle" %}
 
@@ -31,8 +37,8 @@
         <!-- 💬 Main Title -->
         <section class="main--title case--area light-blog-area blog">
             <div class="text--zone initial-case center-it center-section blog-holder">
-                <div class="blog-article__datetime"> 
-                <span class="blog-article__datetime__date">December 9, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
+                <div class="blog-article__datetime">
+                    <span class="blog-article__datetime__date">December 9, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
                 </div>
                 <h1 class="main--title__text blog-article_title">Navigating the Shift: Transitioning Your Blog to HubSpot CMS</h1>
                 <p class="readable--area">
@@ -42,7 +48,7 @@
             </div>
             <div>
                 <img src="{{ imagesPath }}hubspotCMSProsAndCons.webp"
-                     alt="HubSpot CMS pros and cons">
+                     alt="HubSpot CMS pros and cons" />
             </div>
         </section>
 
@@ -54,16 +60,28 @@
                 </p>
                 <h2 class="readable--area">The Upside of Migrating to HubSpot CMS</h2>
                 <ul class="readable--area">
-                    <li>Integrated Inbound Marketing: HubSpot excels in inbound marketing. When your blog resides on HubSpot CMS, it seamlessly integrates with inbound campaigns, offering rich analytics and insights right on the dashboard. This integration simplifies managing internal links, keyword connections, and personalized CTAs, all crucial for a successful inbound strategy.</li>
-                    <li>SEO Advantages: HubSpot CMS is engineered to be SEO-friendly. It helps optimize blog posts for search engines, enhancing visibility and reach. The CMS's structure is designed to be easily understood by search engine crawlers, potentially boosting your content's rankings.</li>
-                    <li>Exceptional Speed: HubSpot CMS boasts remarkable loading speeds, a vital factor for both SEO and user experience. Hosted on a robust CDN, it ensures fast and secure access to your content, provided image sizes are kept in check.</li>
-                    <li>Personalized Lead Generation: The platform allows for the use of smart content to tailor visitor interactions, enhancing the effectiveness of CTAs and content offers. This level of customization can significantly improve lead generation outcomes.</li>
-                    <li>Consolidated CRM and CMS: HubSpot offers the convenience of having your CMS, CRM, and analytics in one place, streamlining access and use for your team.</li>
+                    <li>
+                        Integrated Inbound Marketing: HubSpot excels in inbound marketing. When your blog resides on HubSpot CMS, it seamlessly integrates with inbound campaigns, offering rich analytics and insights right on the dashboard. This integration simplifies managing internal links, keyword connections, and personalized CTAs, all crucial for a successful inbound strategy.
+                    </li>
+                    <li>
+                        SEO Advantages: HubSpot CMS is engineered to be SEO-friendly. It helps optimize blog posts for search engines, enhancing visibility and reach. The CMS's structure is designed to be easily understood by search engine crawlers, potentially boosting your content's rankings.
+                    </li>
+                    <li>
+                        Exceptional Speed: HubSpot CMS boasts remarkable loading speeds, a vital factor for both SEO and user experience. Hosted on a robust CDN, it ensures fast and secure access to your content, provided image sizes are kept in check.
+                    </li>
+                    <li>
+                        Personalized Lead Generation: The platform allows for the use of smart content to tailor visitor interactions, enhancing the effectiveness of CTAs and content offers. This level of customization can significantly improve lead generation outcomes.
+                    </li>
+                    <li>
+                        Consolidated CRM and CMS: HubSpot offers the convenience of having your CMS, CRM, and analytics in one place, streamlining access and use for your team.
+                    </li>
                 </ul>
             </div>
             <div class="text--zone">
                 <h2 class="readable--area">The Challenges of Switching to HubSpot</h2>
-                <p class="readable--area">While HubSpot allows for some customization, it doesn't match the extensive plugin library of WordPress. Significant customization on HubSpot often requires web development expertise.</p>
+                <p class="readable--area">
+                    While HubSpot allows for some customization, it doesn't match the extensive plugin library of WordPress. Significant customization on HubSpot often requires web development expertise.
+                </p>
                 <h3 class="readable--area">Transition Concerns</h3>
                 <p class="readable--area">
                     Migrating to a different CMS always carries risks, such as potential dips in traffic or loss of SEO rankings. Ensuring a smooth transition requires meticulous planning and possibly expert assistance.
@@ -72,8 +90,7 @@
             <div class="standard-section rounded-img-content">
                 <img loading="lazy"
                      src="{{ imagesPath }}transitionStrategy.webp"
-                     alt="CMS transition strategy"
-                     >
+                     alt="CMS transition strategy" />
             </div>
             <div class="text--zone">
                 <h2 class="readable--area">Is HubSpot CMS the Right Choice for Your Blog?</h2>

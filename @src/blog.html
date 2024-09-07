@@ -13,21 +13,26 @@
 {% block specialEntries %}
     {% set navType = "blog-index" %}
 {% endblock specialEntries %}
+
+{# [START] page info #}
+{% set page = {
+    "pageTitle": "Blog | Nicolas Mendes",
+    "pageMeta": "This is my personal blog, where I share my thoughts, ideas, projects and experiences. I hope you enjoy it!"
+} %}
+{# [END] page info #}
+
 {% block title %}
-
-    Blog | Nicolas Mendes
-
+    {{ page.pageTitle }}
 {% endblock title %}
+
 {% block meta %}
-
-    This is my personal blog, where I share my thoughts, ideas, projects and experiences. I hope you enjoy it!
-
+    {{ page.pageMeta }}
 {% endblock meta %}
-{% block body %}
 
+{% block body %}
     <!-- 1️⃣ Main -->
     <main>
-    {# FEATURED SECTION #}
+        {# FEATURED SECTION #}
         <section class="main--title uniqueNextGenHero header-respected blog_featured_hero_main">
             <a class="gen2Left"
                href="/blog/implement-dynamic-news-content-in-hubspot.html">
@@ -43,7 +48,7 @@
                href="/blog/implement-dynamic-news-content-in-hubspot.html">
                 <img src="{{ imagesPath }}dynamicContent.jpg"
                      alt="Blog Article Image"
-                     class="blog_article_individual_featured__image">
+                     class="blog_article_individual_featured__image" />
             </a>
         </section>
 
@@ -59,7 +64,7 @@
                    href="/blog/implement-dynamic-news-content-in-hubspot.html">
                     <img src="{{ imagesPath }}dynamicContent.jpg"
                          alt="Blog Article Image"
-                         class="blog_article_individual_item__image">
+                         class="blog_article_individual_item__image" />
                     <div class="blog_article_individual_item__content">
                         <span class="blog_date">December 8, 2023</span>
                         <h3 class="blog_article_individual_item__title">Creating Dynamic Content in HubSpot: A Comprehensive Guide</h3>
@@ -73,7 +78,7 @@
                    href="/blog/Navigating-the-Shift-Transitioning-Your-Blog-to-HubSpot-CMS.html">
                     <img src="{{ imagesPath }}hubspotCMSProsAndCons.webp"
                          alt="Blog Article Image"
-                         class="blog_article_individual_item__image">
+                         class="blog_article_individual_item__image" />
                     <div class="blog_article_individual_item__content">
                         <span class="blog_date">December 9, 2023</span>
                         <h3 class="blog_article_individual_item__title">Navigating the Shift: Transitioning Your Blog to HubSpot CMS</h3>
@@ -87,7 +92,7 @@
                    href="/blog/hubdb-data-management-in-hubspot.html">
                     <img src="{{ imagesPath }}hubdbHowTo.webp"
                          alt="Blog Article Image"
-                         class="blog_article_individual_item__image">
+                         class="blog_article_individual_item__image" />
                     <div class="blog_article_individual_item__content">
                         <span class="blog_date">December 9, 2023</span>
                         <h3 class="blog_article_individual_item__title">HubDB: Revolutionizing Data Management in HubSpot CMS</h3>

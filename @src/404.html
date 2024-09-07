@@ -7,30 +7,29 @@
 -->
 
 {% extends "_layouts/base.html" %}
+
+{# [START] page info #}
+{% set page = {"pageTitle": "Oh no! Something unexpected happened!", "pageMeta": "404, page not found!"} %}
+{# [END] page info #}
+
 {% block title %}
-
-    Oh no! Something unexpected happened!
-
+    {{ page.pageTitle }}
 {% endblock title %}
+
 {% block meta %}
-
-    404, page not found!
-
+    {{ page.pageMeta }}
 {% endblock meta %}
-{% block body %}
 
+{% block body %}
     <!-- 1️⃣ Main -->
     <main>
         <!-- 💬 Main Title -->
         <section class="main--title center-section extra-space-bottom">
-            <h1 class="nick-gradient next-gen--title">
-                Oh bummer!
-            </h1>
-            <p class="nextgen--desc">
-                This page does not exist!
-            </p>
+            <h1 class="nick-gradient next-gen--title">Oh bummer!</h1>
+            <p class="nextgen--desc">This page does not exist!</p>
             <div id="Button--Area-Confirm">
-                <button class="password--button" onclick="if('{{ current_page_url }}' !== '404.html') { location.href='./404.html'; } else { location.href='./index.html'; }">
+                <button class="password--button"
+                        onclick="if('{{ current_page_url }}' !== '404.html') { location.href='./404.html'; } else { location.href='./index.html'; }">
                     Return to home
                 </button>
             </div>

@@ -12,16 +12,22 @@
 {% set internalDirectory = true %}
 {% extends "_layouts/base.html" %}
 {% from '_partials/global.html' import pagesLanguage, imagesPath, systemPath, localDirectPath %}
+
+{# [START] page info #}
+{% set page = {
+    "pageTitle": "HubDB: Revolutionizing Data Management in HubSpot CMS",
+    "pageMeta": "In the realm of digital marketing and web content management, efficient data handling is pivotal."
+} %}
+{# [END] page info #}
+
 {% block title %}
-
-    HubDB: Revolutionizing Data Management in HubSpot CMS
-
+    {{ page.pageTitle }}
 {% endblock title %}
+
 {% block meta %}
-
-    In the realm of digital marketing and web content management, efficient data handling is pivotal.
-
+    {{ page.pageMeta }}
 {% endblock meta %}
+
 {% block body %}
     {% set caseStudyIdentifier = "BlogArticle" %}
 
@@ -31,8 +37,8 @@
         <!-- 💬 Main Title -->
         <section class="main--title case--area light-blog-area blog">
             <div class="text--zone initial-case center-it center-section blog-holder">
-                <div class="blog-article__datetime"> 
-                <span class="blog-article__datetime__date">December 9, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
+                <div class="blog-article__datetime">
+                    <span class="blog-article__datetime__date">December 9, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
                 </div>
                 <h1 class="main--title__text blog-article_title">HubDB: Revolutionizing Data Management in HubSpot CMS</h1>
                 <p class="readable--area">
@@ -41,8 +47,7 @@
                 <div class="separator-dec"></div>
             </div>
             <div>
-                <img src="{{ imagesPath }}hubdbHowTo.webp"
-                     alt="HubSpot CMS pros and cons">
+                <img src="{{ imagesPath }}hubdbHowTo.webp" alt="HubSpot CMS pros and cons" />
             </div>
         </section>
 
@@ -68,25 +73,35 @@
                 </p>
                 <h3 class="readable--area">Practical Applications of HubDB</h3>
                 <ul class="readable--area">
-                    <li>Team/Career Pages: Easily manage and display individual staff member or job details from a single table, streamlining the creation of detailed and interconnected content structures.</li>
-                    <li>Resource Center/Product Listings: Utilize HubDB for categorizing and filtering products or resources, enhancing user navigation and experience on listing pages.</li>
-                    <li>Searchable Directories: Implement HubDB as a central database for directories, ensuring efficient data organization and retrieval.</li>
-                    <li>Custom Components: Use HubDB for storing data points for interactive website components, such as multi-step forms, aiding in lead generation and user engagement.</li>
+                    <li>
+                        Team/Career Pages: Easily manage and display individual staff member or job details from a single table, streamlining the creation of detailed and interconnected content structures.
+                    </li>
+                    <li>
+                        Resource Center/Product Listings: Utilize HubDB for categorizing and filtering products or resources, enhancing user navigation and experience on listing pages.
+                    </li>
+                    <li>
+                        Searchable Directories: Implement HubDB as a central database for directories, ensuring efficient data organization and retrieval.
+                    </li>
+                    <li>
+                        Custom Components: Use HubDB for storing data points for interactive website components, such as multi-step forms, aiding in lead generation and user engagement.
+                    </li>
                 </ul>
             </div>
             <div class="standard-section rounded-img-content">
                 <img loading="lazy"
                      src="{{ imagesPath }}hubdbPower.webp"
-                     alt="CMS transition strategy">
+                     alt="CMS transition strategy" />
             </div>
             <div class="text--zone">
                 <h2 class="readable--area">Getting Started with HubDB</h2>
-                <p class="readable--area">Before diving into HubDB, it’s essential to thoroughly understand your project’s needs. Projects benefiting the most from HubDB typically involve complex data relationships or advanced user interactions. Mapping out these requirements will help determine if HubDB is the right solution.</p>
+                <p class="readable--area">
+                    Before diving into HubDB, it’s essential to thoroughly understand your project’s needs. Projects benefiting the most from HubDB typically involve complex data relationships or advanced user interactions. Mapping out these requirements will help determine if HubDB is the right solution.
+                </p>
             </div>
             <div class="standard-section rounded-img-content">
                 <img loading="lazy"
                      src="{{ imagesPath }}hubdbConnections.webp"
-                     alt="CMS transition strategy">
+                     alt="CMS transition strategy" />
             </div>
             <div class="text--zone">
                 <h2 class="readable--area">Conclusion</h2>

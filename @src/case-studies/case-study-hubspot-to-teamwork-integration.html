@@ -13,18 +13,22 @@
 {% set internalDirectory = true %}
 {% extends "_layouts/base.html" %}
 {% from '_partials/global.html' import pagesLanguage, imagesPath, localDirectPath %}
+
+{# [START] page info #}
+{% set page = {
+    "pageTitle": "HubSpot to Teamwork app | Case Study",
+    "pageMeta": "HubSpot to Teamwork integration, is a dynamic micro-SaaS that seamlessly integrates your HubSpot's portal CRM with your current Teamwork account flow. Our unique platform empowers you to convert your CRM objects into actionable tasks in Teamwork, all directly from the HubSpot panel."
+} %}
+{# [END] page info #}
+
 {% block title %}
-
-    HubSpot to Teamwork app | Case Study
-
+    {{ page.pageTitle }}
 {% endblock title %}
+
 {% block meta %}
-
-    HubSpot to Teamwork integration, is a dynamic micro-SaaS that seamlessly integrates your HubSpot's portal CRM with your
-    current Teamwork account flow. Our unique platform empowers you to convert your CRM objects into actionable tasks in
-    Teamwork, all directly from the HubSpot panel.
-
+    {{ page.pageMeta }}
 {% endblock meta %}
+
 {% block body %}
     {% set caseStudyIdentifier = "HubSpot to Teamwork Integration" %}
 

@@ -4,6 +4,8 @@ venv/
 # Possible garbage left by build script or CMS
 # _*
 __*
+logs/
+*.log
 # MacOS directory metadata
 .DS_Store
 .DS*

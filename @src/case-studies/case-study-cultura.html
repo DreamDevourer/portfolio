@@ -13,17 +13,19 @@
 {% set internalDirectory = true %}
 {% extends "_layouts/base.html" %}
 {% from '_partials/global.html' import pagesLanguage, imagesPath, systemPath, localDirectPath %}
+
+{# [START] page info #}
+{% set page = {"pageTitle": "Cultura app | Case Study", "pageMeta": "Cultura app case study made for hiring managers to evolve their teams and get incredible results, discover the most powerful and simple-to-use platform you've ever seen!"} %}
+{# [END] page info #}
+
 {% block title %}
-
-Cultura app | Case Study
-
+{{ page.pageTitle }}
 {% endblock title %}
+
 {% block meta %}
-
-Cultura app case study made for hiring managers to evolve their teams and get incredible results, discover the most
-powerful and simple-to-use platform you've ever seen!
-
+{{ page.pageMeta }}
 {% endblock meta %}
+
 {% block body %}
 {% set caseStudyIdentifier = "Cultura App" %}
 

@@ -1,7 +1,7 @@
 <!--
     templateType: page
-    isAvailableForNewContent: true
-    label: Home | Case Studies Listing
+    isAvailableForNewContent: false
+    label: Sample Baked Template
     pageName: {% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}
     pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
 -->
@@ -11,11 +11,10 @@
 {% extends "_layouts/base.html" %}
 {% from '_partials/global.html' import pagesLanguage, imagesPath %}
 
-
 {# [START] page info #}
 {% set page = {
-    "pageTitle": "Nice to see you here! I'm Nicolas Mendes",
-    "pageMeta": "This is Nicolas Mendes portfolio. This page shows the main projects that Nick worked on."
+  "pageTitle": "Nice to see you here! I'm Nicolas Mendes",
+  "pageMeta": "This is Nicolas Mendes portfolio. This page shows the main projects that Nick worked on."
 } %}
 {# [END] page info #}
 
@@ -26,30 +25,19 @@
 {# [END] module overrides #}
 
 {% block title %}
-    {{ page.pageTitle }}
+  {{ page.pageTitle }}
 {% endblock title %}
 
 {% block meta %}
-    {{ page.pageMeta }}
+  {{ page.pageMeta }}
 {% endblock meta %}
 
 {% block body %}
-    <!-- 1️⃣ Main -->
-    <main>
-        <!-- 💬 Hero Module -->
-        {% include "_modules/module__hero-gen2.html" %}
-
-        <!-- 💬 Features Section -->
-        {% include "_modules/module__bento-grid.html" %}
-
-        <!-- 💬 Listings Module -->
-        {% include "_modules/module__project-listings.html" %}
-
-        <!-- 💬 Testimonials Module -->
-        {% include "_modules/module__testimonials.html" %}
-
-        <!-- 💬 Get in Touch Module -->
-        {% include "_modules/module__get_in_touch.html" %}
-    </main>
-
+  <main>
+    {% include "_modules/module__hero-gen2.html" %}
+    {% include "_modules/module__bento-grid.html" %}
+    {% include "_modules/module__project-listings.html" %}
+    {% include "_modules/module__testimonials.html" %}
+    {% include "_modules/module__get_in_touch.html" %}
+  </main>
 {% endblock body %}
