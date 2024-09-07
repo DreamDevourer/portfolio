@@ -1,0 +1,32 @@
+@use "functions/functions" as *;
+
+:root {
+    /* START OF ESSENTIALS */
+    --gradient-blue: #{$gradient-blue};
+    --gradient-green: #{$gradient-green};
+    --gradient-crm00: #{$gradient-crm00};
+    --gradient-crm01: #{$gradient-crm01};
+    --background-color: #{$background-color};
+    --footer-background-color: #{$footer-background-color};
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+    --dark-bg: #{$dark-bg};
+    --modern-dark-bg: #{$modern-dark-bg};
+    --modern-dark-card-bg: #{$modern-dark-card-bg};
+    --soft-shadow: drop-shadow(0 8px 32px 0 rgba(0, 0, 0, 0.16));
+    --hard-shadow: drop-shadow(0px 163.333px 130.667px rgba(0, 0, 0, 0.07))
+        drop-shadow(0px 68.2368px 54.5894px rgba(0, 0, 0, 0.0503198))
+        drop-shadow(0px 36.4826px 29.1861px rgba(0, 0, 0, 0.0417275))
+        drop-shadow(0px 20.4519px 16.3615px rgba(0, 0, 0, 0.035))
+        drop-shadow(0px 10.8618px 8.68947px rgba(0, 0, 0, 0.0282725))
+        drop-shadow(0px 4.51985px 3.61588px rgba(0, 0, 0, 0.0196802));
+    --heading-font-family: "Work Sans", Helvetica, sans-serif;
+    --heading-font-case-studies: Canela, Spectral, Playfair Display, Lora, serif;
+    --quote-font-case-studies: CanelaThin, Spectral, Playfair Display, Lora, serif;
+    --quote-highlight-font-case-studies: CanelaThinItalic, Spectral, Playfair Display, Lora, serif;
+    --body-font-family: "Oxygen", Verdana, sans-serif;
+    --container-width-controller: calc(100% - 56px);
+    --limited-container-width: #{$limited-content-size};
+    --standard-header-width: #{$default-content-size};
+    /* END OF ESSENTIALS */
+}

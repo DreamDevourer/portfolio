@@ -1,0 +1,53 @@
+<!--
+    templateType: section
+    label: Case Study Summary
+    isAvailableForNewContent: true
+    description: "Global Summary module for Nick's portfolio."
+-->
+
+{# [START] module fields #}
+{% set module = {
+    "style": [],
+    "intro_summary": intro_summary,
+    "quote_summary": quote_summary,
+    "role_summary": role_summary,
+    "scope_summary": scope_summary,
+    "process_summary": process_summary,
+    "tools_summary": tools_summary
+} %}
+{# [END] module fields #}
+
+{# [START] module content #}
+<!-- Summary -->
+<section class="summary--area-controller">
+    {# Left Panel #}
+    <div class="text--zone left--summary-area">
+        <p class="readable--area">
+            {{ module.intro_summary or 'Intro summary text wall here. Intro summary text wall here. Intro summary text wall here. Intro summary text wall here.' }}
+        </p>
+        <div class="separator-dec"></div>
+        <p class="readable--area quote-p-std">"{{ module.quote_summary or 'Quote summary text wall here.' }}"</p>
+    </div>
+    {# Right Panel #}
+    <div class="text--zone right--summary-area">
+        <div class="group--summary-item">
+            <p class="minor--summary-title">Role</p>
+            <p class="readable--area main--summary-content">{{ module.role_summary or 'Product Designer' }}</p>
+        </div>
+        <div class="group--summary-item">
+            <p class="minor--summary-title">Scope</p>
+            <p class="readable--area main--summary-content">{{ module.scope_summary or '18 weeks' }}</p>
+        </div>
+        <div class="group--summary-item">
+            <p class="minor--summary-title">Process</p>
+            <p class="readable--area main--summary-content">
+                {{ module.process_summary or 'Quick research, interviews, competitive analysis, ideation, prototyping, testing, evaluation' }}
+            </p>
+        </div>
+        <div class="group--summary-item">
+            <p class="minor--summary-title">Tools</p>
+            <p class="readable--area main--summary-content">{{ module.tools_summary or 'Figma, Miro, HubSpot' }}</p>
+        </div>
+    </div>
+</section>
+{# [END] module content #}

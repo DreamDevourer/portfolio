@@ -1,0 +1,51 @@
+<!--
+    templateType: section
+    label: Hero module Section
+    isAvailableForNewContent: true
+    description: "Hero module used in the homepage for Nick's portfolio."
+-->
+
+{# [START] module fields #}
+{% set module = {
+    "style": [],
+    "h1Title": h1Title,
+    "locationCaption": locationCaption,
+    "descriptionCaption": descriptionCaption,
+} %}
+{# [END] module fields #}
+
+{# [START] module content #}
+<section class="main--title uniqueNextGenHero header-respected">
+    <div class="gen2Left">
+        <h1 class="next-gen2--title">{{ module.h1Title or 'Hero Cool Title' }}</h1>
+        <span class="location--indicator">
+            <!-- START SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="30"
+                 height="30"
+                 viewBox="0 0 30 30"
+                 fill="none">
+                <path d="M23.7201 11.8601C23.7201 20.0709 14.597 26.4571 14.597 26.4571C14.597 26.4571 5.47388 20.0709 5.47388 11.8601C5.47388 9.44047 6.43507 7.11996 8.14598 5.40904C9.8569 3.69813 12.1774 2.73694 14.597 2.73694C17.0166 2.73694 19.3371 3.69813 21.048 5.40904C22.7589 7.11996 23.7201 9.44047 23.7201 11.8601Z" stroke="url(#paint0_linear_1273_9213)" stroke-linecap="round" stroke-linejoin="round" />
+                <defs>
+                <linearGradient id="paint0_linear_1273_9213" x1="5.93581" y1="-6.59117" x2="26.0535" y2="-6.21707" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#CF8F61" />
+                <stop offset="1" stop-color="#E16599" />
+                </linearGradient>
+                </defs>
+            </svg>
+            <!-- END SVG -->
+            {{ module.locationCaption or 'Curitiba, BR' }}
+        </span>
+    </div>
+
+    <div class="gen2Right">
+        <p class="nextgen--desc2">{{ module.descriptionCaption or 'Super duper awesome description here!' }}</p>
+        <img {# class="hide-it" #}
+            src="{{ imagesPath }}Arrow Down.svg"
+            alt="Arrow pointing down."
+            width="53"
+            height="74"
+            >
+        </div>
+    </section>
+    {# [END] module content #}
