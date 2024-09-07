@@ -557,6 +557,7 @@ def templateEngineCreation(extraOption: int = 1):
         "../static/styles/02_base",
         "../static/styles/03_components/_default-modules.scss",
         "../static/styles/04_trumps",
+        "../static/styles/compiled",
         "../styles-engine.css",
         "../static/styles/fallback.css",
         "../static/styles/master.scss",
