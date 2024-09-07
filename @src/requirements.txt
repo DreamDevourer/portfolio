@@ -146,7 +146,7 @@ thinc==8.1.12
 tika==2.6.0
 toml==0.10.2
 toolz @ file:///Users/cbousseau/work/recipes/ci_py311/toolz_1677925870232/work
-tornado==6.3.3
+tornado==6.4.1
 tqdm @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_ac7zic_tin/croot/tqdm_1679561870178/work
 typer==0.9.0
 typing_extensions==4.7.1
