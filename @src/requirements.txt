@@ -96,7 +96,7 @@ protobuf==4.24.1
 pyarrow==13.0.0
 pycosat @ file:///Users/cbousseau/work/recipes/ci_py311/pycosat_1677933552468/work
 pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-pycryptodome==3.18.0
+pycryptodome==3.19.1
 pycryptodomex==3.18.0
 pydantic==2.4.0
 pydantic_core==2.6.3
