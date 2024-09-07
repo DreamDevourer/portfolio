@@ -73,7 +73,7 @@ multidict==6.0.4
 murmurhash==1.0.9
 mutagen==1.46.0
 nautiluszim==1.1.1
-nltk==3.8.1
+nltk==3.9
 numpy==1.25.2
 openai==0.27.8
 optimize-images==1.5.1
