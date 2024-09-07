@@ -93,7 +93,7 @@ plotly==5.16.1
 pluggy @ file:///Users/cbousseau/work/recipes/ci_py311/pluggy_1677906980825/work
 preshed==3.0.8
 protobuf==4.24.1
-pyarrow==13.0.0
+pyarrow==14.0.1
 pycosat @ file:///Users/cbousseau/work/recipes/ci_py311/pycosat_1677933552468/work
 pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
 pycryptodome==3.18.0
