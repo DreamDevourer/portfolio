@@ -103,7 +103,7 @@ pydantic_core==2.6.3
 pydeck==0.8.0
 Pygments==2.16.1
 Pympler==1.0.1
-PyMySQL==1.1.0
+PyMySQL==1.1.1
 pyOpenSSL @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_ddecjfxr7g/croot/pyopenssl_1678965309681/work
 PyPDF2==3.0.1
 pypdfium2==4.18.0
