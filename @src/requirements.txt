@@ -164,5 +164,5 @@ yarl==1.9.2
 youtube-dl==2021.12.17
 yt-dlp==2024.7.7
 zimscraperlib==3.1.1
-zipp==3.16.2
+zipp==3.19.1
 zstandard @ file:///Users/cbousseau/work/recipes/ci_py311_2/zstandard_1678996192313/work
