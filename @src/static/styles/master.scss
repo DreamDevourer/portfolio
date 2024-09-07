@@ -1,0 +1,9 @@
+@import './00_settings/settings';
+@import 'static/styles/01_generic/_normalize.css'; // Third-party
+@import 'static/styles/01_generic/_reset.css'; // Third-party
+@import './02_base/elements';
+@import './03_components/default-modules';
+@import 'static/styles/03_components/highlight.default.min.css'; // Third-party
+@import 'static/styles/03_components/splide.min.css'; // Third-party
+@import './04_trumps/trumps';
+@import './fallback';

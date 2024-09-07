@@ -1,0 +1,108 @@
+<!--
+    templateType: blog_index
+    isAvailableForNewContent: true
+    label: Blog Listings
+    pageName: {% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+{# NAV TYPES: "home","internal","none" #}
+
+{% set navType = "blog-index" %}
+{% extends "_layouts/base.html" %}
+{% from '_partials/global.html' import pagesLanguage, imagesPath %}
+{% block specialEntries %}
+    {% set navType = "blog-index" %}
+{% endblock specialEntries %}
+{% block title %}
+
+    Blog | Nicolas Mendes
+
+{% endblock title %}
+{% block meta %}
+
+    This is my personal blog, where I share my thoughts, ideas, projects and experiences. I hope you enjoy it!
+
+{% endblock meta %}
+{% block body %}
+
+    <!-- 1️⃣ Main -->
+    <main>
+    {# FEATURED SECTION #}
+        <section class="main--title uniqueNextGenHero header-respected blog_featured_hero_main">
+            <a class="gen2Left"
+               href="/blog/implement-dynamic-news-content-in-hubspot.html">
+                <span class="location--indicator">December 8, 2023</span>
+                <h1 class="next-gen2--title blog_hero_featured_over">Dynamic News Content for Arpel</h1>
+                <p class="nextgen--desc2">
+                    Creating dynamic, interactive content on your website can significantly enhance user engagement and provide a more personalized experience for your visitors. HubSpot, with its powerful CMS and CRM capabilities, offers an excellent platform for building dynamic content...
+                </p>
+                <span class="blog_featured_cta">Continue Reading</span>
+            </a>
+
+            <a class="gen2Right"
+               href="/blog/implement-dynamic-news-content-in-hubspot.html">
+                <img src="{{ imagesPath }}dynamicContent.jpg"
+                     alt="Blog Article Image"
+                     class="blog_article_individual_featured__image">
+            </a>
+        </section>
+
+        {# LISTINGS #}
+        <section class="blog_listings_main header-respected">
+            <div class="titleAreaSideThin blog_title_sub_over">
+                <span class="tagPillIndicator">HubSpot Content</span>
+                <h2 class="blog_listings_main__title">Latest Articles.</h2>
+                <div class="separator-dec"></div>
+            </div>
+            <div class="blog_article_mass">
+                <a class="blog_article_individual_item"
+                   href="/blog/implement-dynamic-news-content-in-hubspot.html">
+                    <img src="{{ imagesPath }}dynamicContent.jpg"
+                         alt="Blog Article Image"
+                         class="blog_article_individual_item__image">
+                    <div class="blog_article_individual_item__content">
+                        <span class="blog_date">December 8, 2023</span>
+                        <h3 class="blog_article_individual_item__title">Creating Dynamic Content in HubSpot: A Comprehensive Guide</h3>
+                        <p class="blog_article_individual_item__description">
+                            Creating dynamic, interactive content on your website can significantly enhance user engagement and provide a more personalized experience for your visitors...
+                        </p>
+                    </div>
+                </a>
+
+                <a class="blog_article_individual_item"
+                   href="/blog/Navigating-the-Shift-Transitioning-Your-Blog-to-HubSpot-CMS.html">
+                    <img src="{{ imagesPath }}hubspotCMSProsAndCons.webp"
+                         alt="Blog Article Image"
+                         class="blog_article_individual_item__image">
+                    <div class="blog_article_individual_item__content">
+                        <span class="blog_date">December 9, 2023</span>
+                        <h3 class="blog_article_individual_item__title">Navigating the Shift: Transitioning Your Blog to HubSpot CMS</h3>
+                        <p class="blog_article_individual_item__description">
+                            In the digital age, the platform hosting your blog is as crucial as the content itself. With HubSpot's rising popularity, many businesses are contemplatin...
+                        </p>
+                    </div>
+                </a>
+
+                <a class="blog_article_individual_item"
+                   href="/blog/hubdb-data-management-in-hubspot.html">
+                    <img src="{{ imagesPath }}hubdbHowTo.webp"
+                         alt="Blog Article Image"
+                         class="blog_article_individual_item__image">
+                    <div class="blog_article_individual_item__content">
+                        <span class="blog_date">December 9, 2023</span>
+                        <h3 class="blog_article_individual_item__title">HubDB: Revolutionizing Data Management in HubSpot CMS</h3>
+                        <p class="blog_article_individual_item__description">
+                            In the realm of digital marketing and web content management, efficient data handling is pivotal. HubSpot's CMS Hub introduces HubDB, a relational database that...
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- 👋 CTA -->
+        {% include "_modules/module__get_in_touch.html" %}
+
+    </main>
+
+{% endblock body %}

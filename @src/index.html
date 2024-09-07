@@ -1,0 +1,104 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Home | Case Studies Listing
+    pageName: {% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+{# NAV TYPES: "home","internal","none" #}
+
+{% set navType = "home" %}
+{% extends "_layouts/base.html" %}
+{% from '_partials/global.html' import pagesLanguage, imagesPath %}
+
+<!-- PROTO-CMS PANEL -->
+
+{% if pagesLanguage == "en" %}
+    {% set h1Title = "Hi there<br />I'm Nick<br />Designer." %}
+    {% set locationCaption = "Curitiba, BR" %}
+    {% set descriptionCaption = "I’m a naturally curious product designer with an appetite for coding, motion design, AI tools and tasty food. I make HubSpot Awesome!" %}
+{% endif %}
+
+{% block title %}
+
+    Nice to see you here! I'm Nicolas Mendes
+
+{% endblock title %}
+{% block meta %}
+
+    This is Nicolas Mendes portfolio. This page shows the main projects that Nick worked on.
+
+{% endblock meta %}
+
+{% block body %}
+    <!-- 1️⃣ Main -->
+    <main>
+        <!-- 💬 Hero Module -->
+
+        {% include "_modules/module__hero-gen2.html" %}
+
+        <!-- 💬 Features Section -->
+        {% include "_modules/module__bento-grid.html" %}
+
+        <!-- 💬 Listings Module -->
+
+        <section class="projectsListingsMain" id="professional-projects">
+
+            <div class="titleAreaSideThin">
+                <span class="tagPillIndicator">Professional Projects</span>
+                <h2>
+                    Check some
+                    <br />
+                    of my best
+                    <br />
+                    projects.
+                </h2>
+                <div class="separator-dec"></div>
+            </div>
+
+            <div class="banners-nextgen" data-selected-type="design">
+
+                {% for project in projects %}
+                    {% if project.page_path %}
+                        {% set elementHandler = "a" %}
+                    {% else %}
+                        {% set elementHandler = "div" %}
+                    {% endif %}
+
+                    <{{ elementHandler }}
+                    {% if project.page_path %}href="{{ project.page_path }}"{% endif %}
+                    class="link-banner {{ project.case_id }}" data-type="{{ project.project_type|safe|striptags|lower|replace(' ', '') }}">
+                    <div class="left-area-banner">
+                        <img src="{{ imagesPath }}{{ project.case_logo }}"
+                             alt="{{ project.case_logo_alt }}"
+                             loading="lazy"
+                             width="54"
+                             height="54" />
+                        <div>
+                            <h3>{{ project.case_title }}</h3>
+                            <p>{{ project.case_description }}</p>
+                        </div>
+                        <button class="button small-cta {{ project.case_id }}-cta"
+                                onclick="location.href='{{ project.page_path }}';">{{ project.case_cta }}</button>
+                    </div>
+                    </{{ elementHandler }}>
+
+                {% endfor %}
+
+                <p class="small-msg">
+                    And I have designed and developed more than 15 CMS themes... Contact me and I can show
+                    more!
+                </p>
+            </div>
+
+        </section>
+
+        <!-- 💬 Testimonials Module -->
+        {% include "_modules/module__testimonials.html" %}
+
+        <!-- 💬 Get in Touch Module -->
+        {% include "_modules/module__get_in_touch.html" %}
+
+    </main>
+
+{% endblock body %}

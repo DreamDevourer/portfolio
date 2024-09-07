@@ -1,7 +1,4 @@
 # CMS and Build assets
-@src/
-@cms/
-*@*
 venv/
 ./venv/
 # Possible garbage left by build script or CMS

@@ -1,0 +1,107 @@
+<!--
+    templateType: blog_article
+    isAvailableForNewContent: true
+    label: Blog Article
+    pageName: {% if current_page_name or caseStudyIdentifierS %}{{ current_page_name }}{{ caseStudyIdentifierS }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+{# NAV TYPES: "home","internal","none" #}
+
+{% set navType = "blog-article" %}
+{% set isCaseStudy = true %}
+{% set internalDirectory = true %}
+{% extends "_layouts/base.html" %}
+{% from '_partials/global.html' import pagesLanguage, imagesPath, systemPath, localDirectPath %}
+{% block title %}
+
+    Navigating the Shift: Transitioning Your Blog to HubSpot CMS
+
+{% endblock title %}
+{% block meta %}
+
+    In the digital age, the platform hosting your blog is as crucial as the content itself. With HubSpot's rising popularity, many businesses are contemplating the leap from traditional CMSs like WordPress to HubSpot CMS.
+
+{% endblock meta %}
+{% block body %}
+    {% set caseStudyIdentifier = "BlogArticle" %}
+
+    <!-- 1️⃣ Main -->
+    <main class="clean-all mobile-handler">
+
+        <!-- 💬 Main Title -->
+        <section class="main--title case--area light-blog-area blog">
+            <div class="text--zone initial-case center-it center-section blog-holder">
+                <div class="blog-article__datetime"> 
+                <span class="blog-article__datetime__date">December 9, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
+                </div>
+                <h1 class="main--title__text blog-article_title">Navigating the Shift: Transitioning Your Blog to HubSpot CMS</h1>
+                <p class="readable--area">
+                    In the digital age, the platform hosting your blog is as crucial as the content itself. With HubSpot's rising popularity, many businesses are contemplating the leap from traditional CMSs like WordPress to HubSpot CMS. This article delves into the benefits and challenges of this transition, particularly focusing on blog migration.
+                </p>
+                <div class="separator-dec"></div>
+            </div>
+            <div>
+                <img src="{{ imagesPath }}hubspotCMSProsAndCons.webp"
+                     alt="HubSpot CMS pros and cons">
+            </div>
+        </section>
+
+        <!-- Blog Post -->
+        <article class="case--area">
+            <div class="text--zone">
+                <p class="readable--area">
+                    While moving a blog from one CMS to another there can be a risk of losing rankings and traffic. This is the case if you move to a CMS that is not as search engine friendly or if meta titles, metadata and structured data is not brought over, you also run the risk of losing your rankings and traffic which could be detrimental for your business.
+                </p>
+                <h2 class="readable--area">The Upside of Migrating to HubSpot CMS</h2>
+                <ul class="readable--area">
+                    <li>Integrated Inbound Marketing: HubSpot excels in inbound marketing. When your blog resides on HubSpot CMS, it seamlessly integrates with inbound campaigns, offering rich analytics and insights right on the dashboard. This integration simplifies managing internal links, keyword connections, and personalized CTAs, all crucial for a successful inbound strategy.</li>
+                    <li>SEO Advantages: HubSpot CMS is engineered to be SEO-friendly. It helps optimize blog posts for search engines, enhancing visibility and reach. The CMS's structure is designed to be easily understood by search engine crawlers, potentially boosting your content's rankings.</li>
+                    <li>Exceptional Speed: HubSpot CMS boasts remarkable loading speeds, a vital factor for both SEO and user experience. Hosted on a robust CDN, it ensures fast and secure access to your content, provided image sizes are kept in check.</li>
+                    <li>Personalized Lead Generation: The platform allows for the use of smart content to tailor visitor interactions, enhancing the effectiveness of CTAs and content offers. This level of customization can significantly improve lead generation outcomes.</li>
+                    <li>Consolidated CRM and CMS: HubSpot offers the convenience of having your CMS, CRM, and analytics in one place, streamlining access and use for your team.</li>
+                </ul>
+            </div>
+            <div class="text--zone">
+                <h2 class="readable--area">The Challenges of Switching to HubSpot</h2>
+                <p class="readable--area">While HubSpot allows for some customization, it doesn't match the extensive plugin library of WordPress. Significant customization on HubSpot often requires web development expertise.</p>
+                <h3 class="readable--area">Transition Concerns</h3>
+                <p class="readable--area">
+                    Migrating to a different CMS always carries risks, such as potential dips in traffic or loss of SEO rankings. Ensuring a smooth transition requires meticulous planning and possibly expert assistance.
+                </p>
+            </div>
+            <div class="standard-section rounded-img-content">
+                <img loading="lazy"
+                     src="{{ imagesPath }}transitionStrategy.webp"
+                     alt="CMS transition strategy"
+                     >
+            </div>
+            <div class="text--zone">
+                <h2 class="readable--area">Is HubSpot CMS the Right Choice for Your Blog?</h2>
+                <p class="readable--area">
+                    Transitioning to HubSpot CMS can be a game changer, especially if you're already utilizing HubSpot's CRM capabilities. The integration and optimization it offers can be significantly beneficial for your inbound marketing strategies. However, weigh the potential limitations in customization and the challenges of migration. Consulting with a partner agency can provide clarity and ensure a successful transition.
+                </p>
+            </div>
+        </article>
+
+        <!-- 💬 Get in Touch Module -->
+        {% include "_modules/module__get_in_touch.html" %}
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script>
+            // ===== Scroll to Top ==== 
+            $(window).scroll(function() {
+                if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+                    $('#return-to-top').fadeIn(200); // Fade in the arrow
+                } else {
+                    $('#return-to-top').fadeOut(200); // Else fade out the arrow
+                }
+            });
+            $('#return-to-top').click(function() { // When arrow is clicked
+                $('body,html').animate({
+                    scrollTop: 0 // Scroll to top of body
+                }, 500);
+            });
+        </script>
+    </main>
+
+{% endblock body %}

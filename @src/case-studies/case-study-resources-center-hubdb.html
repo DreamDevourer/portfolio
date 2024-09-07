@@ -1,0 +1,180 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Case Study Individual
+    pageName: {% if current_page_namee or caseStudyIdentifierS %}{{ current_page_name }}{{ caseStudyIdentifierS }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+{# NAV TYPES: "home","internal","none" #}
+
+{% set navType = "internal" %}
+{% set isCaseStudy = true %}
+{% set internalDirectory = true %}
+{% extends "_layouts/base.html" %}
+{% from '_partials/global.html' import pagesLanguage, imagesPath, localDirectPath %}
+{% block title %}
+
+    FinTrheive's HubDB Resource Center | Case Study
+
+{% endblock title %}
+{% block meta %}
+
+    A resouces library engine powered by HubSpot HubDB and CMS Hub. This project was built for FinThrive.
+
+{% endblock meta %}
+{% block body %}
+    {% set caseStudyIdentifier = "Reources Center HubDB" %}
+
+    <!-- 1️⃣ Main -->
+    <main class="clean-all mobile-handler">
+        <!-- 💬 Main Title -->
+        <section class="main--title case--area hero-img-fix crm-tone-area case--study-hero-internal">
+            <div class="text--zone initial-case center-it center-section">
+                <h1 class="main--title__text md-title">
+                    A HubDB <span class="crm-gradient">Reources Center</span>
+            </h1>
+            <p class="readable--area">
+                A resouces library engine powered by HubSpot HubDB and CMS Hub. This project was developed for FinThrive.
+            </p>
+            <p class="readable--area omission--info--light">
+                To comply with my non-disclosure agreement with Remotish Agency, I have omitted and obfuscated
+                confidential information in this case study.
+            </p>
+        </div>
+        <div>
+            <img src="{{ imagesPath }}BG-crm-card.webp"
+                 alt="Final Resources Engine Running">
+        </div>
+        <!-- START QUOTE MODULE -->
+        <!-- START MODULE FIELDS PANEL -->
+
+        {% set quotationMarks = false %}
+        {% set enableDecorator = true %}
+        {% set decoratorColor = "#FF6E4D" %}
+        {% set quote = "Connecting Teams, Streamlining Success. From Contact to Task, Effortlessly." %}
+
+        <!-- END MODULE FIELDS PANEL -->
+
+        {% include "_modules/module__quote.html" %}
+
+        <!-- END QUOTE MODULE -->
+    </section>
+
+    <!-- START SUMMARY MODULE -->
+    <!-- START MODULE FIELDS PANEL -->
+    {# Left Panel #}
+    {% set intro_summary = "Professionals striving to harmonize their sales and project management endeavors need a method to bridge their CRM and task management tools. This ensures they can efficiently turn potential leads into actionable steps. With our HubSpot to Teamwork integration, we offer a dynamic solution that effortlessly merges your HubSpot's CRM with your Teamwork flow. Experience the power of transforming your CRM objects - be it contacts, deals, or companies - into prioritized tasks in Teamwork, all without leaving the HubSpot interface." %}
+
+    {% set quote_summary = "How might we design an app that seamlessly bridges HubSpot CRM with Teamwork, enhancing <span class=\"quote-highlight\">workflow</span>  and user <span class=\"quote-highlight\">efficiency</span>?" %}
+
+    {# Right Panel #}
+    {% set role_summary = "Full-stack HubSpot CMS Developer" %}
+    {% set scope_summary = "2 weeks" %}
+    {% set process_summary = "HubSpot Theme development, Dev/Design collaboration, HubDB Architecture developement" %}
+    {% set tools_summary = "Cursor, Figma, HubSpot CMS, ChatGPT, VSCode, Slack" %}
+    <!-- END MODULE FIELDS PANEL -->
+    {% include "_modules/module__summary.html" %}
+    <!-- END SUMMARY MODULE -->
+
+
+    <!-- Carousel Showcase -->
+    <section id="image-carousel"
+             class="splide background-effect-std"
+             aria-label="Beautiful Images"
+             data-splide='{"arrows":"false","pagination":"false","pauseOnHover":"false"}'>
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <img src="{{ imagesPath }}CRM-Carousel/01 - Panel IDLE (RIGHT SIDE).webp"
+                         alt="Portal Association"
+                         width="auto"
+                         height="437">
+                </li>
+                <li class="splide__slide">
+                    <img src="{{ imagesPath }}CRM-Carousel/02 - Panel TW Associated (RIGHT SIDE).webp"
+                         alt="Teamwork Project Association"
+                         width="auto"
+                         height="437">
+                </li>
+                <li class="splide__slide">
+                    <img src="{{ imagesPath }}CRM-Carousel/03 - Panel PROJECT VIEW (RIGHT SIDE).webp"
+                         alt="View projects and create tasks"
+                         width="auto"
+                         height="437">
+                </li>
+                <li class="splide__slide">
+                    <img src="{{ imagesPath }}CRM-Carousel/04 - CRM Pipeline.webp"
+                         alt="Send HubSpot CRM object to Teamwork"
+                         width="auto"
+                         height="437">
+                </li>
+                <li class="splide__slide">
+                    <img src="{{ imagesPath }}CRM-Carousel/05 - CRM Pipeline.webp"
+                         alt="Project creation from HubSpot CRM object"
+                         width="auto"
+                         height="437">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="case--area">
+        {% for caseStudy in case_studies_content %}
+            {% if caseStudy.title == caseStudyIdentifierS %}{{ caseStudy.html | safe }}{% endif %}
+        {% endfor %}
+    </section>
+
+
+    {# Carousel #}
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('.splide', {
+                type: 'loop',
+                gap: 16,
+                perPage: 3,
+                pauseOnHover: false,
+                pagination: false,
+                arrows: false,
+                lazyLoad: true,
+                autoScroll: {
+                    speed: 0.5,
+                },
+                breakpoints: {
+                    1290: {
+                        perPage: 2,
+                        gap: 12,
+                    },
+                    1024: {
+                        perPage: 2,
+                        gap: 8,
+                    },
+                    768: {
+                        perPage: 1,
+                        gap: 4,
+                    },
+                },
+            }).mount(window.splide.Extensions);
+        });
+    </script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script>
+        // ===== Scroll to Top ==== 
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+                $('#return-to-top').fadeIn(200); // Fade in the arrow
+            } else {
+                $('#return-to-top').fadeOut(200); // Else fade out the arrow
+            }
+        });
+        $('#return-to-top').click(function() { // When arrow is clicked
+            $('body,html').animate({
+                scrollTop: 0 // Scroll to top of body
+            }, 500);
+        });
+    </script>
+
+</main>
+
+{% endblock body %}

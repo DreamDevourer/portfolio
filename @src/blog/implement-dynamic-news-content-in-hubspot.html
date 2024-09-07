@@ -1,0 +1,162 @@
+<!--
+    templateType: blog_article
+    isAvailableForNewContent: true
+    label: Blog Article
+    pageName: {% if current_page_name or caseStudyIdentifierS %}{{ current_page_name }}{{ caseStudyIdentifierS }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+{# NAV TYPES: "home","internal","none" #}
+
+{% set navType = "blog-article" %}
+{% set isCaseStudy = true %}
+{% set internalDirectory = true %}
+{% extends "_layouts/base.html" %}
+{% from '_partials/global.html' import pagesLanguage, imagesPath, systemPath, localDirectPath %}
+{% block title %}
+
+    Implementing Dynamic News Content for Arpel: A HubSpot Project
+
+{% endblock title %}
+{% block meta %}
+
+    Creating dynamic, interactive content on your website can significantly enhance user engagement and provide a more personalized experience for your visitors.
+
+{% endblock meta %}
+{% block body %}
+    {% set caseStudyIdentifier = "BlogArticle" %}
+
+    <!-- 1️⃣ Main -->
+    <main class="clean-all mobile-handler">
+
+        <!-- 💬 Main Title -->
+        <section class="main--title case--area light-blog-area blog">
+            <div class="text--zone initial-case center-it center-section blog-holder">
+                <div class="blog-article__datetime"> 
+                <span class="blog-article__datetime__date">December 8, 2023</span> | <span class="blog-article__author">Nicolas Mendes</span>
+                </div>
+                <h1 class="main--title__text blog-article_title">Creating Dynamic Content in HubSpot: A Comprehensive Guide</h1>
+                <p class="readable--area">
+                    Creating dynamic, interactive content on your website can significantly enhance user engagement and provide a more personalized experience for your visitors. HubSpot, with its powerful CMS and CRM capabilities, offers an excellent platform for building dynamic content. In this guide, we'll explore how to set up dynamic content in HubSpot, using a 'Noticias' (News) page as a small project.
+                </p>
+                <div class="separator-dec"></div>
+            </div>
+            <div>
+                <img src="{{ imagesPath }}dynamicContent.jpg"
+                     alt="Woman using dynamic content">
+            </div>
+        </section>
+
+        <!-- Blog Post -->
+        <article class="case--area">
+            <div class="text--zone">
+                <p class="readable--area">
+                    In the digital age, the ability to present dynamic, user-centric content is crucial for engaging with your audience effectively. This project explores how Arpel, a prominent LATAM company, leveraged HubSpot's powerful capabilities to create a dynamic 'Noticias' (News) page. This guide will delve into the specifics of the project, offering insights and practical snippets for those looking to replicate similar success.
+                </p>
+                <p class="readable--area">
+                    For Arpel, the goal was to create a news page where content adapts based on user interactions, such as searches, filters, and more. This dynamic approach aimed to enhance user engagement and provide a more personalized browsing experience.
+                </p>
+            </div>
+            <div class="text--zone">
+                <h2 class="readable--area">Key Features</h2>
+                <p class="readable--area">We need to implement some key parts:</p>
+                <ul class="readable--area">
+                    <li>Search Functionality: Allows users to search for news articles.</li>
+                    <li>Filtering Options: Users can filter articles based on predefined categories.</li>
+                    <li>
+                        Load More Functionality: Offers a more interactive way to browse additional content without traditional pagination.
+                    </li>
+                    <li>Responsive Design: Ensures a seamless experience across various devices.</li>
+                </ul>
+                <h3 class="readable--area">HubDB Setup</h3>
+                <p class="readable--area">
+                    Arpel's news content is managed via a HubDB table, which stores article details like titles, images, summaries, and tags.
+                </p>
+                <h3 class="readable--area">Creating the Page Template</h3>
+                <p class="readable--area">
+                    A custom HubL template was developed for displaying news items. Here’s a snippet showing how articles are dynamically pulled from the HubDB table:
+                </p>
+            </div>
+            <div class="standard-section rounded-img-content">
+                <img loading="lazy"
+                     src="{{ imagesPath }}codeHubDBNewsItem.svg"
+                     alt="HubDB code for the news page."
+                     >
+            </div>
+            <div class="text--zone">
+                <h3 class="readable--area">JavaScript for Dynamic Interaction</h3>
+                <p class="readable--area">
+                    The interactivity of the 'Noticias' page is powered by JavaScript. This includes handling search queries, applying filters, and managing the 'Load More' functionality. Here’s an example snippet for the search functionality:
+                </p>
+            </div>
+            <div class="standard-section rounded-img-content">
+                <img loading="lazy"
+                     src="{{ imagesPath }}searchNewsHubDB.svg"
+                     alt="Search functionality for the news page."
+                     >
+            </div>
+            <div class="text--zone">
+                <h3 class="readable--area">Styling and Responsiveness</h3>
+                <p class="readable--area">
+                    CSS was used extensively to ensure the page aligns with Arpel's branding while being responsive for a seamless mobile experience.
+                </p>
+                <h3 class="readable--area">Handling Edge Cases</h3>
+                <p class="readable--area">
+                    To account for situations where searches or filters yield no results, we implemented a user-friendly message:
+                </p>
+            </div>
+            <div class="standard-section rounded-img-content">
+                <img loading="lazy"
+                     src="{{ imagesPath }}edgeCasesHubDBNews.svg"
+                     alt="Edge cases for the news page."
+                     >
+            </div>
+            <div class="text--zone">
+                <h3 class="readable--area">Challenges and Solutions</h3>
+                <p class="readable--area">
+                    One challenge was handling concatenated filter strings (e.g., 'RefinaciónProducción'). We resolved this by adjusting the HubL code to include commas for separation, ensuring accurate filter functionality.
+                </p>
+                <p class="readable--area">The implementation of this dynamic content strategy on Arpel's website resulted in:</p>
+                <ul class="readable--area">
+                    <li>Increased user engagement with news content.</li>
+                    <li>Improved user experience due to personalized content display.</li>
+                    <li>Enhanced website performance and SEO.</li>
+                </ul>
+                <h3 class="readable--area">Best Practices Identified</h3>
+                <ul class="readable--area">
+                    <li>
+                        Regular Testing: Continuously test for different user scenarios to ensure all functionalities work as intended.
+                    </li>
+                    <li>Feedback Loop: Collect and analyze user feedback for ongoing improvements.</li>
+                    <li>Performance Monitoring: Regularly monitor page performance and optimize as needed.</li>
+                </ul>
+                <h2 class="readable--area">Conclusion</h2>
+                <p class="readable--area">
+                    Arpel's successful implementation of dynamic content on their HubSpot-powered website demonstrates the potential of personalized user experiences in driving engagement. This project serves as an excellent example for LATAM companies looking to leverage dynamic content strategies effectively.
+
+                    Remember, this guide provides an insight into a specific project implementation. For a more tailored approach, consider adapting these strategies to fit your unique requirements.
+                </p>
+            </div>
+        </article>
+
+        <!-- 💬 Get in Touch Module -->
+        {% include "_modules/module__get_in_touch.html" %}
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script>
+            // ===== Scroll to Top ==== 
+            $(window).scroll(function() {
+                if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
+                    $('#return-to-top').fadeIn(200); // Fade in the arrow
+                } else {
+                    $('#return-to-top').fadeOut(200); // Else fade out the arrow
+                }
+            });
+            $('#return-to-top').click(function() { // When arrow is clicked
+                $('body,html').animate({
+                    scrollTop: 0 // Scroll to top of body
+                }, 500);
+            });
+        </script>
+    </main>
+
+{% endblock body %}
