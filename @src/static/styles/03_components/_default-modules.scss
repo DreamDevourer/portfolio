@@ -314,7 +314,7 @@ form {
 .form-element {
   background-color: #f2f2f2;
   border-radius: 8px;
-  padding: 10px;
+  padding: rem(10px);
   border: none;
   outline: none;
   font-family: var(--body-font-family);
@@ -352,7 +352,7 @@ textarea {
   border-radius: 8px;
   height: 1rem;
   border: none;
-  padding: 16px;
+  padding: rem(16px);
   background-color: #fcfcfc;
 }
 
@@ -447,7 +447,7 @@ textarea {
 }
 
 .tagPillIndicator {
-  padding: 10px 16px;
+  padding: rem(10px) rem(16px);
   border-radius: 6px;
   border: 1px solid var(--black, #000);
 }
@@ -615,10 +615,10 @@ main {
     }
 
     .bentoBlock {
-      padding-left: 48px;
-      padding-right: 48px;
-      padding-top: 100px;
-      padding-bottom: 32px;
+      padding-left: rem(48px);
+      padding-right: rem(48px);
+      padding-top: rem(100px);
+      padding-bottom: rem(32px);
 
       background-color: var(--modern-dark-card-bg);
       background-position-x: center;
@@ -784,7 +784,7 @@ main {
 
       .bentoBlock {
         flex-direction: column-reverse;
-        padding: 32px;
+        padding: rem(32px);
 
         .bento--image-area {
           margin-bottom: 1rem;
