@@ -2,10 +2,7 @@
 venv/
 ./venv/
 # Possible garbage left by build script or CMS
-_*
-@src/
-@cms/
-*@*
+# _*
 __*
 logs/
 *.log
