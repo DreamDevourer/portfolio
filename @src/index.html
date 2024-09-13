@@ -1,0 +1,55 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+    label: Home | Case Studies Listing
+    pageName: {% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+{# NAV TYPES: "home","internal","none" #}
+
+{% set navType = "home" %}
+{% extends "_layouts/base.html" %}
+{% from '_partials/global.html' import pagesLanguage, imagesPath %}
+
+
+{# [START] page info #}
+{% set page = {
+    "pageTitle": "Nice to see you here! I'm Nicolas Mendes",
+    "pageMeta": "This is Nicolas Mendes portfolio. This page shows the main projects that Nick worked on."
+} %}
+{# [END] page info #}
+
+{# [START] module overrides #}
+{% set h1Title = "Hi there<br />I'm Nick<br />Designer." %}
+{% set locationCaption = "Curitiba, BR" %}
+{% set descriptionCaption = "I’m a naturally curious product designer with an appetite for coding, motion design, AI tools and tasty food. I make HubSpot Awesome!" %}
+{# [END] module overrides #}
+
+{% block title %}
+    {{ page.pageTitle }}
+{% endblock title %}
+
+{% block meta %}
+    {{ page.pageMeta }}
+{% endblock meta %}
+
+{% block body %}
+    <!-- 1️⃣ Main -->
+    <main>
+        <!-- 💬 Hero Module -->
+        {% include "_modules/module__hero-gen2.html" %}
+
+        <!-- 💬 Features Section -->
+        {% include "_modules/module__bento-grid.html" %}
+
+        <!-- 💬 Listings Module -->
+        {% include "_modules/module__project-listings.html" %}
+
+        <!-- 💬 Testimonials Module -->
+        {% include "_modules/module__testimonials.html" %}
+
+        <!-- 💬 Get in Touch Module -->
+        {% include "_modules/module__get_in_touch.html" %}
+    </main>
+
+{% endblock body %}
