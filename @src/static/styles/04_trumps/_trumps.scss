@@ -420,8 +420,9 @@ footer {
     align-content: center;
     gap: rem(45px);
     margin-top: rem(56px);
-    max-width: rem(920px);
+    // max-width: rem(920px);
     margin: auto;
+    width: 100%;
 }
 
 .banners-nextgen .raw-banner:hover {
@@ -530,8 +531,9 @@ footer {
 }
 
 .link-banner {
-    width: rem(1020px);
-    height: rem(450px);
+    // width: rem(1020px);
+    width: 100%;
+    height: rem(508px);
     left: 296px;
     top: 639px;
 

@@ -437,7 +437,7 @@ textarea {
 
 .projectsListingsMain {
   margin-top: rem(100px) !important;
-  max-width: rem(1020px);
+  // max-width: rem(1020px);
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -513,6 +513,12 @@ textarea {
   line-height: 1.2;
   margin: 0;
   /* 38.4px */
+}
+
+.titleAreaSideThin {
+  max-width: rem(1020px);
+  // margin-left: 4rem;
+  // width: 100;
 }
 
 .titleAreaSideThin .separator-dec {
