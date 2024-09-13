@@ -9,6 +9,8 @@ _*
 __*
 logs/
 *.log
+logs.log
+log.log
 # MacOS directory metadata
 .DS_Store
 .DS*

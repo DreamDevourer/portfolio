@@ -1,0 +1,192 @@
+@use "sass:math";
+// Made by Nicolas Mendes
+
+// Functions
+// rem() -> size in pixels like rem(20px) is valid
+@function rem($size) {
+  @return calc($size / 16px * 1rem);
+}
+
+// $default-content-size: rem(1634px);
+// $limited-content-size: rem(900px);
+
+$default-content-size: 100%;
+$limited-content-size: 100%;
+
+$screen-max-size--desktop: rem(2048px);
+$screen-max-size--laptop: rem(1366px);
+$screen-max-size--tablet: rem(996px);
+$screen-max-size--mobile: rem(768px);
+$screen-max-size--mobile-small: rem(414px);
+
+$primary-color: #fff;
+$secondary-color: #000;
+$dark-bg: #111825;
+$modern-dark-bg: #131313;
+$modern-dark-card-bg: #212121;
+
+$gradient-blue: #128bdb;
+$gradient-green: #72ca80;
+$gradient-crm00: #ff6e4d;
+$gradient-crm01: #ef5936;
+
+$background-color: #f6f6f6;
+$footer-background-color: #f1f1f1;
+
+$h1-size: rem(72px);
+$h2-size: rem(48px);
+$h3-size: rem(42px);
+$h4-size: rem(32px);
+$h5-size: rem(24px);
+$h6-size: rem(22px);
+$generic-body-size: rem(18px);
+
+$mobile-lg-scaling-factor: 0.88;
+$mobile-sm-scaling-factor: 0.75;
+
+// Mixings
+
+// recommended to combine sizes with rem()
+@mixin height-controller($min, $max) {
+  min-height: $min !important;
+  height: 100%;
+  max-height: $max !important;
+}
+
+@mixin heading {
+  h1 {
+    font-size: $h1-size;
+  }
+
+  h2 {
+    font-size: $h2-size;
+  }
+
+  h3 {
+    font-size: $h3-size;
+  }
+
+  h4 {
+    font-size: $h4-size;
+  }
+
+  h5 {
+    font-size: $h5-size;
+  }
+
+  h6 {
+    font-size: $h6-size;
+  }
+}
+
+@mixin heading-mobile-lg {
+  h1 {
+    font-size: calc($h1-size * $mobile-lg-scaling-factor);
+  }
+
+  h2 {
+    font-size: calc($h2-size * $mobile-lg-scaling-factor);
+  }
+
+  h3 {
+    font-size: calc($h3-size * $mobile-lg-scaling-factor);
+  }
+
+  h4 {
+    font-size: calc($h4-size * $mobile-lg-scaling-factor);
+  }
+
+  h5 {
+    font-size: calc($h5-size * $mobile-lg-scaling-factor);
+  }
+
+  h6 {
+    font-size: calc($h6-size * $mobile-lg-scaling-factor);
+  }
+}
+
+@mixin heading-mobile-sm {
+  h1 {
+    font-size: calc($h1-size * $mobile-sm-scaling-factor);
+  }
+
+  h2 {
+    font-size: calc($h2-size * $mobile-sm-scaling-factor);
+  }
+
+  h3 {
+    font-size: calc($h3-size * $mobile-sm-scaling-factor);
+  }
+
+  h4 {
+    font-size: calc($h4-size * $mobile-sm-scaling-factor);
+  }
+
+  h5 {
+    font-size: calc($h5-size * $mobile-sm-scaling-factor);
+  }
+
+  h6 {
+    font-size: calc($h6-size * $mobile-sm-scaling-factor);
+  }
+}
+
+@mixin responsive-desktop {
+  @media (max-width: $screen-max-size--desktop) {
+    @content;
+  }
+}
+
+@mixin responsive-laptop {
+  @media (max-width: $screen-max-size--laptop) {
+    @content;
+  }
+}
+
+@mixin responsive-tablet {
+  @media (max-width: $screen-max-size--tablet) {
+    @content;
+  }
+}
+
+@mixin responsive-mobile {
+  @media (max-width: $screen-max-size--mobile) {
+    @content;
+  }
+}
+
+@mixin responsive-mobile-small {
+  @media (max-width: $screen-max-size--mobile-small) {
+    @content;
+  }
+}
+
+@mixin responsive-desktop--mw {
+  @media (min-width: $screen-max-size--desktop) {
+    @content;
+  }
+}
+
+@mixin responsive-laptop--mw {
+  @media (min-width: $screen-max-size--laptop) {
+    @content;
+  }
+}
+
+@mixin responsive-tablet--mw {
+  @media (min-width: $screen-max-size--tablet) {
+    @content;
+  }
+}
+
+@mixin responsive-mobile--mw {
+  @media (min-width: $screen-max-size--mobile) {
+    @content;
+  }
+}
+
+@mixin responsive-mobile-small--mw {
+  @media (min-width: $screen-max-size--mobile-small) {
+    @content;
+  }
+}

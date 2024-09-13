@@ -1,0 +1,233 @@
+@use "../00_settings/functions/functions" as *;
+
+/* This is the base file - Only semantic tags here! */
+html {
+    scroll-behavior: smooth;
+    scroll-padding: rem(200px);
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: var(--body-font-family);
+    height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font-family);
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+h2.readable--area {
+    font-size: 3.438rem !important;
+    line-height: 1 !important;
+}
+
+h3.readable--area,
+h3.up-next {
+    font-size: 2.125rem !important;
+    line-height: 1 !important;
+    /* margin-top: 80px; */
+}
+
+footer {
+    h3 {
+        font-family: var(--body-font-family);
+        font-style: normal;
+        font-weight: 300;
+        font-size: rem(24px);
+        line-height: 1.1;
+    }
+}
+
+.footer-container,
+header {
+    display: flex;
+    flex-direction: row;
+    gap: rem(166px);
+    margin: 0 rem(56px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.mainFooterController {
+    display: flex;
+    flex-direction: column;
+    gap: rem(38px);
+    max-width: var(--standard-header-width);
+    margin: auto;
+}
+
+footer {
+    margin: auto;
+    margin-top: rem(178px);
+    padding: rem(83px) 0 rem(83px) 0;
+    background-color: #000;
+    color: #fff;
+}
+
+.footer-container {
+    color: #fff;
+    margin: 0;
+}
+
+footer {
+    p,
+    a,
+    h3 {
+        color: #fff;
+    }
+}
+
+footer {
+    a:hover {
+        h3 {
+            transition: 0.5s;
+            transition-timing-function: ease-out;
+            background: var(--Gen-2-Gradient, linear-gradient(91deg, #cf8f61 1.54%, #e16599 109.24%));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+header {
+    /* position: sticky; */
+    top: 32px;
+    max-width: var(--standard-header-width);
+    margin: auto;
+    margin-top: rem(24px);
+    padding-top: rem(12px) !important;
+    padding-bottom: rem(12px) !important;
+}
+
+// Heading sizes
+
+@include heading;
+
+header {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+}
+
+main {
+    margin: 0 rem(56px);
+}
+
+section {
+    padding: 0 rem(106px);
+}
+
+button {
+    /* DARK/Dark Gradient */
+    /* background: linear-gradient(97.54deg, #1289DB 8.55%, #72CA80 99.42%); */
+    background: var(--black, #000);
+    color: var(--white, #fff);
+    border-radius: 6px;
+    max-height: rem(52px);
+    width: auto;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: rem(10px) rem(16px);
+    gap: rem(10px);
+
+    font-size: rem(24px);
+
+    color: #fff;
+
+    border: 0;
+    -webkit-appearance: inherit;
+
+    -webkit-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+
+        box-shadow:
+            0px 163.333px 130.667px rgba(0, 0, 0, 0.07),
+            0px 68.2368px 54.5894px rgba(0, 0, 0, 0.0503198),
+            0px 36.4826px 29.1861px rgba(0, 0, 0, 0.0417275),
+            0px 20.4519px 16.3615px rgba(0, 0, 0, 0.035),
+            0px 10.8618px 8.68947px rgba(0, 0, 0, 0.0282725),
+            0px 4.51985px 3.61588px rgba(0, 0, 0, 0.0196802);
+
+        /* fade animation */
+        -webkit-transition: all 200ms ease-out;
+        transition: all 200ms ease-out;
+        opacity: 0.9;
+
+        -webkit-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+        transform: scale(1.02);
+    }
+}
+
+/* remove link underline */
+a {
+    text-decoration: none;
+    color: #000000;
+    font-family: var(--body-font-family);
+    font-style: normal;
+    font-weight: 400;
+    font-size: rem(24px);
+    line-height: 1.1;
+    transition: 0.5s;
+    transition-timing-function: ease-out;
+
+    &:hover {
+        h3 {
+            transition: 0.5s;
+            transition-timing-function: ease-out;
+        }
+    }
+}
+
+@include responsive-tablet {
+    header {
+        justify-content: center;
+    }
+
+    @include heading-mobile-lg;
+}
+
+@include responsive-mobile-small {
+    main {
+        margin: 0 !important;
+    }
+
+    h1 {
+        font-size: rem(56px);
+        line-height: 1;
+    }
+
+    h2,
+    h2 span,
+    .h2-span {
+        font-size: rem(48px);
+        line-height: 1;
+    }
+
+    footer div {
+        margin: auto;
+    }
+
+    @include heading-mobile-sm;
+}

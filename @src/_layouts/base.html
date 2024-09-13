@@ -1,0 +1,216 @@
+<!--
+    templateType: "none"
+    isAvailableForNewContent: false
+    label: Base Engine
+    pageName: {% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+<!DOCTYPE html>
+
+{% from '_partials/global.html' import pagesLanguage, siteURL, imagesPath, stylesPath, scriptsPath, enablejQuery, enableCMSEditor, enableGoogleFonts, enableGoogleTracking, stylesEngine, fontsPath, linkedinLink, marketplaceLink %}
+
+<html lang="{{ pagesLanguage }}">
+    <!-- Designed and developed by Nicolas Mendes 2023 -->
+    <!-- Tools used: Adobe(?) Figma, Adobe Photoshop, Python, Nikola & Staticjinja -->
+    <!-- "Curiosity may killed the cat, but it brings humans to life!"
+I like curious people :) and it seems you are! -->
+
+    {% if internalDirectory %}
+
+        {# Used for pages/templates inside sub directories #}
+
+        {% set stylesEngine = "../styles-engine.css" %}
+        {% set imagesPath = "../static/images/" %}
+        {% set stylesPath = "../static/styles/" %}
+        {% set fontsPath = "../static/fonts/Selected/" %}
+        {% set scriptsPath = "../static/engine/" %}
+        {% set systemPath = "../system/" %}
+        {% set localDirectPath = "../" %}
+        {% set baseURL = raw_url %}
+    {% endif %}
+
+    <head>
+        <meta charset="utf-8" />
+        <title>
+
+            {% block title %}
+            {% endblock title %}
+
+        </title>
+        {# Inline critical-path CSS Engine #}
+        {# <style>
+            {{ stylesEngine | safe }}}
+        </style> #}
+
+        <!--  Essential META Tags -->
+        <link rel="canonical" href="{{ siteURL }}" />
+        <meta property="og:site_name" content="Nicolas Mendes Portfolio" />
+        <meta content="Nicolas Mendes Portfolio" property="og:title" />
+        <meta property="og:url" content="{{ siteURL }}" />
+        <meta property="og:image"
+              content="{% block featuredImage %} {% endblock featuredImage %}" />
+        <!--  Non-Essential, But Recommended -->
+        <meta content="Nicolas Mendes Portfolio" property="twitter:title" />
+        <meta name="twitter:title" content="Nicolas Mendes Portfolio" />
+        {# <meta name="twitter:description"
+       content="Offering tour packages for individuals or groups."> #}
+        {# <meta name="twitter:image"
+       content="{% block featuredImage %}
+                {% endblock featuredImage %}"> #}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="description" content=" {% block meta %}  {% endblock meta %} " />
+        <meta name="keywords"
+              content="Product, Design, Developer, HubSpot, CMS, CRM, portfolio" />
+        <meta name="author" content="Nicolas Mendes" />
+        <meta name='designer' content='Nicolas Mendes' />
+        <meta name="copyright" content="© Nicolas Mendes" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name='robots' content='index,follow' />
+
+        <link href="{{ imagesPath }}637d87780f1d18e6aeac8a90_Rectangle 8994.webp"
+              rel="shortcut icon"
+              type="image/x-icon" />
+        <link href="{{ imagesPath }}back.webp" rel="apple-touch-icon" />
+
+        {# Loading fonts initially for better SEO page speed scores #}
+        <style>
+            @font-face {
+                font-family: Canela;
+                src: url('{{ fontsPath }}Canela.woff2') format('woff2');
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: CanelaThin;
+                src: url('{{ fontsPath }}Canela-Thin-Trial.woff2') format('woff2');
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: CanelaThinItalic;
+                src: url('{{ fontsPath }}Canela-ThinItalic-Trial.woff2') format('woff2');
+                font-display: swap;
+            }
+        </style>
+
+        {# !important This is the optimal way to include the styles. But It needs work to fix the internal pages paths for the assets. #}
+        <style>{% include "styles-engine.css" %}</style>
+
+        {% if isCaseStudy %}
+
+            <script src="{{ scriptsPath }}splide.min.js" defer></script>
+            <script src="{{ scriptsPath }}splide-autoscroll.min.js" defer></script>
+            {# <link href="{{ stylesPath }}03_components/splide.min.css" rel="stylesheet"> #}
+            <style>
+                {% include "static/styles/03_components/splide.min.css" %}
+                {% include "static/styles/03_components/highlight.default.min.css" %}
+            </style>
+
+            {# Can bring better performance depending on the host #}
+            {# <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+                                                                                                                                                                                                                                            <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+                                                                                                                                                                                                                                            <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+                                                                                                                                                                                                                                                  rel="stylesheet"> #}
+ 
+            {# TERMINAL/CODE BLOCK EFFECT #}
+            {# <link rel="stylesheet"
+       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"> #}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+            <!-- and it's easy to individually load additional languages -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/django.min.js"></script>
+
+            <script>hljs.highlightAll();</script>
+
+        {% endif %}
+
+        {% if enableGoogleFonts %}
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@200;300;400;700&family=Work+Sans:wght@100;200;300;400;500;600;700;900&display=swap"
+                  rel="stylesheet" />
+        {% endif %}
+
+        {% if enableGoogleTracking %}
+
+            <meta name="google-site-verification"
+                  content="UE9aNjg2bOeWBro_fkdh0c3l75gQ6W3ckmZaIhX94w4" />
+            <!-- Google tag (gtag.js) -->            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-FLR30P6K22"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+
+                gtag('config', 'G-FLR30P6K22');
+            </script>
+
+        {% endif %}
+        {% if enablejQuery %}
+
+            <script defer
+                    src="https://code.jquery.com/jquery-3.6.3.min.js"
+                    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+                    crossorigin="anonymous"></script>
+
+        {% endif %}
+
+        {# COOKIE CONSENT START #}
+
+        <!-- Scripts -->
+        <script src="{{ scriptsPath }}cookieconsent.min.js"></script>
+        <script src="{{ scriptsPath }}consentConfig.js"></script>
+        {# COOKIE CONSENT END #}
+
+    </head>
+
+    <body class="{% if isCaseStudy %}body--container{% endif %} main--body {% if not isCaseStudy %}{# fade-in #}{% endif %} {% if isCaseStudy %}case-study-override{% endif %}">
+
+        {% block require_css %}
+            <!-- injected via back-end (head) -->
+        {% endblock require_css %}
+
+        {% if isCaseStudy %}
+            <!-- Return to Top -->
+            <a href="javascript:" id="return-to-top"><i class="icon-chevron-up">
+                <svg width="28"
+                     height="25"
+                     viewBox="0 0 28 25"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.21318 10.9068L12.7839 0.736645C12.9592 0.582552 13.1491 0.473146 13.3536 0.408427C13.5582 0.343708 13.7773 0.311862 14.011 0.31289C14.2448 0.31289 14.4639 0.34525 14.6685 0.409969C14.873 0.474688 15.0629 0.58358 15.2382 0.736645L26.8089 10.9068C27.1303 11.1893 27.298 11.5427 27.3121 11.9669C27.3261 12.3912 27.1584 12.7569 26.8089 13.0641C26.4875 13.3723 26.0854 13.533 25.6028 13.5464C25.1201 13.5597 24.704 13.4118 24.3545 13.1026L15.7642 5.55205L15.7642 22.7719C15.7642 23.2085 15.5959 23.5748 15.2593 23.8706C14.9227 24.1665 14.5066 24.3139 14.011 24.3129C13.5143 24.3129 13.0977 24.1654 12.7611 23.8706C12.4245 23.5758 12.2567 23.2096 12.2579 22.7719L12.2579 5.55205L3.66757 13.1026C3.34616 13.3851 2.9371 13.533 2.44038 13.5464C1.94366 13.5597 1.53459 13.4118 1.21318 13.1026C0.862558 12.8201 0.687246 12.4605 0.687246 12.0239C0.687246 11.5874 0.862558 11.215 1.21318 10.9068Z" fill="black" />
+                </svg>
+            </i></a>
+        {% endif %}
+
+        {% block header %}
+            {# Start Header #}
+            {% include "_partials/header.html" %}
+        {% endblock header %}
+
+        {# ------------------------------------ #}
+
+        {% block body %}
+            {% if navType == "none" or navType == null or navType == none %}
+                {% block require_alt_header %}
+                {% endblock require_alt_header %}
+            {% endif %}
+            {# Main body here #}
+        {% endblock body %}
+
+        {# ------------------------------------ #}
+
+        {% block footer %}
+            {# Start Footer #}
+            {% include "_partials/footer.html" %}
+        {% endblock footer %}
+
+        {% block require_js %}
+            <!-- injected via back-end (footer) -->
+        {% endblock require_js %}
+
+    </body>
+</html>

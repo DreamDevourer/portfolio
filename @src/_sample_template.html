@@ -1,0 +1,38 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: false
+    label: Sample Template
+    pageName: {% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+{# NAV TYPES: "home","internal","none" #}
+
+{% set navType = "internal" %}
+{% extends "_layouts/base.html" %}
+{% from '_partials/global.html' import pagesLanguage, siteURL, imagesPath %}
+
+{% block specialEntries %}
+    {% set navType = "internal" %}
+{% endblock specialEntries %}
+
+{% block title %}
+    About Nicolas Mendes
+{% endblock title %}
+
+{% block meta %}
+    This is Nicolas Mendes portfolio.
+{% endblock meta %}
+
+{% block body %}
+    <!-- 1️⃣ Main -->
+    <main class="summary--area-controller">
+        <!-- 💬 Main Section -->
+        <section class="dnd-area" id="dnd-zone-01">
+            {# DND reserved area #}
+        </section>
+
+        <!-- 👋 CTA -->
+        {% include "_modules/module__get_in_touch.html" %}
+
+    </main>
+{% endblock body %}

@@ -1,0 +1,46 @@
+<!--
+    templateType: section
+    label: Up Next module Section
+    isAvailableForNewContent: true
+    description: "Final section of Case Studies to point out to other case study."
+-->
+
+{# [START] module fields #}
+{% set module = {
+    "style": [],
+    "projectsGroup": projects
+} %}
+{# [END] module fields #}
+
+{# [START] module content #}
+<section class="banners-nextgen">
+
+    {% for project in module.projectsGroup %}
+        {% if project.title == caseStudyIdentifier %}
+
+            {# DO NOTHING #}
+
+        {% else %}
+
+            <a href="{{ project.link or '#' }}"
+               class="link-banner {{ project.id or '0' }}">
+                <div class="left-area-banner">
+                    <img src="{{ imagesPath }}{{ project.logo }}"
+                         alt="{{ project.logoAlt }}"
+                         loading="lazy"
+                         width="54"
+                         height="54" />
+                    <div>
+                        <h3>{{ project.title or 'Simple Title' }}</h3>
+                        <p>{{ project.description or 'Quick and efficient description.' }}</p>
+                    </div>
+                    <button class="button small-cta {{ project.id or '0' }}-cta"
+                            onclick="location.href='{{ project.link or '#' }}';">{{ project.cta or 'Button' }}</button>
+                </div>
+            </a>
+
+        {% endif %}
+    {% endfor %}
+
+</section>
+{# [END] module content #}
