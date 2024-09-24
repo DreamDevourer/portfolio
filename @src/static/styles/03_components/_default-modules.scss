@@ -861,6 +861,7 @@ main {
     gap: rem(30px);
     align-items: center;
     justify-content: center;
+    text-align: center;
   }
 
   .uniqueNextGenHero,
@@ -994,6 +995,14 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .footer-container {
+    text-align: center !important;
+    .clear-gen,
+    h3 {
+      text-align: center !important;
+    }
   }
 }
 
