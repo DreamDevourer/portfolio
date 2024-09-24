@@ -89,6 +89,8 @@ def extract_metadata(html_content):
 
 def compile_scss(source_dir, output_dir):
     """Compile SCSS files to CSS."""
+
+    # Install with 'npm install -g sass' or 'brew install sass/sass/sass
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
