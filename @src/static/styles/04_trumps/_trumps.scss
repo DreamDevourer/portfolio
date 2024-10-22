@@ -1157,6 +1157,7 @@ span.quote-highlight {
     max-width: var(--standard-header-width) !important;
     // width: 100%;
     width: -webkit-fill-available;
+    width: -moz-available;
     z-index: 1000; /* Ensure it is above other elements */
     // background-color: var(--background-color) !important;
     background-color: rgb(243 243 243 / 90%);

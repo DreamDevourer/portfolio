@@ -1,131 +1,161 @@
 @use "functions/functions" as *;
 
+/* START OF ESSENTIALS */
+
+// legacy variables method used as fallback
 :root {
-    /* START OF ESSENTIALS */
-    @property --gradient-blue {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$gradient-blue};
-    }
-    @property --gradient-green {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$gradient-green};
-    }
-    @property --gradient-crm00 {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$gradient-crm00};
-    }
-    @property --gradient-crm01 {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$gradient-crm01};
-    }
-    @property --background-color {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$background-color};
-    }
-    @property --footer-background-color {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$footer-background-color};
-    }
-    @property --primary-color {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$primary-color};
-    }
-    @property --secondary-color {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$secondary-color};
-    }
-    @property --dark-bg {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$dark-bg};
-    }
-    @property --modern-dark-bg {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$modern-dark-bg};
-    }
-    @property --modern-dark-card-bg {
-        syntax: "<color>";
-        inherits: false;
-        initial-value: #{$modern-dark-card-bg};
-    }
-    @property --soft-shadow {
-        syntax: "<filter>";
-        inherits: false;
-        initial-value: drop-shadow(0 8px 32px 0 rgba(0, 0, 0, 0.16));
-    }
-    @property --hard-shadow {
-        syntax: "<filter>";
-        inherits: false;
-        initial-value: drop-shadow(0px 163.333px 130.667px rgba(0, 0, 0, 0.07))
-            drop-shadow(0px 68.2368px 54.5894px rgba(0, 0, 0, 0.0503198))
-            drop-shadow(0px 36.4826px 29.1861px rgba(0, 0, 0, 0.0417275))
-            drop-shadow(0px 20.4519px 16.3615px rgba(0, 0, 0, 0.035))
-            drop-shadow(0px 10.8618px 8.68947px rgba(0, 0, 0, 0.0282725))
-            drop-shadow(0px 4.51985px 3.61588px rgba(0, 0, 0, 0.0196802));
-    }
-    @property --heading-font-family {
-        syntax: "<string>";
-        inherits: false;
-        initial-value: "Work Sans", Helvetica, sans-serif;
-    }
-    @property --heading-font-case-studies {
-        syntax: "<string>";
-        inherits: false;
-        initial-value:
-            Canela,
-            Spectral,
-            Playfair Display,
-            Lora,
-            serif;
-    }
-    @property --quote-font-case-studies {
-        syntax: "<string>";
-        inherits: false;
-        initial-value:
-            CanelaThin,
-            Spectral,
-            Playfair Display,
-            Lora,
-            serif;
-    }
-    @property --quote-highlight-font-case-studies {
-        syntax: "<string>";
-        inherits: false;
-        initial-value:
-            CanelaThinItalic,
-            Spectral,
-            Playfair Display,
-            Lora,
-            serif;
-    }
-    @property --body-font-family {
-        syntax: "<string>";
-        inherits: false;
-        initial-value: "Oxygen", Verdana, sans-serif;
-    }
-    @property --container-width-controller {
-        syntax: "<length>";
-        inherits: false;
-        initial-value: calc(100% - 56px);
-    }
-    @property --limited-container-width {
-        syntax: "<length>";
-        inherits: false;
-        initial-value: #{$limited-content-size};
-    }
-    @property --standard-header-width {
-        syntax: "<length>";
-        inherits: false;
-        initial-value: #{$default-content-size};
-    }
-    /* END OF ESSENTIALS */
+    --gradient-blue: #{$gradient-blue};
+    --gradient-green: #{$gradient-green};
+    --gradient-crm00: #{$gradient-crm00};
+    --gradient-crm01: #{$gradient-crm01};
+    --background-color: #{$background-color};
+    --footer-background-color: #{$footer-background-color};
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+    --dark-bg: #{$dark-bg};
+    --modern-dark-bg: #{$modern-dark-bg};
+    --modern-dark-card-bg: #{$modern-dark-card-bg};
+    --soft-shadow: drop-shadow(0 8px 32px 0 rgba(0, 0, 0, 0.16));
+    --hard-shadow: drop-shadow(0px 163.333px 130.667px rgba(0, 0, 0, 0.07))
+        drop-shadow(0px 68.2368px 54.5894px rgba(0, 0, 0, 0.0503198))
+        drop-shadow(0px 36.4826px 29.1861px rgba(0, 0, 0, 0.0417275))
+        drop-shadow(0px 20.4519px 16.3615px rgba(0, 0, 0, 0.035))
+        drop-shadow(0px 10.8618px 8.68947px rgba(0, 0, 0, 0.0282725))
+        drop-shadow(0px 4.51985px 3.61588px rgba(0, 0, 0, 0.0196802));
+    --heading-font-family: "Work Sans", Helvetica, sans-serif;
+    --heading-font-case-studies: Canela, Spectral, Playfair Display, Lora, serif;
+    --quote-font-case-studies: CanelaThin, Spectral, Playfair Display, Lora, serif;
+    --quote-highlight-font-case-studies: CanelaThinItalic, Spectral, Playfair Display, Lora, serif;
+    --body-font-family: "Oxygen", Verdana, sans-serif;
+    --container-width-controller: calc(100% - 56px);
+    --limited-container-width: #{$limited-content-size};
+    --standard-header-width: #{$default-content-size};
 }
+
+// new property method
+@property --gradient-blue {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$gradient-blue};
+}
+@property --gradient-green {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$gradient-green};
+}
+@property --gradient-crm00 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$gradient-crm00};
+}
+@property --gradient-crm01 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$gradient-crm01};
+}
+@property --background-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$background-color};
+}
+@property --footer-background-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$footer-background-color};
+}
+@property --primary-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$primary-color};
+}
+@property --secondary-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$secondary-color};
+}
+@property --dark-bg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$dark-bg};
+}
+@property --modern-dark-bg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$modern-dark-bg};
+}
+@property --modern-dark-card-bg {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #{$modern-dark-card-bg};
+}
+@property --soft-shadow {
+    syntax: "<filter>";
+    inherits: false;
+    initial-value: drop-shadow(0 8px 32px 0 rgba(0, 0, 0, 0.16));
+}
+@property --hard-shadow {
+    syntax: "<filter>";
+    inherits: false;
+    initial-value: drop-shadow(0px 163.333px 130.667px rgba(0, 0, 0, 0.07))
+        drop-shadow(0px 68.2368px 54.5894px rgba(0, 0, 0, 0.0503198))
+        drop-shadow(0px 36.4826px 29.1861px rgba(0, 0, 0, 0.0417275))
+        drop-shadow(0px 20.4519px 16.3615px rgba(0, 0, 0, 0.035))
+        drop-shadow(0px 10.8618px 8.68947px rgba(0, 0, 0, 0.0282725))
+        drop-shadow(0px 4.51985px 3.61588px rgba(0, 0, 0, 0.0196802));
+}
+@property --heading-font-family {
+    syntax: "<string>";
+    inherits: false;
+    initial-value: "Work Sans", Helvetica, sans-serif;
+}
+@property --heading-font-case-studies {
+    syntax: "<string>";
+    inherits: false;
+    initial-value:
+        Canela,
+        Spectral,
+        Playfair Display,
+        Lora,
+        serif;
+}
+@property --quote-font-case-studies {
+    syntax: "<string>";
+    inherits: false;
+    initial-value:
+        CanelaThin,
+        Spectral,
+        Playfair Display,
+        Lora,
+        serif;
+}
+@property --quote-highlight-font-case-studies {
+    syntax: "<string>";
+    inherits: false;
+    initial-value:
+        CanelaThinItalic,
+        Spectral,
+        Playfair Display,
+        Lora,
+        serif;
+}
+@property --body-font-family {
+    syntax: "<string>";
+    inherits: false;
+    initial-value: "Oxygen", Verdana, sans-serif;
+}
+@property --container-width-controller {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: calc(100% - 56px);
+}
+@property --limited-container-width {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: #{$limited-content-size};
+}
+@property --standard-header-width {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: #{$default-content-size};
+}
+/* END OF ESSENTIALS */

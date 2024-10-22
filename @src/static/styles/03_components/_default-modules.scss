@@ -560,12 +560,16 @@ main {
   align-content: center;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: rem(245px) !important;
+  margin-bottom: rem(42px) !important;
 }
 
 .uniqueNextGenHero h1 {
   padding: 0;
   margin: 0;
+}
+
+.custom-next-gen-hero--margin {
+  margin-bottom: rem(245px);
 }
 
 // Bento Grid stuff
@@ -719,7 +723,7 @@ main {
   margin: 0;
   font-size: rem(24px);
   line-height: 1.5;
-  margin-bottom: rem(60px);
+  margin-bottom: rem(76.8px); // before 60px
   // text-align: center;
 }
 
