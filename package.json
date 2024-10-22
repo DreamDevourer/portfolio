@@ -19,5 +19,8 @@
   "homepage": "https://github.com/DreamDevourer/portfolio#readme",
   "devDependencies": {
     "gulp": "^5.0.0"
+  },
+  "dependencies": {
+    "sass": "^1.80.3"
   }
 }

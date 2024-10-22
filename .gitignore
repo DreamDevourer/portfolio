@@ -11,6 +11,8 @@ logs/
 *.log
 logs.log
 log.log
+@src/Resouces/logs
+@src/Resouces/logs/*
 # MacOS directory metadata
 .DS_Store
 .DS*
