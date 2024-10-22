@@ -526,3 +526,92 @@ v3.0 - Dev
 10-21-2024 -> 23:40:04 - Directory ../@preview doesn't exist!
 10-21-2024 -> 23:40:04 - Building process completed!
 10-21-2024 -> 23:40:04 - Option Selected:  (if none, probably 2)
+10-22-2024 -> 00:04:01 - 
+
+[OK] ===> Python loaded on Darwin. Starting new instance at PID: 27474 | UTS: 1729566241.145637
+
+10-22-2024 -> 00:04:01 - Debug mode is enabled! Debug = True
+10-22-2024 -> 00:04:01 - 
+
+0 -> Quit
+1 -> Start Building
+2 -> Quick Build (Prod)
+3 -> Quick Build (Preview)
+4 -> Clear Project
+
+10-22-2024 -> 00:04:01 - Here is the case study projects: [{'page_path': '/case-studies/case-study-hubspot-to-teamwork-integration.html', 'case_id': 'microsaas-case', 'case_logo': 'microsaas_icon.webp', 'case_logo_alt': 'HubSpot to Teamwork Integration logo', 'case_title': 'HubSpot to Teamwork Integration', 'case_cta': 'Read Case Study', 'is_case_study': 'TRUE', 'case_description': 'A HubSpot integrated micro-saas solution for Teamwork users. Manage and track client projects from HubSpot.', 'project_type': 'Design'}, {'page_path': '/case-studies/case-study-cultura.html', 'case_id': 'cultura-case', 'case_logo': 'Cultura-logomark.svg', 'case_logo_alt': 'Cultura App Logo', 'case_title': 'Cultura App', 'case_cta': 'Read Case Study', 'is_case_study': 'TRUE', 'case_description': 'A HubSpot integrated app that hooks into the major parts of the platform to allow for job and applicant management.', 'project_type': 'Design'}]
+10-22-2024 -> 00:04:01 - template_content read!
+10-22-2024 -> 00:04:01 - Extracted metadata: {'templateType': '"none"', 'isAvailableForNewContent': 'false', 'label': 'Base Engine', 'pageName': '{% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}', 'pageURL': '{% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}'}
+10-22-2024 -> 00:04:01 - Template: _layouts/base.html, Page metadata: {'templateType': '"none"', 'isAvailableForNewContent': 'false', 'label': 'Base Engine', 'pageName': '{% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}', 'pageURL': '{% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}'}
+10-22-2024 -> 00:04:01 - Skipping page: _layouts/base.html because 'isAvailableForNewContent' is false
+10-22-2024 -> 00:04:01 - template_content read!
+10-22-2024 -> 00:04:01 - Extracted metadata: {'templateType': 'global_partial', 'isAvailableForNewContent': 'false', 'label': 'Website header', 'pageName': '{% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}', 'pageURL': '{% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}'}
+10-22-2024 -> 00:04:01 - Template: _partials/header.html, Page metadata: {'templateType': 'global_partial', 'isAvailableForNewContent': 'false', 'label': 'Website header', 'pageName': '{% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}', 'pageURL': '{% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}'}
+10-22-2024 -> 00:04:01 - Skipping page: _partials/header.html because 'isAvailableForNewContent' is false
+10-22-2024 -> 00:04:01 - template_content read!
+10-22-2024 -> 00:04:01 - Extracted metadata: {'templateType': 'page', 'isAvailableForNewContent': 'true', 'label': 'Home | Case Studies Listing', 'pageName': '{% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}', 'pageURL': '{% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}'}
+10-22-2024 -> 00:04:01 - Template: index.html, Page metadata: {'templateType': 'page', 'isAvailableForNewContent': 'true', 'label': 'Home | Case Studies Listing', 'pageName': '{% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}', 'pageURL': '{% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}'}
+10-22-2024 -> 00:04:01 - Rendering page: index.html with URL: https://nickdesign.netlify.app/index.html
+10-22-2024 -> 00:04:01 - Extracted metadata: {'templateType': 'page', 'isAvailableForNewContent': 'true', 'label': 'Home | Case Studies Listing', 'pageName': '{% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}', 'pageURL': '{% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}'}
+10-22-2024 -> 00:04:01 - Optimizing files...
+10-22-2024 -> 00:04:01 - Current working directory is /Users/dreamer/Documents/Source Codes/Personal/Static-portfolio-nick-gen2/@src
+10-22-2024 -> 00:04:01 - Minifying files is enabled!
+10-22-2024 -> 00:04:01 - Minifying base64js.min.js
+10-22-2024 -> 00:04:01 - Minifying passwd_backup.js
+10-22-2024 -> 00:04:01 - Minifying grapesjs-plugin-toolbox.min.js
+10-22-2024 -> 00:04:01 - Minifying grapesjs-rulers.min.js
+10-22-2024 -> 00:04:01 - Minifying splide.min.js
+10-22-2024 -> 00:04:01 - Minifying theme_mode.js
+10-22-2024 -> 00:04:01 - Minifying cookieconsent.min.js
+10-22-2024 -> 00:04:01 - Minifying grapesjs-plugin-export.js
+10-22-2024 -> 00:04:01 - Minifying main.js
+10-22-2024 -> 00:04:01 - Minifying splide-autoscroll.min.js
+10-22-2024 -> 00:04:01 - Minifying grapes.min.js
+10-22-2024 -> 00:04:01 - Minifying password-engine.js
+10-22-2024 -> 00:04:01 - Minifying grapesjs-custom-code.js
+10-22-2024 -> 00:04:01 - Minifying passwd.js
+10-22-2024 -> 00:04:01 - Minifying jquery-3.6.3.min.js
+10-22-2024 -> 00:04:01 - Minifying grapesjs-parser-postcss.js
+10-22-2024 -> 00:04:01 - Minifying consentConfig.js
+10-22-2024 -> 00:04:01 - Minifying blog.html
+10-22-2024 -> 00:04:01 - Minifying index.html
+10-22-2024 -> 00:04:01 - Error decoding file: .DS_Store
+10-22-2024 -> 00:04:01 - Minifying privacy-policy.html
+10-22-2024 -> 00:04:01 - Minifying 404.html
+10-22-2024 -> 00:04:01 - Minifying editor.html
+10-22-2024 -> 00:04:01 - Minifying resources.html
+10-22-2024 -> 00:04:01 - Minifying aboutme.html
+10-22-2024 -> 00:04:01 - Minifying gulpfile.js
+10-22-2024 -> 00:04:01 - Minifying password.html
+10-22-2024 -> 00:04:01 - Minifying case-study-cultura.html
+10-22-2024 -> 00:04:01 - Minifying case-study-hubspot-to-teamwork-integration.html
+10-22-2024 -> 00:04:01 - Minifying case-study-resources-center-hubdb.html
+10-22-2024 -> 00:04:01 - Minifying hubdb-data-management-in-hubspot.html
+10-22-2024 -> 00:04:01 - Minifying Navigating-the-Shift-Transitioning-Your-Blog-to-HubSpot-CMS.html
+10-22-2024 -> 00:04:01 - Minifying implement-dynamic-news-content-in-hubspot.html
+10-22-2024 -> 00:04:01 - Deleting ../_partials
+10-22-2024 -> 00:04:01 - Deleting ../_modules
+10-22-2024 -> 00:04:01 - Directory ../_modules doesn't exist!
+10-22-2024 -> 00:04:01 - Deleting ../@cms
+10-22-2024 -> 00:04:01 - Directory ../@cms doesn't exist!
+10-22-2024 -> 00:04:01 - Deleting ../_layouts
+10-22-2024 -> 00:04:01 - Deleting ../_layouts/base.html
+10-22-2024 -> 00:04:01 - Directory ../_layouts/base.html doesn't exist!
+10-22-2024 -> 00:04:01 - Deleting ../Resources
+10-22-2024 -> 00:04:01 - Deleting ../SNL.py
+10-22-2024 -> 00:04:01 - Deleting ../requirements.txt
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/00_settings
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/02_base
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/03_components/_default-modules.scss
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/04_trumps
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/compiled
+10-22-2024 -> 00:04:01 - Deleting ../styles-engine.css
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/fallback.css
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/master.scss
+10-22-2024 -> 00:04:01 - Deleting ../static/styles/fallback.scss
+10-22-2024 -> 00:04:01 - Deleting ../editor.html
+10-22-2024 -> 00:04:01 - Generating sitemap.xml...
+10-22-2024 -> 00:04:01 - Deleting ../@preview
+10-22-2024 -> 00:04:01 - Directory ../@preview doesn't exist!
+10-22-2024 -> 00:04:01 - Building process completed!
+10-22-2024 -> 00:04:01 - Option Selected:  (if none, probably 2)
