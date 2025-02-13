@@ -772,5 +772,30 @@ def file_content():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
+@app.route("/api/publish-file", methods=["POST"])
+def publish_file():
+    data = request.get_json()
+    file_name = data.get("file")
+    content = data.get("content")
+    if not file_name or content is None:
+        return jsonify({"status": "error", "message": "Missing file or content"}), 400
+
+    # Use os.path.basename to prevent directory traversal attacks.
+    safe_file_name = os.path.basename(file_name)
+    file_path = os.path.join(script_dir, safe_file_name)
+
+    if not os.path.exists(file_path):
+        return jsonify({"status": "error", "message": "File not found"}), 404
+
+    try:
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        logn.log_routine(f"Published changes to {file_path}", is_success=True)
+        return jsonify({"status": "success", "message": "File published successfully"})
+    except Exception as e:
+        logn.log_routine(f"Error publishing file {file_path}: {e}", is_error=True)
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 if __name__ == "__main__":
     app.run(debug=True)

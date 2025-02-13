@@ -97,6 +97,7 @@ I like curious people :) and it seems you are! -->
         {% if useGlobalStyles %}
         <style>{% include "styles-engine.css" %}</style>
         {% endif %}
+        <style>{% include "editor-base.css" %}</style>
 
         {% if enableGoogleFonts %}
             <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -132,10 +133,10 @@ I like curious people :) and it seems you are! -->
 </a>
 </div>
     <ul>
-      <li><a onclick="window.location.href = '/';">Content</a></li>
-      <li><a onclick="window.location.href = '/hubdb-panel';">HubDB</a></li>
-      <li><a onclick="">Library</a></li>
-      <li><a onclick="window.location.href = '/dev-panel';">Developer</a></li>
+      <li class="contentPanel"><a onclick="window.location.href = '/';">Content</a></li>
+      <li class="hubdbPanel"><a onclick="window.location.href = '/hubdb-panel';">HubDB</a></li>
+      <li class="libraryPanel" style="display: none;"><a onclick="">Library</a></li>
+      <li class="developerPanel"><a onclick="window.location.href = '/dev-panel';">Developer</a></li>
     </ul>
   </div>
         {% endblock header %}
