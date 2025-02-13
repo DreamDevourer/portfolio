@@ -1,0 +1,317 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: false
+    label: HubDB Panel
+    pageName: hubdbPanel
+    description: this page is not a static template, it NEEDS to run with Flask!
+    author: Nicolas Mendes
+-->
+
+{% set useGlobalStyles = false %}
+{% extends "./_layouts/base-general-panel.html" %}
+{% from './_partials/global.html' import fontsPath, scriptsPath, stylesPath %}
+
+{# [START] page info #}
+{% set page = {"pageTitle": "HubDB | CMS Editor", "pageMeta": "Manage HubDB tables"} %}
+{# [END] page info #}
+
+{% block title %}
+{{ page.pageTitle }}
+{% endblock title %}
+
+{% block meta %}
+{{ page.pageMeta }}
+{% endblock meta %}
+
+{% block require_css %}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar h2 {
+      color: #fff;
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+    .main-content h1 {
+      margin-top: 0;
+    }
+    .page-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .page-table th, .page-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    .page-table th {
+      background-color: #f2f2f2;
+    }
+    /* .action-buttons {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    } */
+    .action-buttons button {
+      margin-right: 10px;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+    .create-button {
+      background-color: #000;
+      color: #fff;
+    }
+    .delete-button {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+    .search-box {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-box input {
+      padding: 8px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .top-copy-area {
+      padding: 1.5rem 0;
+    }
+
+    .top-copy-area h1 {
+      font-size: 3.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .top-copy-area p {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      max-width: 28rem;
+    }
+
+    .top-copy-area svg {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+
+    table {
+    {# table-layout:fixed; #}
+    width:100%;
+
+    {# display: block; #}
+    overflow-y: auto;
+}
+  </style>
+{% endblock require_css %}
+
+{% block body %}
+  <div class="main-content">
+  <div class="top-copy-area">
+    <h1>HubDB Tables.</h1>
+    <p>This panel is dedicated to edit and manage HubDB tables, these tables can be imported and exported as CSV.</p>
+    <svg width="1570" height="1" viewBox="0 0 1570 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line y1="0.5" x2="1570" y2="0.5" stroke="#E2E8F0"/>
+</svg>
+
+  </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search tables...">
+
+      <div class="action-buttons">
+        <button class="delete-button" onclick="deleteSelectedPages()">Delete Selected Tables</button>
+        <button class="create-button" onclick="createPage()">Create Table</button>
+      </div>
+    </div>
+    <table class="page-table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll" onclick="toggleSelectAll(this)"></th>
+          <th>Table Name</th>
+          <th>Internal Name</th>
+          <th>Created Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="pageTableBody">
+      </tbody>
+    </table>
+  </div>
+<script>
+  // Global variable to store the tables fetched from the API
+  let tables = [];
+
+  // Function to populate the table using the tables array
+  function populateTable() {
+    const tbody = document.getElementById("pageTableBody");
+    tbody.innerHTML = "";
+    tables.forEach((table, index) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><input type="checkbox" class="rowCheckbox" data-index="${index}"></td>
+        <td>${table.tableName}</td>
+        <td>${table.internalTableName}</td>
+        <td>${table.createdDate}</td>
+        <td><a href="/edit/tables/${table.internalTableName}" class="edit-link">Edit</a></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Function to fetch tables from the backend API
+  function fetchTables() {
+    fetch('/api/tables')
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "success") {
+          tables = data.tables;
+          populateTable();
+        } else {
+          console.error("Error fetching tables:", data.message);
+        }
+      })
+      .catch(error => console.error("Error fetching tables:", error));
+  }
+
+  // Checkbox to toggle selection for all rows
+  function toggleSelectAll(source) {
+    const checkboxes = document.querySelectorAll('.rowCheckbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = source.checked;
+    });
+  }
+
+  // Function to delete selected tables using the new API endpoint
+  function deleteSelectedTables() {
+    const selectedInternalNames = [];
+    const checkboxes = document.querySelectorAll('.rowCheckbox');
+
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const index = parseInt(checkbox.getAttribute("data-index"));
+        selectedInternalNames.push(tables[index].internalTableName);
+      }
+    });
+
+    if (selectedInternalNames.length === 0) {
+      alert("No tables selected for deletion.");
+      return;
+    }
+
+    if (!confirm("Are you sure you want to delete the selected tables?")) {
+      return;
+    }
+
+    fetch('/api/delete-tables', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tables: selectedInternalNames })
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert(data.message);
+          fetchTables();
+        } else {
+          alert("Error deleting tables: " + data.message);
+          console.error("Delete errors:", data.errors);
+        }
+      })
+      .catch(error => {
+        console.error("Error deleting tables:", error);
+        alert("Error deleting tables.");
+      });
+  }
+
+  // Function to create a new table
+  function createTable() {
+    const tableName = prompt("Enter the new table name:");
+    if (tableName) {
+      // Compute an internal name (lowercase, hyphen-separated)
+      const internalName = tableName.toLowerCase().replace(/\s+/g, '-');
+.
+      fetch('/create-table', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tableName: tableName,
+          internalName: internalName
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            alert(data.message);
+            fetchTables();
+          } else {
+            alert("Error creating table: " + data.message);
+          }
+        })
+        .catch(error => {
+          console.error("Error creating table:", error);
+          alert("Error creating table.");
+        });
+    }
+  }
+
+  function showSection(section) {
+    // Placeholder for handling sidebar navigation
+    alert("Comming soon: " + section + " section");
+  }
+
+  // Search functionality to filter table rows based on input text
+  document.getElementById("searchInput").addEventListener("input", function() {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll("#pageTableBody tr");
+    rows.forEach(row => {
+      const cells = row.getElementsByTagName("td");
+      let found = false;
+      // Search in the Table Name and Internal File Name columns
+      for (let i = 1; i < cells.length - 1; i++) {
+        if (cells[i].innerText.toLowerCase().includes(searchTerm)) {
+          found = true;
+          break;
+        }
+      }
+      row.style.display = found ? "" : "none";
+    });
+  });
+
+  // Fetch tables from the backend when the page loads
+  fetchTables();
+</script>
+{% endblock body %}

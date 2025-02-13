@@ -1,0 +1,326 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: false
+    label: Main Panel
+    pageName: mainPanel
+    description: this page is not a static template, it NEEDS to run with Flask!
+    author: Nicolas Mendes
+-->
+
+{# TODO:
+  - Add duplicate link after edit link on each row to duplicate pages
+  - Create a HubDB module, probably by creating a helper to bake the CSV data in the module and then make a static html of it.
+ #}
+
+{% extends "./_layouts/base-general-panel.html" %}
+{% from './_partials/global.html' import fontsPath, scriptsPath, stylesPath %}
+
+{# [START] page info #}
+{% set page = {"pageTitle": "Manage Pages | CMS Editor", "pageMeta": "Manage CMS pages"} %}
+{# [END] page info #}
+
+{% block title %}
+{{ page.pageTitle }}
+{% endblock title %}
+
+{% block meta %}
+{{ page.pageMeta }}
+{% endblock meta %}
+
+{% block require_css %}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar h2 {
+      color: #fff;
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+    .main-content h1 {
+      margin-top: 0;
+    }
+    .page-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .page-table th, .page-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    .page-table th {
+      background-color: #f2f2f2;
+    }
+    /* .action-buttons {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    } */
+    .action-buttons button {
+      margin-right: 10px;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+    .create-button {
+      background-color: #000;
+      color: #fff;
+    }
+    .delete-button {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+    .search-box {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-box input {
+      padding: 8px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .top-copy-area {
+      padding: 1.5rem 0;
+    }
+
+    .top-copy-area h1 {
+      font-size: 3.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .top-copy-area p {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      max-width: 28rem;
+    }
+
+    .top-copy-area svg {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+
+        table {
+    {# table-layout:fixed; #}
+    width:100%;
+
+    {# display: block; #}
+    overflow-y: auto;
+}
+  </style>
+{% endblock require_css %}
+
+{% block body %}
+  <div class="main-content">
+  <div class="top-copy-area">
+    <h1>Website pages.</h1>
+    <p>These are all the website pages made by the CMS, you can create new pages, edit existing pages and delete selected pages.</p>
+    <svg width="1570" height="1" viewBox="0 0 1570 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line y1="0.5" x2="1570" y2="0.5" stroke="#E2E8F0"/>
+</svg>
+
+  </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search pages...">
+
+      <div class="action-buttons">
+        <button class="delete-button" onclick="deleteSelectedPages()">Delete Selected Pages</button>
+        <button class="create-button" onclick="createPage()">Create Page</button>
+      </div>
+    </div>
+    <table class="page-table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll" onclick="toggleSelectAll(this)"></th>
+          <th>Page Name</th>
+          <th>Internal File Name</th>
+          <th>Created Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="pageTableBody">
+
+      </tbody>
+    </table>
+  </div>
+<script>
+  // Global variable to store the pages fetched from the API
+  let pages = [];
+
+  // Function to populate the table using the pages array
+  function populateTable() {
+    const tbody = document.getElementById("pageTableBody");
+    tbody.innerHTML = "";
+    pages.forEach((page, index) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><input type="checkbox" class="rowCheckbox" data-index="${index}"></td>
+        <td>${page.pageName}</td>
+        <td>${page.internalName}</td>
+        <td>${page.createdDate}</td>
+        <td><a href="/edit/pages/${page.internalName}" class="edit-link">Edit</a></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Function to fetch pages from the backend API
+  function fetchPages() {
+    fetch('/api/pages')
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "success") {
+          pages = data.pages;
+          populateTable();
+        } else {
+          console.error("Error fetching pages:", data.message);
+        }
+      })
+      .catch(error => console.error("Error fetching pages:", error));
+  }
+
+  // Checkbox to toggle selection for all rows
+  function toggleSelectAll(source) {
+    const checkboxes = document.querySelectorAll('.rowCheckbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = source.checked;
+    });
+  }
+
+  // Function to delete selected pages using the new API endpoint
+  function deleteSelectedPages() {
+    const selectedInternalNames = [];
+    const checkboxes = document.querySelectorAll('.rowCheckbox');
+
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        const index = parseInt(checkbox.getAttribute("data-index"));
+        selectedInternalNames.push(pages[index].internalName);
+      }
+    });
+
+    if (selectedInternalNames.length === 0) {
+      alert("No pages selected for deletion.");
+      return;
+    }
+
+    // Confirm deletion from the user
+    if (!confirm("Are you sure you want to delete the selected pages?")) {
+      return;
+    }
+
+    // Call the delete-pages API
+    fetch('/api/delete-pages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pages: selectedInternalNames })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert(data.message);
+        // Refresh the pages table after deletion
+        fetchPages();
+      } else {
+        alert("Error deleting pages: " + data.message);
+        console.error("Delete errors:", data.errors);
+      }
+    })
+    .catch(error => {
+      console.error("Error deleting pages:", error);
+      alert("Error deleting pages.");
+    });
+  }
+
+  function createPage() {
+    const pageName = prompt("Enter the new page name:");
+    if (pageName) {
+      // Compute an internal name (lowercase, hyphen-separated)
+      const internalName = pageName.toLowerCase().replace(/\s+/g, '-');
+
+      // Call the create-page API with the new page data
+      fetch('/create-page', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pageName: pageName,
+          internalName: internalName
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert(data.message);
+          // Refresh the pages table after creation
+          fetchPages();
+        } else {
+          alert("Error creating page: " + data.message);
+        }
+      })
+      .catch(error => {
+        console.error("Error creating page:", error);
+        alert("Error creating page.");
+      });
+    }
+  }
+
+  function showSection(section) {
+    // Placeholder for handling sidebar navigation
+    alert("Comming soon: " + section + " section");
+  }
+
+  // Search functionality to filter table rows based on input text
+  document.getElementById("searchInput").addEventListener("input", function() {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll("#pageTableBody tr");
+    rows.forEach(row => {
+      const cells = row.getElementsByTagName("td");
+      let found = false;
+      // Search in the Page Name and Internal File Name columns
+      for (let i = 1; i < cells.length - 1; i++) {
+        if (cells[i].innerText.toLowerCase().includes(searchTerm)) {
+          found = true;
+          break;
+        }
+      }
+      row.style.display = found ? "" : "none";
+    });
+  });
+
+  // Fetch pages from the backend when the page loads
+  fetchPages();
+</script>
+{% endblock body %}

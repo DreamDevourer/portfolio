@@ -1,0 +1,483 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: false
+    label: HubDB Edit Panel
+    pageName: hubdbEditPanel
+    description: this page is not a static template, it NEEDS to run with Flask!
+    author: Nicolas Mendes
+-->
+
+{% set useGlobalStyles = false %}
+{% set editorInternalDirectory = true %}
+{% extends "./_layouts/base-general-panel.html" %}
+{% from './_partials/global.html' import fontsPath, scriptsPath, stylesPath %}
+
+{# [START] page info #}
+{% set page = {"pageTitle": "HubDB Edit Table | CMS Editor", "pageMeta": "Manage HubDB tables"} %}
+{# [END] page info #}
+
+{% block title %}
+{{ page.pageTitle }}
+{% endblock title %}
+
+{% block meta %}
+{{ page.pageMeta }}
+{% endblock meta %}
+
+{% block require_css %}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar h2 {
+      color: #fff;
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+    .main-content h1 {
+      margin-top: 0;
+    }
+    .page-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .page-table th, .page-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    .page-table th {
+      background-color: #f2f2f2;
+    }
+    /* .action-buttons {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    } */
+    .action-buttons button {
+      margin-right: 10px;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+    .create-button {
+      background-color: #000;
+      color: #fff;
+    }
+    .delete-button {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+    .search-box {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-box input {
+      padding: 8px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .top-copy-area {
+      padding: 1.5rem 0;
+    }
+
+    .top-copy-area h1 {
+      font-size: 3.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .top-copy-area p {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      max-width: 28rem;
+    }
+
+    .top-copy-area svg {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+
+    .main-content {
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 1s, transform 1s;
+    }
+
+/* The responsive container handles overflow */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Standard table styling */
+.page-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* If you want fixed layout for uniform column widths */
+}
+
+/* Optional: Ensure cells break content appropriately */
+.page-table th,
+.page-table td {
+  padding: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 200px;
+}
+
+.page-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 100%; /* Forces table to fill the container even with fewer columns */
+  display: block;  /* Note: Changing display to block removes native table behaviors */
+  overflow-y: auto;
+}
+
+/* Optional: Style the header and rows for better responsiveness */
+.page-table thead,
+.page-table tbody,
+.page-table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+  </style>
+{% endblock require_css %}
+
+{% block body %}
+
+  {# <link rel="stylesheet" href="../../static/styles/03_components/editor-internal.css" /> #}
+
+  <div class="main-content">
+  <div class="top-copy-area">
+<section class="top-header-area">
+  <div class="top-header-left">
+    <a data-button-use="secondary-ghost" aria-disabled="false" href="/hubdb-panel" tabindex="0" class="PrivateButtonLink__StyledButtonLink-sc-1vuooyw-1 FNmEc adapto-exit_btn">
+      Exit
+    </a>
+  </div>
+</section>
+    <svg width="1570" height="1" viewBox="0 0 1570 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line y1="0.5" x2="1570" y2="0.5" stroke="#E2E8F0"/>
+</svg>
+
+  </div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search rows...">
+
+      <div class="action-buttons">
+        <button class="delete-button" onclick="deleteSelectedPages()">Delete Selected Rows</button>
+        <button class="create-button" onclick="addRow()">Add Row</button>
+        <button class="save-button" onclick="savePage()">Save Content</button>
+      </div>
+    </div>
+    <table class="page-table">
+      <thead>
+      <!-- Table header dynamically populated by the JavaScript -->
+      </thead>
+      <tbody id="pageTableBody">
+      <!-- Table body dynamically populated by the JavaScript -->
+      </tbody>
+    </table>
+  </div>
+<script>
+  // CSV data injected from the backend (e.g., via Jinja)
+  const csvData = {{ csv_data|tojson|safe }};
+
+  // Global variable to temporarily store backup data for inline editing
+  let editingRowBackup = null;
+  let editingRowIndex = null;
+
+  // Function to populate the table with CSV data
+  function populateCsvTable() {
+    const thead = document.querySelector('.page-table thead');
+    const tbody = document.getElementById('pageTableBody');
+
+    // Clear existing content
+    thead.innerHTML = '';
+    tbody.innerHTML = '';
+
+    if (!csvData || csvData.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="100%">No data available</td></tr>';
+      return;
+    }
+
+    // Build header row:
+    // Assume the first row of csvData holds the column headers
+    const headerRow = csvData[0];
+    const trHead = document.createElement('tr');
+
+    // 1. Header cell with "select all" checkbox
+    const thSelect = document.createElement('th');
+    thSelect.innerHTML = '<input type="checkbox" id="selectAllHeader" onclick="toggleSelectAllHeader(this)">';
+    trHead.appendChild(thSelect);
+
+    // 2. Header cells for each CSV column
+    headerRow.forEach(header => {
+      const th = document.createElement('th');
+      th.textContent = header;
+      trHead.appendChild(th);
+    });
+
+    // 3. "Actions" header cell
+    const thActions = document.createElement('th');
+    thActions.textContent = 'Action';
+    trHead.appendChild(thActions);
+
+    thead.appendChild(trHead);
+
+    // Build table body rows (data rows start at index 1)
+    for (let i = 1; i < csvData.length; i++) {
+      const row = csvData[i];
+      const tr = document.createElement('tr');
+
+      // 1. First cell: individual row checkbox (data-index corresponds to data row index, starting at 0)
+      const tdCheckbox = document.createElement('td');
+      tdCheckbox.innerHTML = `<input type="checkbox" class="rowCheckbox" data-index="${i - 1}">`;
+      tr.appendChild(tdCheckbox);
+
+      // 2. Data cells for each CSV column
+      row.forEach(cell => {
+        const td = document.createElement('td');
+        td.textContent = cell;
+        tr.appendChild(td);
+      });
+
+      // 3. Actions cell: include Edit and Duplicate links
+      const tdActions = document.createElement('td');
+      tdActions.innerHTML = `<a href="#" onclick="editRowInline(${i - 1}); return false;">Edit</a> | 
+                              <a href="#" onclick="duplicateRow(${i - 1}); return false;">Duplicate</a>`;
+      tr.appendChild(tdActions);
+
+      tbody.appendChild(tr);
+    }
+  }
+
+  // Toggle all row checkboxes based on the header checkbox
+  function toggleSelectAllHeader(source) {
+    const checkboxes = document.querySelectorAll('.rowCheckbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = source.checked;
+    });
+  }
+
+  // Function to duplicate a row in the CSV data
+  function duplicateRow(rowIndex) {
+    if (!csvData || csvData.length <= rowIndex + 1) {
+      alert("Invalid row index");
+      return;
+    }
+    const rowToDuplicate = csvData[rowIndex + 1].slice();
+    csvData.splice(rowIndex + 2, 0, rowToDuplicate);
+    populateCsvTable();
+  }
+
+  // Function to delete selected rows from the CSV data
+  function deleteSelectedPages() {
+    const checkboxes = document.querySelectorAll('.rowCheckbox');
+    let indicesToDelete = [];
+    checkboxes.forEach(checkbox => {
+      if (checkbox.checked) {
+        let index = parseInt(checkbox.getAttribute("data-index"));
+        indicesToDelete.push(index);
+      }
+    });
+    if (indicesToDelete.length === 0) {
+      alert("No rows selected for deletion.");
+      return;
+    }
+    // Delete in descending order to prevent index shifting
+    indicesToDelete.sort((a, b) => b - a).forEach(idx => {
+      csvData.splice(idx + 1, 1); // +1 to account for header row at index 0
+    });
+    populateCsvTable();
+  }
+
+  // Function to add a new blank row to the CSV data
+  function addRow() {
+    if (!csvData || csvData.length === 0) {
+      alert("No header row found. Cannot add a row.");
+      return;
+    }
+    const numColumns = csvData[0].length;
+    const newRow = Array(numColumns).fill("");  // New row with empty cells
+    csvData.push(newRow);
+    populateCsvTable();
+  }
+
+  // Function to enable inline editing for a row
+  function editRowInline(rowIndex) {
+    if (!csvData || csvData.length <= rowIndex + 1) {
+      alert("Invalid row index");
+      return;
+    }
+    // Backup current row data in case of cancel
+    editingRowBackup = csvData[rowIndex + 1].slice();
+    editingRowIndex = rowIndex;
+
+    // Get the table row element (data row index = rowIndex; note: rowIndex+1 in csvData)
+    const tbody = document.getElementById('pageTableBody');
+    const rows = tbody.querySelectorAll('tr');
+    const tr = rows[rowIndex];
+    const cells = tr.querySelectorAll('td');
+
+    // For each data cell (skip first checkbox and last actions cell), replace text with an input field
+    // Assuming that the header has as many cells as there are data cells
+    for (let i = 1; i < cells.length - 1; i++) {
+      const currentText = cells[i].textContent;
+      cells[i].innerHTML = `<input type="text" value="${currentText}" style="width: 100%;">`;
+    }
+
+    // Replace the actions cell with "Save" and "Cancel" links
+    cells[cells.length - 1].innerHTML = `<a href="#" onclick="saveRowInline(${rowIndex}); return false;">Save</a> | 
+                                          <a href="#" onclick="cancelRowInline(${rowIndex}); return false;">Cancel</a>`;
+  }
+
+  // Function to save inline-edited row data
+  function saveRowInline(rowIndex) {
+    const tbody = document.getElementById('pageTableBody');
+    const rows = tbody.querySelectorAll('tr');
+    const tr = rows[rowIndex];
+    const cells = tr.querySelectorAll('td');
+
+    // Loop over data cells to collect updated values
+    let updatedRow = [];
+    for (let i = 1; i < cells.length - 1; i++) {
+      const input = cells[i].querySelector('input');
+      updatedRow.push(input.value);
+    }
+    // Update the csvData (header is at index 0; so row data is at rowIndex+1)
+    csvData[rowIndex + 1] = updatedRow;
+    // Clear backup
+    editingRowBackup = null;
+    editingRowIndex = null;
+    // Rebuild the table
+    populateCsvTable();
+  }
+
+  // Function to cancel inline editing and revert changes
+  function cancelRowInline(rowIndex) {
+    if (editingRowBackup !== null) {
+      // Restore the backup data into csvData
+      csvData[rowIndex + 1] = editingRowBackup;
+      editingRowBackup = null;
+      editingRowIndex = null;
+      // Rebuild the table to exit edit mode
+      populateCsvTable();
+    }
+  }
+
+function savePage() {
+  const table = document.querySelector('.page-table');
+  const thead = table.querySelector('thead tr');
+  const tbodyRows = table.querySelectorAll('tbody tr');
+  let tableData = [];
+
+  // Extract header row data
+  let headerData = [];
+  thead.querySelectorAll('th').forEach((th, index) => {
+    // Skip the first header cell (checkbox) and the last (actions)
+    if (index > 0 && index < thead.children.length - 1) {
+      headerData.push(th.textContent.trim());
+    }
+  });
+  tableData.push(headerData);
+
+  // Extract body rows data
+  tbodyRows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    let rowData = [];
+    for (let i = 1; i < cells.length - 1; i++) {
+      const input = cells[i].querySelector('input');
+      if (input) {
+        rowData.push(input.value.trim());
+      } else {
+        rowData.push(cells[i].textContent.trim());
+      }
+    }
+    tableData.push(rowData);
+  });
+
+  const internalTableName = "{{ table_name }}";  // Assumes backend passes table_name
+
+  fetch('/api/save-table', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      internalTableName: internalTableName,
+      tableData: tableData
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert(data.message);
+      } else {
+        alert("Error saving table: " + data.message);
+      }
+    })
+    .catch(error => {
+      console.error("Error saving table:", error);
+      alert("Error saving table.");
+    });
+}
+
+  // Search functionality: filter table rows based on text in data cells (excluding checkbox and actions)
+  document.getElementById("searchInput").addEventListener("input", function() {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll("#pageTableBody tr");
+    rows.forEach(row => {
+      const cells = row.querySelectorAll("td:not(:first-child):not(:last-child)");
+      let found = false;
+      cells.forEach(cell => {
+        if (cell.textContent.toLowerCase().includes(searchTerm)) {
+          found = true;
+        }
+      });
+      row.style.display = found ? "" : "none";
+    });
+  });
+
+  // Populate the table once the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', populateCsvTable);
+
+                  setTimeout(function () {
+                    document.querySelector(".main-content").style.opacity = 1;
+                    document.querySelector(".main-content").style.transform = "translateY(0)";
+                }, 500);
+</script>
+{% endblock body %}

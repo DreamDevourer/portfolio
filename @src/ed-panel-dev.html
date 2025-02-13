@@ -1,0 +1,248 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: false
+    label: Dev Panel
+    pageName: devPanel
+    description: this page is not a static template, it NEEDS to run with Flask!
+    author: Nicolas Mendes
+-->
+
+{% set useGlobalStyles = false %}
+{% extends "./_layouts/base-general-panel.html" %}
+{% from './_partials/global.html' import fontsPath, scriptsPath, stylesPath %}
+
+{# [START] page info #}
+{% set page = {"pageTitle": "Developer Area | CMS Editor", "pageMeta": "Design and develop modules and templates"} %}
+{# [END] page info #}
+
+{% block title %}
+  {{ page.pageTitle }}
+{% endblock title %}
+
+{% block meta %}
+  {{ page.pageMeta }}
+{% endblock meta %}
+
+{% block require_css %}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar h2 {
+      color: #fff;
+      margin-top: 0;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .main-content {
+      margin-left: 395px;
+      padding: 20px;
+      background: #1E1E1E;
+      height: 100vh;
+    }
+    .main-content h1 {
+      margin-top: 0;
+    }
+    .page-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .page-table th, .page-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    .page-table th {
+      background-color: #f2f2f2;
+    }
+    /* .action-buttons {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    } */
+    .action-buttons button {
+      margin-right: 10px;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+    .create-button {
+      background-color: #000;
+      color: #fff;
+    }
+    .delete-button {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+    .search-box {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-box input {
+      padding: 8px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .top-copy-area {
+      padding: 1.5rem 0;
+    }
+
+    .top-copy-area h1 {
+      font-size: 3.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .top-copy-area p {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      max-width: 28rem;
+    }
+
+    .top-copy-area svg {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+
+        table {
+    {# table-layout:fixed; #}
+    width:100%;
+
+    {# display: block; #}
+    overflow-y: auto;
+}
+
+    #editor {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
+
+    .sidebarFiles {
+  position: fixed;
+  top: 0;
+  left: 198px;
+  width: 200px;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+  </style>
+{% endblock require_css %}
+
+{% block body %}
+<div class="sidebarFiles">
+  <h2>Files</h2>
+  <ul id="file-list">
+
+  </ul>
+</div>
+<div class="main-content">
+  <div id="editor"></div>
+  <script src="./static/engine/loader0522.js"></script>
+  <link href="./static/styles/03_components/editor0522.main.min.css" rel="stylesheet">
+<script>
+  // Configure the path for the Monaco editor
+  require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs' }});
+
+  // Load the Monaco editor
+  require(['vs/editor/editor.main'], function() {
+    // Create the editor instance and store it in a global variable
+    window.editor = monaco.editor.create(document.getElementById('editor'), {
+      value: '',
+      language: 'python',
+      theme: 'vs-dark',
+      automaticLayout: true,
+      fontSize: 18,
+      roundedSelection: true,
+    });
+  });
+
+  // Fetch and display the list of files
+  fetch("{{ url_for('list_files') }}")
+    .then(response => response.json())
+    .then(data => {
+      if(data.status === "success") {
+        const fileList = document.getElementById("file-list");
+        data.files.forEach(file => {
+          const li = document.createElement("li");
+          li.textContent = file;
+          li.style.cursor = "pointer";
+          li.onclick = () => loadFileContent(file);
+          fileList.appendChild(li);
+        });
+      }
+    });
+
+  // Function to map file extensions to Monaco language identifiers
+  function getLanguageFromFileName(fileName) {
+    const parts = fileName.split('.');
+    if (parts.length < 2) return 'plaintext';
+    const extension = parts.pop().toLowerCase();
+    switch(extension) {
+      case 'js':
+        return 'javascript';
+      case 'py':
+        return 'python';
+      case 'html':
+        return 'twig';
+      case 'css':
+        return 'css';
+      case 'json':
+        return 'json';
+      case 'md':
+        return 'markdown';
+      default:
+        return 'plaintext';
+    }
+  }
+
+  // Load file content into the Monaco editor and update the language dynamically
+  function loadFileContent(file) {
+    fetch("{{ url_for('file_content') }}?file=" + encodeURIComponent(file))
+      .then(response => response.json())
+      .then(data => {
+        if(data.status === "success") {
+          // Determine the correct language from the file name
+          var language = getLanguageFromFileName(file);
+          // Update the model's language
+          monaco.editor.setModelLanguage(window.editor.getModel(), language);
+          // Set the editor content
+          window.editor.setValue(data.content);
+        } else {
+          alert("Error loading file: " + data.message);
+        }
+      });
+  }
+</script>
+</div>
+{% endblock body %}
