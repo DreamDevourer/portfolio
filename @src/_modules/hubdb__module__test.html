@@ -1,0 +1,36 @@
+<!--
+    templateType: section
+    label: Test HubDB module Section
+    isAvailableForNewContent: true
+    description: "Test HubDB module Section"
+-->
+
+{# [START] module fields #}
+{% set module = {
+    "style": [],
+} %}
+{% set hubdbTable = hubdb_table_rows("stress_testing", "h1Title=Grocom Theme") %}
+{# [END] module fields #}
+
+{# [START] module content #}
+<section class="main--title custom-next-gen-hero--margin header-respected" id="module__hero-gen2.html">
+{% for item in hubdbTable %}
+{% if loop.index == 1 %}
+    <div class="uniqueNextGenHero">
+    <div class="gen2Left">
+        <h1 class="next-gen2--title">{{ item.h1Title or 'Hero Cool Title' }}</h1>
+        <span class="location--indicator">
+            {{ item.locationCaption or 'Curitiba, BR' }}
+        </span>
+    </div>
+
+    <div class="gen2Right">
+        <p class="nextgen--desc2">{{ item.description or 'Super duper awesome description here!' }}</p>
+        </div>
+
+    </div>
+    {% endif %}
+{% endfor %}
+
+    </section>
+    {# [END] module content #}

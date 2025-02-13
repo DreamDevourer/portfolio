@@ -1,0 +1,142 @@
+<!--
+    templateType: "none"
+    isAvailableForNewContent: false
+    label: Base Engine for the Editor
+    pageName: {% if current_page_name %}{{ current_page_name }}{% else %}Not needed!{% endif %}
+    pageURL: {% if current_page_url %}{{ current_page_url }}{% else %}Not needed!{% endif %}
+-->
+<!DOCTYPE html>
+
+{% from '_partials/global.html' import pagesLanguage, siteURL, imagesPath, stylesPath, scriptsPath, enablejQuery, enableCMSEditor, enableGoogleFonts, enableGoogleTracking, stylesEngine, fontsPath, linkedinLink, marketplaceLink %}
+
+<html lang="{{ pagesLanguage }}">
+    <!-- Designed and developed by Nicolas Mendes 2023 -->
+    <!-- Tools used: Adobe(?) Figma, Adobe Photoshop, Python, Nikola & Staticjinja -->
+    <!-- "Curiosity may killed the cat, but it brings humans to life!"
+I like curious people :) and it seems you are! -->
+
+    {% if editorInternalDirectory %}
+
+        {# Used for pages/templates inside sub directories #}
+
+        {% set stylesEngine = "../../styles-engine.css" %}
+        {% set imagesPath = "../../static/images/" %}
+        {% set stylesPath = "../../static/styles/" %}
+        {% set fontsPath = "../../static/fonts/Selected/" %}
+        {% set scriptsPath = "../../static/engine/" %}
+        {% set systemPath = "../../system/" %}
+        {% set localDirectPath = "../../" %}
+        {% set baseURL = raw_url %}
+    {% endif %}
+
+    <head>
+        <meta charset="utf-8" />
+        <title>
+
+            {% block title %}
+            {% endblock title %}
+
+        </title>
+        {# Inline critical-path CSS Engine #}
+        {# <style>
+            {{ stylesEngine | safe }}}
+        </style> #}
+
+        <!--  Essential META Tags -->
+        <link rel="canonical" href="{{ siteURL }}" />
+        <meta property="og:site_name" content="Nicolas Mendes Portfolio" />
+        <meta content="Nicolas Mendes Portfolio" property="og:title" />
+        <meta property="og:url" content="{{ siteURL }}" />
+        <meta property="og:image"
+              content="{% block featuredImage %} {% endblock featuredImage %}" />
+        <!--  Non-Essential, But Recommended -->
+        <meta content="Nicolas Mendes Portfolio" property="twitter:title" />
+        <meta name="twitter:title" content="Nicolas Mendes Portfolio" />
+        {# <meta name="twitter:description"
+       content="Offering tour packages for individuals or groups."> #}
+        {# <meta name="twitter:image"
+       content="{% block featuredImage %}
+                {% endblock featuredImage %}"> #}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="description" content=" {% block meta %}  {% endblock meta %} " />
+        <meta name="keywords"
+              content="Product, Design, Developer, HubSpot, CMS, CRM, portfolio" />
+        <meta name="author" content="Nicolas Mendes" />
+        <meta name='designer' content='Nicolas Mendes' />
+        <meta name="copyright" content="© Nicolas Mendes" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name='robots' content='index,follow' />
+
+        <link href="{{ imagesPath }}637d87780f1d18e6aeac8a90_Rectangle 8994.webp"
+              rel="shortcut icon"
+              type="image/x-icon" />
+        <link href="{{ imagesPath }}back.webp" rel="apple-touch-icon" />
+
+        {# Loading fonts initially for better SEO page speed scores #}
+        <style>
+            @font-face {
+                font-family: Canela;
+                src: url('{{ fontsPath }}Canela.woff2') format('woff2');
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: CanelaThin;
+                src: url('{{ fontsPath }}Canela-Thin-Trial.woff2') format('woff2');
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: CanelaThinItalic;
+                src: url('{{ fontsPath }}Canela-ThinItalic-Trial.woff2') format('woff2');
+                font-display: swap;
+            }
+        </style>
+
+        {# !important This is the optimal way to include the styles. But It needs work to fix the internal pages paths for the assets. #}
+        <style>{% include "styles-engine.css" %}</style>
+
+        {% if enableGoogleFonts %}
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@200;300;400;700&family=Work+Sans:wght@100;200;300;400;500;600;700;900&display=swap"
+                  rel="stylesheet" />
+        {% endif %}
+
+        {% if enablejQuery %}
+
+            <script defer
+                    src="https://code.jquery.com/jquery-3.6.3.min.js"
+                    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+                    crossorigin="anonymous"></script>
+
+        {% endif %}
+
+    </head>
+
+    <body class="{% if isCaseStudy %}body--container{% endif %} main--body {% if not isCaseStudy %}{# fade-in #}{% endif %} {% if isCaseStudy %}case-study-override{% endif %}">
+
+        {% block require_css %}
+            <!-- injected via back-end (head) -->
+        {% endblock require_css %}
+
+        {% block header %}
+        {% endblock header %}
+
+        {# ------------------------------------ #}
+
+        {% block body %}
+            {# Main body here #}
+        {% endblock body %}
+
+        {# ------------------------------------ #}
+
+        {% block footer %}
+        {% endblock footer %}
+
+        {% block require_js %}
+            <!-- injected via back-end (footer) -->
+        {% endblock require_js %}
+
+    </body>
+</html>
