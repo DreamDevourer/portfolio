@@ -1,6 +1,29 @@
+:root {
+  --font-size: 16px;
+  --font-family: "Work Sans", sans-serif;
+
+  /* smooth scroll */
+  --scroll-behavior: smooth;
+  /* scroll padding */
+  --scroll-padding: 4rem;
+
+  scroll-behavior: var(--scroll-behavior);
+  scroll-padding: var(--scroll-padding);
+}
+
+html {
+  scroll-behavior: var(--scroll-behavior);
+  scroll-padding: var(--scroll-padding);
+}
+
 body {
   margin: 0;
-  font-family: "Work Sans", sans-serif;
+  font-family: var(--font-family);
+}
+button {
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px 15px;
 }
 .sidebar {
   position: fixed;
@@ -63,6 +86,14 @@ body {
   background-color: #e74c3c;
   color: #fff;
 }
+.adapto-exit_btn {
+  border: 1px solid #000;
+  color: #000;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  text-decoration: none;
+}
 .search-box {
   margin-bottom: 20px;
   display: flex;
@@ -98,6 +129,12 @@ body {
   max-width: 100%;
 }
 
+.top-copy-area {
+  padding: 2rem 0;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 3rem;
+}
+
 /* .main-content {
   opacity: 0;
   transform: translateY(100%);
@@ -114,10 +151,9 @@ body {
 .page-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* If you want fixed layout for uniform column widths */
+  table-layout: fixed;
 }
 
-/* Optional: Ensure cells break content appropriately */
 .page-table th,
 .page-table td {
   padding: 8px;
@@ -135,7 +171,6 @@ body {
   overflow-y: auto;
 }
 
-/* Optional: Style the header and rows for better responsiveness */
 .page-table thead,
 .page-table tbody,
 .page-table tr {
