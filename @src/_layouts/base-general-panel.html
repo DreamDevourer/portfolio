@@ -133,12 +133,34 @@ I like curious people :) and it seems you are! -->
 </a>
 </div>
     <ul>
-      <li class="contentPanel"><a onclick="window.location.href = '/';">Content</a></li>
-      <li class="hubdbPanel"><a onclick="window.location.href = '/hubdb-panel';">HubDB</a></li>
-      <li class="libraryPanel" style="display: none;"><a onclick="">Library</a></li>
-      <li class="developerPanel"><a onclick="window.location.href = '/dev-panel';">Developer</a></li>
+      <li class="contentPanel">{% if collapseSidebar == false %}<a onclick="window.location.href = '/';">Content</a>{% endif %}</li>
+      <li class="hubdbPanel">{% if collapseSidebar == false %}<a onclick="window.location.href = '/hubdb-panel';">HubDB</a>{% endif %}</li>
+      <li class="libraryPanel" style="display: none;">{% if collapseSidebar == false %}<a onclick="">Library</a>{% endif %}</li>
+      <li class="developerPanel">{% if collapseSidebar == false %}<a onclick="window.location.href = '/dev-panel';">Developer</a>{% endif %}</li>
     </ul>
   </div>
+
+    <script>
+        // if user clicks contentPanel then redirect to content panel
+        document.querySelector('.contentPanel').addEventListener('click', function() {
+            window.location.href = '/';
+        });
+
+        // if user clicks hubdbPanel then redirect to hubdb panel
+        document.querySelector('.hubdbPanel').addEventListener('click', function() {
+            window.location.href = '/hubdb-panel';
+        });
+
+        // if user clicks libraryPanel then redirect to library panel
+        document.querySelector('.libraryPanel').addEventListener('click', function() {
+            window.location.href = '/library-panel';
+        });
+
+        // if user clicks developerPanel then redirect to developer panel
+        document.querySelector('.developerPanel').addEventListener('click', function() {
+            window.location.href = '/dev-panel';
+        });
+    </script>
         {% endblock header %}
 
         {# ------------------------------------ #}

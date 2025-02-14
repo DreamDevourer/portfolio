@@ -760,8 +760,10 @@ def list_files():
 @app.route("/api/file-content", methods=["GET"])
 def file_content():
     file_name = request.args.get("file")
+    rel_path = request.args.get("path", "")
     safe_file_name = os.path.basename(file_name)
-    file_path = os.path.join(script_dir, safe_file_name)
+    directory = os.path.join(script_dir, rel_path)
+    file_path = os.path.join(directory, safe_file_name)
     if not os.path.exists(file_path):
         return jsonify({"status": "error", "message": "File not found"}), 404
     try:
@@ -772,17 +774,49 @@ def file_content():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
+@app.route("/api/list", methods=["GET"])
+def list_directory():
+    # Get the relative path from the query parameter; default is the base directory ("")
+    rel_path = request.args.get("path", "")
+    base_dir = script_dir  # Or change this to a dedicated base directory if needed.
+    requested_dir = os.path.join(base_dir, rel_path)
+
+    # Prevent directory traversal: ensure the requested directory is inside base_dir.
+    if not os.path.abspath(requested_dir).startswith(os.path.abspath(base_dir)):
+        return jsonify({"status": "error", "message": "Invalid path"}), 400
+
+    try:
+        items = os.listdir(requested_dir)
+        directories = [
+            item for item in items if os.path.isdir(os.path.join(requested_dir, item))
+        ]
+        files = [
+            item for item in items if os.path.isfile(os.path.join(requested_dir, item))
+        ]
+        return jsonify(
+            {
+                "status": "success",
+                "path": rel_path,
+                "directories": directories,
+                "files": files,
+            }
+        )
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 @app.route("/api/publish-file", methods=["POST"])
 def publish_file():
     data = request.get_json()
     file_name = data.get("file")
     content = data.get("content")
+    rel_path = data.get("path", "")
     if not file_name or content is None:
         return jsonify({"status": "error", "message": "Missing file or content"}), 400
 
-    # Use os.path.basename to prevent directory traversal attacks.
     safe_file_name = os.path.basename(file_name)
-    file_path = os.path.join(script_dir, safe_file_name)
+    directory = os.path.join(script_dir, rel_path)
+    file_path = os.path.join(directory, safe_file_name)
 
     if not os.path.exists(file_path):
         return jsonify({"status": "error", "message": "File not found"}), 404

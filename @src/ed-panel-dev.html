@@ -8,6 +8,7 @@
 -->
 
 {% set useGlobalStyles = false %}
+{% set collapseSidebar = true %}
 {% extends "./_layouts/base-general-panel.html" %}
 {% from './_partials/global.html' import fontsPath, scriptsPath, stylesPath %}
 
@@ -25,11 +26,17 @@
 
 {% block require_css %}
   <style>
+  body {
+    background: #1E1E1E;
+  }
+  .sidebar {
+    width: 90px;
+  }
     .main-content {
-      margin-left: 395px;
+      margin-left: 290px;
       padding: 20px;
       background: #1E1E1E;
-      height: 100vh;
+      height: 95vh;
     }
     .main-content h1 {
       margin-top: 0;
@@ -37,14 +44,14 @@
 
     #editor {
       width: 100%;
-      height: 90vh;
+      height: 95vh;
       border: none;
     }
 
     .sidebarFiles {
   position: fixed;
   top: 0;
-  left: 198px;
+  left: 90px;
   width: 200px;
   height: 100vh;
   background-color: #000;
@@ -52,26 +59,6 @@
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
-}
-
-ul#file-list {
-  list-style: none;
-  list-style-type: none;
-  padding: 0;
-}
-
-#file-list li {
-  margin: 15px 0;
-  list-style: none;
-  list-style-type: none;
-}
-
-{# add file icon #}
-#file-list li::before {
-  content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjY2NjYgNi4wMDAwOEg5LjY2NjY1QzkuMzEzMDIgNi4wMDAwOCA4Ljk3Mzg5IDUuODU5NjEgOC43MjM4NCA1LjYwOTU2QzguNDczNzkgNS4zNTk1MSA4LjMzMzMxIDUuMDIwMzcgOC4zMzMzMSA0LjY2Njc1VjAuNjY2NzQ4SDEuNjY2NjVDMS4zMTMwMiAwLjY2Njc0OCAwLjk3Mzg4NiAwLjgwNzIyNCAwLjcyMzgzNyAxLjA1NzI3QzAuNDczNzg5IDEuMzA3MzIgMC4zMzMzMTMgMS42NDY0NiAwLjMzMzMxMyAyLjAwMDA4VjEwLjAwMDFDMC4zMzMzMTMgMTAuMzUzNyAwLjQ3Mzc4OSAxMC42OTI4IDAuNzIzODM3IDEwLjk0MjlDMC45NzM4ODYgMTEuMTkyOSAxLjMxMzAyIDExLjMzMzQgMS42NjY2NSAxMS4zMzM0SDEyLjMzMzNDMTIuNjg2OSAxMS4zMzM0IDEzLjAyNjEgMTEuMTkyOSAxMy4yNzYxIDEwLjk0MjlDMTMuNTI2MiAxMC42OTI4IDEzLjY2NjYgMTAuMzUzNyAxMy42NjY2IDEwLjAwMDFWNi4wMDAwOFpNMTMuMzMzMyA1LjAwMDA4SDkuNjY2NjVDOS41NzgyNCA1LjAwMDA4IDkuNDkzNDYgNC45NjQ5NiA5LjQzMDk0IDQuOTAyNDVDOS4zNjg0MyA0LjgzOTk0IDkuMzMzMzEgNC43NTUxNSA5LjMzMzMxIDQuNjY2NzVWMS4wMDAwOEwxMy4zMzMzIDUuMDAwMDhaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K");
-  width: 1rem;
-  height: 1rem;
-  margin-right: 10px;
 }
 
     .create-button {
@@ -106,15 +93,15 @@ ul#file-list {
   <script src="./static/engine/loader0522.js"></script>
   <link href="./static/styles/03_components/editor0522.main.min.css" rel="stylesheet">
 <script>
-  // Global variable to keep track of the currently loaded file.
+  // Global variables to track the current file and current relative path.
   let currentFile = null;
+  let currentPath = "";
 
-  // Configure the path for the Monaco editor
+  // Configure Monaco loader path.
   require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs' }});
 
-  // Load the Monaco editor
+  // Initialize the Monaco editor.
   require(['vs/editor/editor.main'], function() {
-    // Create the editor instance and store it in a global variable
     window.editor = monaco.editor.create(document.getElementById('editor'), {
       value: '',
       language: 'python', // default language
@@ -125,23 +112,59 @@ ul#file-list {
     });
   });
 
-  // Fetch and display the list of files
-  fetch("{{ url_for('list_files') }}")
-    .then(response => response.json())
-    .then(data => {
-      if(data.status === "success") {
-        const fileList = document.getElementById("file-list");
-        data.files.forEach(file => {
-          const li = document.createElement("li");
-          li.textContent = file;
-          li.style.cursor = "pointer";
-          li.onclick = () => loadFileContent(file);
-          fileList.appendChild(li);
-        });
-      }
-    });
+  // Function to list the contents of a directory.
+  function listDirectory(path) {
+    fetch("{{ url_for('list_directory') }}?path=" + encodeURIComponent(path))
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "success") {
+          currentPath = data.path;  // Update the global currentPath.
+          const fileList = document.getElementById("file-list");
+          fileList.innerHTML = "";
 
-  // Function to map file extensions to Monaco language identifiers
+          // If not at the root, add an entry to navigate back.
+          if (data.path !== "") {
+            const backItem = document.createElement("li");
+            backItem.textContent = "..";
+            backItem.style.cursor = "pointer";
+            backItem.onclick = () => {
+              // Remove the last segment from the path.
+              const parts = data.path.split("/");
+              parts.pop();
+              const newPath = parts.join("/");
+              listDirectory(newPath);
+            };
+            fileList.appendChild(backItem);
+          }
+
+          // List directories.
+          data.directories.forEach(dir => {
+            const li = document.createElement("li");
+            li.textContent = dir + "/";
+            li.style.cursor = "pointer";
+            li.classList.add("directoryIndividual");
+            li.onclick = () => {
+              const newPath = data.path ? data.path + "/" + dir : dir;
+              listDirectory(newPath);
+            };
+            fileList.appendChild(li);
+          });
+
+          // List files.
+          data.files.forEach(file => {
+            const li = document.createElement("li");
+            li.textContent = file;
+            li.style.cursor = "pointer";
+            li.onclick = () => loadFileContent(file, data.path);
+            fileList.appendChild(li);
+          });
+        } else {
+          alert("Error listing directory: " + data.message);
+        }
+      });
+  }
+
+  // Function to determine Monaco language based on file extension.
   function getLanguageFromFileName(fileName) {
     const parts = fileName.split('.');
     if (parts.length < 2) return 'plaintext';
@@ -149,7 +172,7 @@ ul#file-list {
     switch(extension) {
       case 'js': return 'javascript';
       case 'py': return 'python';
-      case 'html': return 'twig'; // or 'html'
+      case 'html': return 'twig';  // or 'html'
       case 'css': return 'css';
       case 'json': return 'json';
       case 'md': return 'markdown';
@@ -157,19 +180,18 @@ ul#file-list {
     }
   }
 
-  // Load file content into the Monaco editor and update the language dynamically
-  function loadFileContent(file) {
-    // Set the current file
+  // Load file content into the editor.
+  // Pass the current directory path along.
+  function loadFileContent(file, path) {
     currentFile = file;
-    fetch("{{ url_for('file_content') }}?file=" + encodeURIComponent(file))
+    currentPath = path;  // Ensure the current path is updated.
+    fetch("{{ url_for('file_content') }}?file=" + encodeURIComponent(file) +
+          "&path=" + encodeURIComponent(path))
       .then(response => response.json())
       .then(data => {
-        if(data.status === "success") {
-          // Determine the correct language from the file name
-          var language = getLanguageFromFileName(file);
-          // Update the model's language
+        if (data.status === "success") {
+          const language = getLanguageFromFileName(file);
           monaco.editor.setModelLanguage(window.editor.getModel(), language);
-          // Set the editor content
           window.editor.setValue(data.content);
         } else {
           alert("Error loading file: " + data.message);
@@ -177,7 +199,7 @@ ul#file-list {
       });
   }
 
-  // Publish changes by sending the current file and editor content to the backend
+  // Publish changes: send the current file, its content, and the current path.
   function publishFile() {
     if (!currentFile) {
       alert("No file loaded to publish.");
@@ -186,10 +208,8 @@ ul#file-list {
     const content = window.editor.getValue();
     fetch("{{ url_for('publish_file') }}", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ file: currentFile, content: content })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ file: currentFile, content: content, path: currentPath })
     })
     .then(response => response.json())
     .then(data => {
@@ -203,6 +223,11 @@ ul#file-list {
       alert("Error: " + err);
     });
   }
+
+  // On page load, list the root directory.
+  window.onload = function() {
+    listDirectory("");
+  };
 </script>
 </div>
 {% endblock body %}
