@@ -1284,6 +1284,12 @@ span.quote-highlight {
     padding-top: rem(90px);
 }
 
+#cconsent-bar button.ccb__edit,
+#cconsent-modal .ccm__tab-trigger,
+#cconsent-modal .ccm__content > .ccm__content__heading .ccm__cheading__close {
+    background: transparent !important;
+}
+
 @media (max-width: rem(1634px)) {
     header,
     .header-respected,
