@@ -490,8 +490,8 @@ main {
 }
 
 // Bento Grid stuff
-.bentoGridArea {
-  padding: 8.75rem 4.5rem;
+section.bentoGridArea {
+  padding: 8.75rem 4.5rem !important;
   background-color: var(--modern-dark-bg);
 
   > div > h2 {
@@ -747,6 +747,10 @@ main {
 .gen3--section {
   padding-left: 0;
   padding-right: 0;
+}
+
+section.gen3--hero-top-space {
+  padding-top: rem(48px) !important;
 }
 
 .listings--tabs-menu-container,

@@ -305,7 +305,7 @@ a {
 }
 
 @include responsive-desktop {
-    .container {
+    section.container {
         padding: 0 6.625rem !important;
     }
 }
