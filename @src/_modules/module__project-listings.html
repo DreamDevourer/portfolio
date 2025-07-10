@@ -6,38 +6,50 @@
 -->
 {# [START] module fields #}
 {% set module = {
-    "style":{
+    "style": {
         "hs_id": range(0, 9999) | random,
     },
     "subtitle": "Professional Projects",
     "title": "Check some<br />of my best<br />projects.",
     "finalMessage": "And I have designed and developed more than 15 CMS themes... Contact me and I can show more!",
+    "enableTabsMenu": true,
 } %}
 {# [END] module fields #}
 
-{# [START] module content #}
-<section class="projectsListingsMain section-{{ module.style.hs_id }}"
+<section class="projectsListingsMain container section-{{ module.style.hs_id }}"
          id="professional-projects"
          data-section-id="section-{{ module.style.hs_id }}">
 
     <div class="titleAreaSideThin">
         <span class="tagPillIndicator">{{ module.subtitle }}</span>
         <h2>{{ module.title }}</h2>
-        <div class="separator-dec"></div>
+
+        {% if module.enableTabsMenu %}
+            <div class="listings--tabs-menu-container">
+                <ul class="listings--tabs-menu-list">
+                    <li class="active" data-type="general">General</li>
+                    <li data-type="development">Development</li>
+                    <li data-type="personal">Personal</li>
+                </ul>
+            </div>
+        {% else %}
+            <div class="separator-dec"></div>
+        {% endif %}
     </div>
 
-    <div class="banners-nextgen" data-selected-type="design">
+    {# Set default selected tab to “general” #}
+    <div class="banners-nextgen" data-selected-type="general">
 
         {% for project in projects %}
-            {% if project.page_path %}
-                {% set elementHandler = "a" %}
-            {% else %}
-                {% set elementHandler = "div" %}
-            {% endif %}
-
+            {% set elementHandler = project.page_path and "a" or "div" %}
             <{{ elementHandler }}
             {% if project.page_path %}href="{{ project.page_path }}"{% endif %}
-            class="link-banner {{ project.case_id }}" data-type="{{ project.project_type|safe|striptags|lower|replace(' ', '') }}">
+            class="link-banner {{ project.case_id }}"
+            data-type="{{ project.project_type
+            |safe
+            |striptags
+            |lower
+            |replace(' ', '') }}">
             <div class="left-area-banner">
                 <img src="{{ imagesPath }}{{ project.case_logo }}"
                      alt="{{ project.case_logo_alt }}"
@@ -52,10 +64,45 @@
                         onclick="location.href='{{ project.page_path }}';">{{ project.case_cta }}</button>
             </div>
             </{{ elementHandler }}>
-
         {% endfor %}
 
         <p class="small-msg">{{ module.finalMessage }}</p>
     </div>
-
 </section>
+
+
+{% block require_js %}
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs       = document.querySelectorAll('.listings--tabs-menu-list li');
+    const container  = document.querySelector('.banners-nextgen');
+    const cards      = container.querySelectorAll('.link-banner');
+
+    // Show/hide cards based on selected type
+    function filterCards(type) {
+      cards.forEach(card => {
+        const types = card.dataset.type.split(',');
+        const showAll = (type === 'general');
+        card.style.display = (types.includes(type)) ? '' : 'none';
+      });
+    }
+
+    // Attach click handlers
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Toggle active class
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Update container and re-filter
+        const sel = tab.dataset.type;
+        container.dataset.selectedType = sel;
+        filterCards(sel);
+      });
+    });
+
+    // Initial pass
+    filterCards(container.dataset.selectedType);
+  });
+    </script>
+{% endblock require_js %}

@@ -19,8 +19,8 @@
             "showImg": true,
             "isFullBlockImage": true,
             "imageField": {
-                "src": "hubspot-crm-card.png",
-                "alt": "HubSpot CRM card project",
+                "src": "adapto-design-demo.png",
+                "alt": "AdaptoSphere project showcase",
                 "loading": "lazy",
                 "width": "100%",
                 "height": "100%",
@@ -28,8 +28,8 @@
             "mainContent": "",
         },
         {
-            "subtitle": "Design follows function",
-            "title": "A beautiful website is purposeful. From ideation to exceptional experience.",
+            "subtitle": "",
+            "title": "A beautiful solution is purposeful. From ideation to exceptional experience.",
             "gridBlockSize": "35",
             "showImg": false,
             "isFullBlockImage": false,
@@ -43,7 +43,7 @@
             "mainContent": "",
         },
         {
-            "subtitle": "Advanced Web Development",
+            "subtitle": "",
             "title": "I coded several HubSpot websites and have had to re-code ones not up to par from other agencies.",
             "gridBlockSize": "100",
             "showImg": true,
@@ -67,9 +67,10 @@
 
 {# [START] module content #}
 <section class="bentoGridArea section-{{ module.style.hs_id }}"
-         data-section-id="section-{{ module.style.hs_id }}" id="module__bento-grid.html">
-    <div>
-        <span class="tagPillIndicator">{{ module.subtitle }}</span>
+         data-section-id="section-{{ module.style.hs_id }}"
+         id="module__bento-grid.html">
+    <div class="container">
+        {% if module.subtitle %}<span class="tagPillIndicator">{{ module.subtitle }}</span>{% endif %}
         <h2>{{ module.title }}</h2>
 
         <div class="bento--listings">

@@ -1,0 +1,55 @@
+<!--
+    templateType: section
+    label: Hero Gen 3 module Section
+    isAvailableForNewContent: true
+    description: "3rd Hero module used in the homepage for Nick's portfolio."
+-->
+
+{# [START] module fields #}
+{% set module = {
+    "style": [],
+    "h1Title": h1Title,
+    "descriptionCaption": descriptionCaption,
+} %}
+{# [END] module fields #}
+
+{# [START] module content #}
+<section class="gen3--section main--title custom-next-gen-hero--margin header-respected container"
+         id="module__hero-gen3.html">
+    <div class="uniqueNextGenHero3">
+        <div class="gen3--main-zone">
+            <svg width="79"
+                 height="79"
+                 viewBox="0 0 79 79"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M42.5267 22.2949L49.1228 15.6988C50.8009 14.0206 53.5216 14.0206 55.1997 15.6988L62.5427 23.0417C64.2208 24.7199 64.2208 27.4406 62.5427 29.1187L55.9594 35.7021C54.2813 37.3802 51.5605 37.3802 49.8824 35.7021L42.5267 28.3464C41.7242 27.5439 40.6358 27.0931 39.5009 27.0931C38.366 27.0931 37.2776 27.5439 36.4752 28.3464L29.3726 35.4489C27.6945 37.127 24.9738 37.127 23.2957 35.4489L16.7123 28.8655C15.0342 27.1874 15.0342 24.4667 16.7123 22.7885L23.8021 15.6988C25.4802 14.0206 28.201 14.0206 29.8791 15.6988L36.4752 22.2949C37.2776 23.0973 38.366 23.5482 39.5009 23.5482C40.6358 23.5482 41.7242 23.0973 42.5267 22.2949Z" stroke="black" />
+                <path d="M35.9552 49.6282L28.6122 42.2852C26.9341 40.6071 24.2133 40.6071 22.5352 42.2852L15.6986 49.1218C14.0205 50.7999 14.0205 53.5207 15.6986 55.1988L36.4616 75.9617C38.1397 77.6398 40.8604 77.6398 42.5386 75.9617L62.7951 55.7052C64.4732 54.0271 64.4732 51.3063 62.7951 49.6282L55.4521 42.2852C53.774 40.6071 51.0532 40.6071 49.3751 42.2852L42.0321 49.6282C40.354 51.3063 37.6333 51.3063 35.9552 49.6282Z" stroke="black" />
+            </svg>
+
+            <h1 class="next-gen2--title">{{ module.h1Title or 'I help companies run their business on HubSpot.' }}</h1>
+            <p class="nextgen--desc2">
+                {{ module.descriptionCaption or 'I’m specialized in custom HubSpot development projects that other developers shy away from.' }}
+            </p>
+        </div>
+
+    </div>
+
+    <div class="gen3--buttons-area">
+        <a class="button small-cta"
+           href="https://www.linkedin.com/in/nick-lira/"
+           target="_blank">Work with me</a>
+        <a class="button small-cta button--secondary"
+           href="#professional-projects">See my work →</a>
+    </div>
+
+    <a href="#module__bento-grid.html">
+        <br />
+        <img src="{{ imagesPath }}Arrow Down.svg"
+             alt="Arrow pointing down."
+             width="53"
+             height="74" />
+    </a>
+
+</section>
+{# [END] module content #}

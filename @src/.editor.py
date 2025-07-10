@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
-r"""Nick DnD Editor curated to edit Nick's staticjinja portfolio ~ by Nicolas Mendes.
-"""
+r"""Nick DnD Editor curated to edit Nick's staticjinja portfolio ~ by Nicolas Mendes."""
+
+# !IMPORTANT -> I changed all "ed-*" files to have a "." before each file since it breaks the build script if the "." is not present.
 
 # 🧶 Modules Imports
 from flask import Flask, request, jsonify, url_for

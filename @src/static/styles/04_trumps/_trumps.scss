@@ -344,7 +344,7 @@ h2 .h2-span {
 
 footer {
     > .mainFooterController {
-        padding: 0 rem(106px);
+        padding: 0 rem(72px);
     }
 }
 
@@ -645,6 +645,14 @@ footer {
     /* background-image: url(../../images/Micro-saas-display-Preview.webp); */
 }
 
+.adaptosphere-case {
+    /* Set background Image */
+    background-image: url(/static/images/AdaptoSphere-Display.png);
+    background-position: bottom right;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .grocom-case {
     /* Set background Image */
     background-image: url(/static/images/grocomPreview.webp);
@@ -741,7 +749,7 @@ span.quote-highlight {
 #return-to-top {
     z-index: 100000;
     position: fixed;
-    bottom: 20px;
+    bottom: 85px;
     right: 20px;
     background: #fff;
     width: rem(50px);
@@ -1137,8 +1145,8 @@ span.quote-highlight {
     // margin-top: rem(24px) !important;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: rem(106px);
-    padding-right: rem(106px);
+    padding-left: rem(72px);
+    padding-right: rem(72px);
 }
 
 .std-home-default-fallback {
@@ -1305,8 +1313,8 @@ span.quote-highlight {
     }
 
     .std-home-default-fallback {
-        padding-left: rem(106px);
-        padding-right: rem(106px);
+        padding-left: rem(72px);
+        padding-right: rem(72px);
     }
 }
 
@@ -1443,7 +1451,7 @@ span.quote-highlight {
     }
 
     .link-banner {
-        width: 70%;
+        width: 100%;
         height: auto;
         flex-direction: column;
     }
@@ -1456,7 +1464,8 @@ span.quote-highlight {
     }
 
     .cultura-case,
-    .microsaas-case {
+    .microsaas-case,
+    .adaptosphere-case {
         /* Set background Image */
         background-image: none;
         background-position: bottom;
@@ -1579,6 +1588,10 @@ span.quote-highlight {
     .next-gen2--title {
         font-size: calc(rem(80px) * $mobile-sm-scaling-factor) !important;
     }
+
+    #professional-projects {
+        padding: 2rem;
+    }
 }
 
 @include responsive-mobile-small {
@@ -1631,6 +1644,15 @@ span.quote-highlight {
     .microsaas-case {
         /* Set background Image */
         background-image: url(/static/images/DisplayView_microsaas.webp);
+        /* background-image: url(../../images/Micro-saas-Display-View-2023.webp); */
+        background-position: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .adaptosphere-case {
+        /* Set background Image */
+        background-image: url(/static/images/AdaptoSphere-Display.png);
         /* background-image: url(../../images/Micro-saas-Display-View-2023.webp); */
         background-position: bottom;
         background-size: contain;
