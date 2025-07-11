@@ -804,8 +804,8 @@ section.gen3--hero-top-space {
     }
 
     .bento--listings {
-      display: flex;
-      flex-direction: column;
+      display: flex !important;
+      flex-direction: column !important;
 
       .bentoBlock {
         flex-direction: column-reverse;
@@ -1028,6 +1028,13 @@ section.gen3--hero-top-space {
     h3 {
       text-align: center !important;
     }
+  }
+
+  section.gen3--hero-top-space,
+  section.bentoGridArea,
+  #professional-projects,
+  .socials--area {
+    padding: rem(20px) !important;
   }
 }
 
