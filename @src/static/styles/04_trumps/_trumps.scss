@@ -1169,11 +1169,15 @@ span.quote-highlight {
     width: -moz-available;
     z-index: 1000; /* Ensure it is above other elements */
     // background-color: var(--background-color) !important;
-    background-color: rgb(243 243 243 / 90%);
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgb(243 243 243 / 60%);
+    box-shadow: 0 20px 64px rgba(0, 0, 0, 0.1);
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+
+    margin: 16px !important;
+    border: 1px solid #eaf0f4;
+    border-radius: 16px;
 }
 
 .stickyHeader {
@@ -1195,6 +1199,8 @@ span.quote-highlight {
 
     .mobile-menu.open {
         color: #000;
+        border-radius: 16px;
+
         a,
         p {
             color: #000;
@@ -1219,6 +1225,8 @@ span.quote-highlight {
 
     .mobile-menu.open {
         color: #000;
+        border-radius: 16px;
+
         a,
         p {
             color: #000;
@@ -1242,7 +1250,7 @@ span.quote-highlight {
     width: 100%;
     // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-    background-color: rgb(243 243 243 / 90%);
+    background-color: rgb(243 243 243 / 60%);
 
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
@@ -1256,7 +1264,9 @@ span.quote-highlight {
     padding-top: rem(16px);
     padding-bottom: rem(16px);
 
-    background-color: rgb(243 243 243 / 90%);
+    border-radius: 16px;
+
+    background-color: rgb(243 243 243 / 60%);
 
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
@@ -1338,7 +1348,7 @@ span.quote-highlight {
         flex-direction: row;
         gap: rem(16px);
         margin-bottom: 2rem !important;
-        padding-bottom: 2rem !important;
+        // padding-bottom: 2rem !important;
     }
 
     .social-higlight {
