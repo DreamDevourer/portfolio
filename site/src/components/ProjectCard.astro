@@ -1,0 +1,17 @@
+---
+import media from '../data/media.json';
+import type { Project } from '../data/types';
+const { project } = Astro.props as { project: Project };
+const item = media[project.image as keyof typeof media];
+if (!item) throw new Error(`Missing prepared project media: ${project.image}`);
+const external = project.kind === 'external';
+---
+<a class="project-card" href={project.href} data-cursor={external ? 'visit site' : 'case study'} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>
+  <div class="project-card__media">
+    <img src={item.src} srcset={item.srcset} sizes="(min-width: 1024px) 50vw, 100vw" width={item.width} height={item.height} alt={project.alt} loading="lazy" decoding="async" style={`object-position: ${project.objectPosition ?? 'center'}`} />
+  </div>
+  <div class="project-card__caption">
+    <div><h3>{project.title}</h3><p>{project.description}</p></div>
+    <span class="meta">{project.label}</span>
+  </div>
+</a>

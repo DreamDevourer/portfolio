@@ -1,0 +1,44 @@
+[
+  {
+    "id": "teamwork",
+    "title": "HubSpot to Teamwork Integration",
+    "description": "A HubSpot-integrated micro-SaaS for turning CRM objects into actionable Teamwork tasks.",
+    "href": "/case-studies/case-study-hubspot-to-teamwork-integration.html",
+    "kind": "case-study",
+    "label": "HubSpot app · case study",
+    "image": "static/images/BG-crm-card.webp",
+    "alt": "HubSpot to Teamwork interface presentation",
+    "objectPosition": "center"
+  },
+  {
+    "id": "cultura",
+    "title": "Cultura App",
+    "description": "A HubSpot-connected recruitment platform for managing applicants in one place.",
+    "href": "/case-studies/case-study-cultura.html",
+    "kind": "case-study",
+    "label": "Product design · case study",
+    "image": "static/images/darkHeroFeatured.webp",
+    "alt": "Cultura app dashboard in dark mode",
+    "objectPosition": "center"
+  },
+  {
+    "id": "remotish",
+    "title": "Remotish Redesign",
+    "description": "A rebrand, research, website design, and development project for a distributed agency.",
+    "href": "https://www.figma.com/file/vrfeZx6n4QVm6Njvcl4cDG/Remotish-Pages?node-id=756%3A217&t=GDJy7tNdvpc8h0ai-1",
+    "kind": "external",
+    "label": "Website redesign · Figma",
+    "image": "static/images/remotish-preview--only.webp",
+    "alt": "Remotish website redesign preview"
+  },
+  {
+    "id": "adaptosphere",
+    "title": "AdaptoSphere",
+    "description": "A framework theme for building HubSpot websites and go-to-market experiences.",
+    "href": "https://marketplace.capital-fox.com/",
+    "kind": "external",
+    "label": "HubSpot framework · marketplace",
+    "image": "static/images/AdaptoSphere-Display.png",
+    "alt": "AdaptoSphere theme display"
+  }
+]

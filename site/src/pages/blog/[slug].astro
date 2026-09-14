@@ -1,0 +1,9 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { articlePages } from '../../data/pages';
+export function getStaticPaths() {
+  return articlePages.map((page) => ({ params: { slug: page.route.split('/').pop()?.replace('.html', '') ?? page.id }, props: { page } }));
+}
+const { page } = Astro.props;
+---
+<ArticleLayout page={page} current="writing" />

@@ -1,0 +1,7 @@
+[build]
+  base = "."
+  command = "npm run build:stage"
+  publish = ".site-build"
+
+[build.environment]
+  NODE_VERSION = "22"

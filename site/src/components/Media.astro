@@ -1,0 +1,12 @@
+---
+import media from '../data/media.json';
+const { source, alt, caption, priority = false, objectPosition = 'center' } = Astro.props;
+const item = media[source as keyof typeof media];
+if (!item) throw new Error(`Missing prepared media: ${source}`);
+---
+<figure class="media">
+  <a href={item.src} data-enlarge aria-label={`Enlarge: ${alt}`} data-cursor="image">
+    <img src={item.src} srcset={item.srcset} sizes="(min-width: 1024px) 896px, calc(100vw - 48px)" width={item.width} height={item.height} alt={alt} loading={priority ? 'eager' : 'lazy'} decoding="async" style={`object-position: ${objectPosition}`} />
+  </a>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

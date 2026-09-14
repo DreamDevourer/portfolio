@@ -1,0 +1,15 @@
+---
+import media from '../data/media.json';
+import legacyMedia from '../data/legacy-media.json';
+import { getLegacyBody, identifyLegacyHeadings } from '../data/legacy-content';
+
+const { source } = Astro.props as { source: 'teamwork' | 'cultura' };
+const bodyWithLegacyPaths = await getLegacyBody(source);
+const mediaBody = bodyWithLegacyPaths.replace(/src="\/static\/images\/([^"]+)"/g, (whole, filename) => {
+  const key = `static/images/${filename}` as keyof typeof media;
+  const legacyKey = `static/images/${filename}` as keyof typeof legacyMedia;
+  return legacyMedia[legacyKey] ? `src="${legacyMedia[legacyKey]}"` : media[key] ? `src="${media[key].src}"` : whole;
+});
+const { html: body } = identifyLegacyHeadings(mediaBody);
+---
+<div class="legacy-case-body" set:html={body}></div>

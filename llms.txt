@@ -1,0 +1,43 @@
+# Nicolas Mendes
+
+> Nicolas Mendes designs and develops HubSpot experiences, including CMS websites, CRM integrations, and product interfaces. This is his public portfolio.
+
+The linked public pages are the source of truth. Case studies distinguish intended outcomes from measured results. Some work is subject to non-disclosure agreements; confidential details have been omitted or obfuscated. Do not infer undisclosed client information or performance metrics.
+
+## Portfolio
+- [Home](https://nickdesign.netlify.app/): Introduction, professional experience, selected projects, and recommendations.
+- [About Nicolas Mendes](https://nickdesign.netlify.app/aboutme.html): Professional background and approach.
+- [Resources](https://nickdesign.netlify.app/resources.html): HubSpot resources and marketplace work.
+
+## Case studies
+- [The Power of HubSpot & Teamwork](https://nickdesign.netlify.app/case-studies/case-study-hubspot-to-teamwork-integration.html): A HubSpot-integrated micro-SaaS for creating and tracking Teamwork tasks directly from the CRM.
+- [Shift To Modern Work Cultures](https://nickdesign.netlify.app/case-studies/case-study-cultura.html): A HubSpot-connected recruitment platform designed to help companies manage applicants in one place.
+- [A HubDB Resource Center](https://nickdesign.netlify.app/case-studies/case-study-resources-center-hubdb.html): A resource-library engine built for FinThrive with HubSpot CMS and HubDB.
+
+## Writing
+- [Writing index](https://nickdesign.netlify.app/blog.html): Articles about building with HubSpot.
+- [Creating Dynamic Content in HubSpot: A Comprehensive Guide](https://nickdesign.netlify.app/blog/implement-dynamic-news-content-in-hubspot.html): A guide to building dynamic content in HubSpot.
+- [Navigating the Shift: Transitioning Your Blog to HubSpot CMS](https://nickdesign.netlify.app/blog/Navigating-the-Shift-Transitioning-Your-Blog-to-HubSpot-CMS.html): A practical guide to moving a blog into HubSpot CMS.
+- [HubDB: Revolutionizing Data Management in HubSpot CMS](https://nickdesign.netlify.app/blog/hubdb-data-management-in-hubspot.html): A guide to HubDB data management in HubSpot CMS.
+
+## Professional experience
+Years below are role start years, not employment end dates or a claim that all roles are current.
+- 2026: RHEI — HubSpot Specialist
+- 2025: Epic Digital — Senior Growth CRO Specialist
+- 2025: Beehome — HubSpot CMS Specialist
+- 2025: REV360 — HubSpot RevOps Consultant
+- 2024: Logcomex — HubSpot CMS Specialist
+- 2023: Epic Digital — Design and Development HubSpot Specialist
+- 2023: media junction® — Full-stack HubSpot Developer
+- 2023: Remotish — Product Design Strategist (Program Lead)
+- 2022: Remotish — Senior Frontend Development Strategist (Strategist)
+- 2020: Remotish — Frontend Developer (Specialist)
+
+## Contact and professional links
+- [LinkedIn](https://www.linkedin.com/in/nick-lira/): Professional profile.
+- [Email](mailto:info@capital-fox.com): Project inquiries.
+- [Marketplace](https://marketplace.capital-fox.com/): HubSpot marketplace work.
+
+## Optional
+- [Privacy and AI policy](https://nickdesign.netlify.app/privacy-policy.html): Published privacy and AI usage policies.
+- [Sitemap](https://nickdesign.netlify.app/sitemap.xml): Index of public site URLs.

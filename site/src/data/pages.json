@@ -1,0 +1,10 @@
+[
+  {"id":"teamwork","route":"case-studies/case-study-hubspot-to-teamwork-integration.html","kind":"case-study","title":"The Power of HubSpot & Teamwork","description":"A HubSpot and Teamwork integration case study.","image":"static/images/BG-crm-card.webp","imageAlt":"HubSpot to Teamwork interface presentation"},
+  {"id":"cultura","route":"case-studies/case-study-cultura.html","kind":"case-study","title":"Shift To Modern Work Cultures","description":"A Cultura recruitment platform case study.","image":"static/images/darkHeroFeatured.webp","imageAlt":"Cultura app dashboard in dark mode"},
+  {"id":"hubdb-resource-center","route":"case-studies/case-study-resources-center-hubdb.html","kind":"case-study","title":"A HubDB Resource Center","description":"A FinThrive HubDB and CMS Hub resource library.","image":"static/images/hubdbHowTo.webp","imageAlt":"HubDB resource center interface"},
+  {"id":"about","route":"aboutme.html","kind":"page","title":"Who I am.","description":"About Nicolas Mendes.","image":"static/images/Gallery-simple.webp","imageAlt":"Portrait of Nicolas Mendes"},
+  {"id":"privacy","route":"privacy-policy.html","kind":"page","title":"Privacy & AI Policy","description":"Privacy and AI usage policy for Nicolas Mendes projects."},
+  {"id":"dynamic-content","route":"blog/implement-dynamic-news-content-in-hubspot.html","kind":"article","title":"Creating Dynamic Content in HubSpot: A Comprehensive Guide","description":"A guide to dynamic HubSpot content.","image":"static/images/dynamicContent.jpg","imageAlt":"Person using a computer"},
+  {"id":"blog-transition","route":"blog/Navigating-the-Shift-Transitioning-Your-Blog-to-HubSpot-CMS.html","kind":"article","title":"Navigating the Shift: Transitioning Your Blog to HubSpot CMS","description":"A practical guide to moving a blog into HubSpot CMS."},
+  {"id":"hubdb-management","route":"blog/hubdb-data-management-in-hubspot.html","kind":"article","title":"HubDB: Revolutionizing Data Management in HubSpot CMS","description":"A guide to HubDB data management in HubSpot CMS."}
+]

@@ -1,0 +1,5 @@
+---
+import { getLegacyBody, identifyLegacyHeadings } from '../data/legacy-content';
+const { html: body } = identifyLegacyHeadings(await getLegacyBody('privacy'));
+---
+<div class="legacy-privacy-body" set:html={body}></div>

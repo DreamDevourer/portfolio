@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Contact from '../components/Contact.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import { projects } from '../data/projects';
+---
+<BaseLayout title="HubSpot specialist" description="Nicolas Mendes designs and develops durable HubSpot experiences." current="work">
+  <div class="page">
+    <section class="hero-grid" aria-labelledby="intro-title">
+      <div>
+        <h1 class="display" id="intro-title">I help companies run their business on <em>HubSpot.</em></h1>
+      </div>
+      <ExperienceList />
+    </section>
+    <section id="professional-projects" aria-labelledby="work-title">
+      <div class="work-grid">{projects.map((project) => <ProjectCard project={project} />)}</div>
+    </section>
+    <TestimonialCarousel />
+    <section class="home-section" aria-labelledby="contact-title">
+      <p class="eyebrow">Start a conversation</p>
+      <h2 class="section-heading" id="contact-title">Have a hard HubSpot problem?</h2>
+      <p class="lede"><Contact /></p>
+    </section>
+  </div>
+</BaseLayout>

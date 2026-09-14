@@ -1,0 +1,26 @@
+[
+  {
+    "id": "avery-pilot",
+    "name": "Avery Pilot",
+    "company": "Pipl",
+    "role": "Sales Enablement Operations",
+    "image": "static/images/avery.jpg",
+    "alt": "Portrait of Avery Pilot",
+    "paragraphs": [
+      "When I was tasked with refreshing the client-facing website at my previous company, Nicolas was a skilled developer who responded to our company web-development needs with care and urgency.",
+      "As an integral part of the Remotish Team, Nicolas is great at understanding the needs of clients and provided our team with lots of options to customize themes, layouts, etc. in HubSpot. And as designs and website needs change, Nicolas was quick to implement these changes. I am very thankful to have worked with him and would highly recommend him!"
+    ]
+  },
+  {
+    "id": "leandro-morabito",
+    "name": "Leandro Morabito",
+    "company": "Remotish",
+    "role": "Cyber Security Specialist",
+    "image": "static/images/leomorabito.jpeg",
+    "alt": "Portrait of Leandro Morabito",
+    "paragraphs": [
+      "Working with Nick at Remotish was an absolute pleasure. In the same group, I had the opportunity to witness Nick's exceptional skills as the main programmer. His ability to solve complex problems and design solutions is truly remarkable.",
+      "As a Front and Back-end Developer myself, I cannot emphasize enough how impressive Nick's capabilities are. Collaborating with him was not just productive but also an enjoyable experience. I highly recommend Nick for his outstanding expertise and the positive energy he brings to any team."
+    ]
+  }
+]

@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ImageDialog from '../components/ImageDialog.astro';
+import { site } from '../data/site';
+import media from '../data/media.json';
+const { title, description, current = '', noindex = false, image = 'static/images/BG-crm-card.webp', imageAlt = 'HubSpot to Teamwork integration by Nicolas Mendes' } = Astro.props;
+const pathname = Astro.url.pathname === '/index.html' ? '/' : Astro.url.pathname;
+const canonical = new URL(pathname, site.url).href;
+const shareImage = media[image as keyof typeof media];
+const socialImage = new URL(shareImage.social, site.url).href;
+const fullTitle = `${title} | ${site.name}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Nicolas Mendes" />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/static/redesign/favicon.webp" type="image/webp" />
+    <title>{fullTitle}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <link rel="describedby" href="/llms.txt" type="text/plain" />
+  </head>
+  <body id="top">
+    <div class="site-shell">
+      <a class="skip-link" href="#main">Skip to content</a>
+      <Header current={current} />
+      <main id="main"><slot /></main>
+      <a class="back-to-top" href="#top" data-back-to-top aria-label="Back to top"><span aria-hidden="true">↑</span><span>Top</span></a>
+      <Footer />
+    </div>
+    <ImageDialog />
+    <span class="cursor-label" aria-hidden="true" data-cursor-label data-mode="dot">
+      <span class="cursor-label__icon" data-cursor-icon>↗</span>
+      <span data-cursor-text></span>
+    </span>
+    <script>
+      import '../scripts/interactions.ts';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { articlePages } from '../data/pages';
+import { site } from '../data/site';
+---
+<BaseLayout title="Resources" description="HubSpot notes, marketplace work, and useful project resources.">
+  <div class="page">
+    <header class="article-header"><p class="eyebrow">Resources</p><h1 class="display">Useful notes for <em>building well.</em></h1><p class="lede">A compact index of the existing HubSpot writing and marketplace work behind this portfolio.</p></header>
+    <section class="article-index" aria-label="Resources">
+      {articlePages.map((article) => <a href={`/${article.route}`}><span class="eyebrow">Article</span><h2>{article.title}</h2><p>{article.description}</p></a>)}
+      <a href={site.marketplace} target="_blank" rel="noreferrer"><span class="eyebrow">Marketplace</span><h2>Capital Fox Marketplace</h2><p>Explore HubSpot themes and related project work.</p></a>
+    </section>
+  </div>
+</BaseLayout>

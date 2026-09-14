@@ -1,0 +1,16 @@
+:root {
+  --bg: #fafcfd;
+  --surface: #ffffff;
+  --text: #32404f;
+  --muted: #65717d;
+  --accent: #e65f2e;
+  --accent-dark: #b43e16;
+  --border: #dce1e5;
+  --serif: 'Newsreader Variable', Georgia, serif;
+  --sans: 'Geist Variable', Arial, sans-serif;
+  --mono: 'Geist Mono Variable', ui-monospace, monospace;
+  --gutter: clamp(1.25rem, 3vw, 3rem);
+  --content: min(100% - (var(--gutter) * 2), 1800px);
+  --article: min(100%, 52rem);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}

@@ -1,0 +1,37 @@
+---
+import type { PageRecord } from '../data/types';
+import Media from './Media.astro';
+const { page } = Astro.props as { page: PageRecord };
+if (!page.caseIntro) throw new Error(`Missing case-study intro for ${page.id}`);
+const intro = page.caseIntro;
+---
+<section class="case-intro" aria-labelledby="case-intro-title">
+  <div class="case-intro__hero">
+    <div class="case-intro__hero-content">
+      <nav class="case-intro__breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{page.title}</span>
+      </nav>
+      <h1 id="case-intro-title">{page.title}</h1>
+      {page.summary && <p class="case-intro__summary">{page.summary}</p>}
+      {page.confidentiality && <p class="case-intro__notice"><span aria-hidden="true">✦</span><span>{page.confidentiality}</span></p>}
+    </div>
+  </div>
+  {page.image && <div class="case-intro__media">
+    <Media source={page.image} alt={page.imageAlt ?? ''} priority />
+  </div>}
+  <div class="case-intro__details">
+    <div class="case-intro__story">
+      <p>{intro.overview}</p>
+      <hr />
+      <blockquote>{intro.question}</blockquote>
+    </div>
+    <dl class="case-intro__meta">
+      <div><dt>Role</dt><dd>{page.role}</dd></div>
+      <div><dt>Scope</dt><dd>{page.scope}</dd></div>
+      <div><dt>Process</dt><dd>{intro.process}</dd></div>
+      <div><dt>Tools</dt><dd>{intro.tools}</dd></div>
+    </dl>
+  </div>
+</section>

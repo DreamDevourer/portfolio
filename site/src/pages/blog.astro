@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { articlePages } from '../data/pages';
+---
+<BaseLayout title="Writing" description="Notes on building with HubSpot." current="writing">
+  <div class="page">
+    <header class="article-header"><p class="eyebrow">Writing</p><h1 class="display">Notes on building with <em>HubSpot.</em></h1><p class="lede">Practical writing about CMS architecture, content systems, and the work behind maintainable experiences.</p></header>
+    <section class="article-index" aria-label="Articles">
+      {articlePages.map((article) => <a href={`/${article.route}`}><span class="eyebrow">{article.date}</span><h2>{article.title}</h2><p>{article.description}</p></a>)}
+    </section>
+  </div>
+</BaseLayout>

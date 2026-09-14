@@ -1,0 +1,8 @@
+---
+import { site } from '../data/site';
+const { label = 'Email Nicolas' } = Astro.props;
+---
+<span>
+  <button class="contact-button" type="button" data-copy-email={site.email} data-cursor="copy email">{label}</button>
+  <span class="status" aria-live="polite" data-email-status></span>
+</span>

@@ -1,0 +1,10 @@
+---
+import type { ArticleSection } from '../data/types';
+const { sections } = Astro.props as { sections: ArticleSection[] };
+---
+<details class="article-nav" open>
+  <summary class="eyebrow">Contents</summary>
+  <div>
+    {sections.map((section, index) => <a href={`#${section.id}`} data-toc-link={section.id} data-active={index === 0 ? 'true' : 'false'}>{section.title}</a>)}
+  </div>
+</details>

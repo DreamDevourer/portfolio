@@ -1,0 +1,114 @@
+{
+  "static/images/00_crm_card_design.jpg": {
+    "social": "/static/redesign/media/f232d9edbbf75c-social.jpg",
+    "src": "/static/redesign/media/f232d9edbbf75c-1920.webp",
+    "srcset": "/static/redesign/media/f232d9edbbf75c-480.webp 480w, /static/redesign/media/f232d9edbbf75c-960.webp 960w, /static/redesign/media/f232d9edbbf75c-1440.webp 1440w, /static/redesign/media/f232d9edbbf75c-1920.webp 1920w",
+    "width": 1920,
+    "height": 1080
+  },
+  "static/images/ATS-Hub-prototype2.webp": {
+    "social": "/static/redesign/media/8524c0520f05b8-social.jpg",
+    "src": "/static/redesign/media/8524c0520f05b8-1920.webp",
+    "srcset": "/static/redesign/media/8524c0520f05b8-480.webp 480w, /static/redesign/media/8524c0520f05b8-960.webp 960w, /static/redesign/media/8524c0520f05b8-1440.webp 1440w, /static/redesign/media/8524c0520f05b8-1920.webp 1920w",
+    "width": 2218,
+    "height": 1828
+  },
+  "static/images/AdaptoSphere-Display.png": {
+    "social": "/static/redesign/media/df6fa0714284a3-social.jpg",
+    "src": "/static/redesign/media/df6fa0714284a3-920.webp",
+    "srcset": "/static/redesign/media/df6fa0714284a3-480.webp 480w, /static/redesign/media/df6fa0714284a3-920.webp 920w",
+    "width": 920,
+    "height": 900
+  },
+  "static/images/BG-crm-card.webp": {
+    "social": "/static/redesign/media/d7b41f946e33ae-social.jpg",
+    "src": "/static/redesign/media/d7b41f946e33ae-1818.webp",
+    "srcset": "/static/redesign/media/d7b41f946e33ae-480.webp 480w, /static/redesign/media/d7b41f946e33ae-960.webp 960w, /static/redesign/media/d7b41f946e33ae-1440.webp 1440w, /static/redesign/media/d7b41f946e33ae-1818.webp 1818w",
+    "width": 1818,
+    "height": 1844
+  },
+  "static/images/CRM-Carousel/03 - Panel PROJECT VIEW (RIGHT SIDE).webp": {
+    "social": "/static/redesign/media/4590b91a6b541b-social.jpg",
+    "src": "/static/redesign/media/4590b91a6b541b-352.webp",
+    "srcset": "/static/redesign/media/4590b91a6b541b-352.webp 352w",
+    "width": 352,
+    "height": 437
+  },
+  "static/images/Competitive-Audit.webp": {
+    "social": "/static/redesign/media/8aaed15bd1dfd1-social.jpg",
+    "src": "/static/redesign/media/8aaed15bd1dfd1-1920.webp",
+    "srcset": "/static/redesign/media/8aaed15bd1dfd1-480.webp 480w, /static/redesign/media/8aaed15bd1dfd1-960.webp 960w, /static/redesign/media/8aaed15bd1dfd1-1440.webp 1440w, /static/redesign/media/8aaed15bd1dfd1-1920.webp 1920w",
+    "width": 1920,
+    "height": 1080
+  },
+  "static/images/Cultura-Carousel/03 - MainApplicantsData.webp": {
+    "social": "/static/redesign/media/9b5d0c90b8638f-social.jpg",
+    "src": "/static/redesign/media/9b5d0c90b8638f-1095.webp",
+    "srcset": "/static/redesign/media/9b5d0c90b8638f-480.webp 480w, /static/redesign/media/9b5d0c90b8638f-960.webp 960w, /static/redesign/media/9b5d0c90b8638f-1095.webp 1095w",
+    "width": 1095,
+    "height": 900
+  },
+  "static/images/Gallery-simple.webp": {
+    "social": "/static/redesign/media/19e05838125603-social.jpg",
+    "src": "/static/redesign/media/19e05838125603-1920.webp",
+    "srcset": "/static/redesign/media/19e05838125603-480.webp 480w, /static/redesign/media/19e05838125603-960.webp 960w, /static/redesign/media/19e05838125603-1440.webp 1440w, /static/redesign/media/19e05838125603-1920.webp 1920w",
+    "width": 2180,
+    "height": 1198
+  },
+  "static/images/LogoConcept.webp": {
+    "social": "/static/redesign/media/89c648d5575246-social.jpg",
+    "src": "/static/redesign/media/89c648d5575246-1547.webp",
+    "srcset": "/static/redesign/media/89c648d5575246-480.webp 480w, /static/redesign/media/89c648d5575246-960.webp 960w, /static/redesign/media/89c648d5575246-1440.webp 1440w, /static/redesign/media/89c648d5575246-1547.webp 1547w",
+    "width": 1547,
+    "height": 1211
+  },
+  "static/images/MAP.webp": {
+    "social": "/static/redesign/media/a421671a3a931e-social.jpg",
+    "src": "/static/redesign/media/a421671a3a931e-884.webp",
+    "srcset": "/static/redesign/media/a421671a3a931e-480.webp 480w, /static/redesign/media/a421671a3a931e-884.webp 884w",
+    "width": 884,
+    "height": 450
+  },
+  "static/images/avery.jpg": {
+    "social": "/static/redesign/media/4e5b3124614d98-social.jpg",
+    "src": "/static/redesign/media/4e5b3124614d98-100.webp",
+    "srcset": "/static/redesign/media/4e5b3124614d98-100.webp 100w",
+    "width": 100,
+    "height": 100
+  },
+  "static/images/darkHeroFeatured.webp": {
+    "social": "/static/redesign/media/0128009291fc41-social.jpg",
+    "src": "/static/redesign/media/0128009291fc41-1525.webp",
+    "srcset": "/static/redesign/media/0128009291fc41-480.webp 480w, /static/redesign/media/0128009291fc41-960.webp 960w, /static/redesign/media/0128009291fc41-1440.webp 1440w, /static/redesign/media/0128009291fc41-1525.webp 1525w",
+    "width": 1525,
+    "height": 947
+  },
+  "static/images/dynamicContent.jpg": {
+    "social": "/static/redesign/media/02d306087581b2-social.jpg",
+    "src": "/static/redesign/media/02d306087581b2-1024.webp",
+    "srcset": "/static/redesign/media/02d306087581b2-480.webp 480w, /static/redesign/media/02d306087581b2-960.webp 960w, /static/redesign/media/02d306087581b2-1024.webp 1024w",
+    "width": 1024,
+    "height": 628
+  },
+  "static/images/hubdbHowTo.webp": {
+    "social": "/static/redesign/media/9adb096a0e4f6c-social.jpg",
+    "src": "/static/redesign/media/9adb096a0e4f6c-1920.webp",
+    "srcset": "/static/redesign/media/9adb096a0e4f6c-480.webp 480w, /static/redesign/media/9adb096a0e4f6c-960.webp 960w, /static/redesign/media/9adb096a0e4f6c-1440.webp 1440w, /static/redesign/media/9adb096a0e4f6c-1920.webp 1920w",
+    "width": 5517,
+    "height": 3997
+  },
+  "static/images/leomorabito.jpeg": {
+    "social": "/static/redesign/media/52922eb016dc57-social.jpg",
+    "src": "/static/redesign/media/52922eb016dc57-800.webp",
+    "srcset": "/static/redesign/media/52922eb016dc57-480.webp 480w, /static/redesign/media/52922eb016dc57-800.webp 800w",
+    "width": 800,
+    "height": 800
+  },
+  "static/images/remotish-preview--only.webp": {
+    "social": "/static/redesign/media/779a473f9f1483-social.jpg",
+    "src": "/static/redesign/media/779a473f9f1483-920.webp",
+    "srcset": "/static/redesign/media/779a473f9f1483-480.webp 480w, /static/redesign/media/779a473f9f1483-920.webp 920w",
+    "width": 920,
+    "height": 900
+  }
+}

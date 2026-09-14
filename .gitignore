@@ -19,3 +19,10 @@ log.log
 ./.DS_Store
 .history/
 node_modules/
+.site-build/
+site/.astro/
+site/public/static/redesign/media/
+site/public/static/redesign/legacy/
+docs/design/benchmark/
+test-results/
+playwright-report/

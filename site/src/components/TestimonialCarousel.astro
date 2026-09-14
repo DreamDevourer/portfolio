@@ -1,0 +1,33 @@
+---
+import media from '../data/media.json';
+import { testimonials } from '../data/testimonials';
+---
+<section class="testimonials home-section" aria-labelledby="testimonials-title" data-testimonial-carousel>
+  <div class="testimonials__intro">
+    <div>
+      <p class="eyebrow">Client notes</p>
+      <h2 class="section-heading" id="testimonials-title">Recommendations</h2>
+    </div>
+    <p class="testimonials__note">A few words from people I have worked alongside.</p>
+  </div>
+  <div class="testimonials__slides">
+    {testimonials.map((testimonial, index) => {
+      const portrait = media[testimonial.image as keyof typeof media];
+      if (!portrait) throw new Error(`Missing prepared testimonial media: ${testimonial.image}`);
+      return (
+        <article class="testimonial" data-testimonial-slide data-active={index === 0 ? 'true' : 'false'} hidden={index !== 0} aria-label={`Recommendation from ${testimonial.name}`}>
+          <blockquote class="testimonial__quote">
+            {testimonial.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </blockquote>
+          <div class="testimonial__person">
+            <img src={portrait.src} srcset={portrait.srcset} sizes="72px" width={portrait.width} height={portrait.height} alt={testimonial.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <div>
+              <p class="testimonial__name">{testimonial.name}</p>
+              <p class="testimonial__meta"><span>{testimonial.company}</span><span>{testimonial.role}</span></p>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>

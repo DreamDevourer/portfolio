@@ -1,0 +1,11 @@
+---
+import { getLegacyBody, type LegacyContentSource, identifyLegacyHeadings } from '../data/legacy-content';
+const { source } = Astro.props as { source: LegacyContentSource };
+const { headings } = identifyLegacyHeadings(await getLegacyBody(source));
+---
+<details class="article-nav" open>
+  <summary class="eyebrow">Contents</summary>
+  <div>
+    {headings.map((heading, index) => <a href={`#${heading.id}`} data-toc-link={heading.id} data-active={index === 0 ? 'true' : 'false'}>{heading.title}</a>)}
+  </div>
+</details>

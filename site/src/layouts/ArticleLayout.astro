@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import Media from '../components/Media.astro';
+import LegacyCaseBody from '../components/LegacyCaseBody.astro';
+import LegacyPrivacyBody from '../components/LegacyPrivacyBody.astro';
+import LegacyTableOfContents from '../components/LegacyTableOfContents.astro';
+import CaseStudyIntro from '../components/CaseStudyIntro.astro';
+import type { PageRecord } from '../data/types';
+const { page, current } = Astro.props as { page: PageRecord; current: string };
+---
+<BaseLayout title={page.title} description={page.description} current={current} image={page.image} imageAlt={page.imageAlt}>
+  {page.kind === 'case-study' && page.caseIntro && <CaseStudyIntro page={page} />}
+  <article class="article-layout">
+    {page.legacyCaseBody ? <LegacyTableOfContents source={page.legacyCaseBody} /> : page.legacyPrivacyBody ? <LegacyTableOfContents source="privacy" /> : <TableOfContents sections={page.sections} />}
+    <div>
+      {page.kind !== 'case-study' && <header class="article-header">
+        <p class="eyebrow">{page.date ?? 'Notes on building with HubSpot'}</p>
+        <h1 class="display">{page.title}</h1>
+        {page.summary && <p class="lede">{page.summary}</p>}
+        {(page.role || page.scope) && <div class="article-details"><span><b>Role</b> · {page.role}</span><span><b>Scope</b> · {page.scope}</span></div>}
+        {page.confidentiality && <p class="notice">{page.confidentiality}</p>}
+        {page.image && <Media source={page.image} alt={page.imageAlt ?? ''} priority />}
+      </header>}
+      {page.legacyCaseBody ? <LegacyCaseBody source={page.legacyCaseBody} /> : page.legacyPrivacyBody ? <LegacyPrivacyBody /> : page.sections.map((section) => <section class="article-section" id={section.id}>
+        <h2 class="section-heading">{section.title}</h2>
+        {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        {section.image && <Media source={section.image} alt={section.imageAlt ?? ''} caption={section.caption} />}
+      </section>)}
+    </div>
+  </article>
+</BaseLayout>

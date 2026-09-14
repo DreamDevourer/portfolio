@@ -1,0 +1,9 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { caseStudyPages } from '../../data/pages';
+export function getStaticPaths() {
+  return caseStudyPages.map((page) => ({ params: { slug: page.route.split('/').pop()?.replace('.html', '') ?? page.id }, props: { page } }));
+}
+const { page } = Astro.props;
+---
+<ArticleLayout page={page} current="work" />
