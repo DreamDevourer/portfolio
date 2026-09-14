@@ -1,18 +1,18 @@
 {
   "version": 1,
   "files": {
-    "404.html": "f284563b1614a0458711d6dcb1943692b1b20a7d4cbbdfb3c9678ae5da672bd8",
-    "aboutme.html": "0325dacef6e53cfe7466362c4f2b6bf12bdb1da0e4363ef3c1f359606b5c9945",
-    "blog/Navigating-the-Shift-Transitioning-Your-Blog-to-HubSpot-CMS.html": "dfae62e53305bd059b81b214010984ec81399d22e4ea4b18cf27aaea4ad178e8",
-    "blog/hubdb-data-management-in-hubspot.html": "ecd3cb61a8152c77812dd056f36b048c62528b08f0be44f5a71bb996d9d41b20",
-    "blog/implement-dynamic-news-content-in-hubspot.html": "4ef26bd37c0a98cfb39eff846c9ccc6f729e1dfa8a8d3b3d9bafd74d03ff4564",
-    "blog.html": "2b89d0d39772a934d9f5a1d8e7a41e53773f2742c3e56d1b2af3c8a5346f32b1",
-    "case-studies/case-study-cultura.html": "6f721b1667a8e3895b7a0043bef95c4617fdb582645ed8922729207d49b74542",
-    "case-studies/case-study-hubspot-to-teamwork-integration.html": "feb7ca22c2906d1f64b30453ca1b98e18f19d32dccaa764270cb978759d7063c",
-    "case-studies/case-study-resources-center-hubdb.html": "ae16b55110b56071603643a6978a7a366c5c550c59b980dabbf43c93399fb8ab",
-    "index.html": "6d37e0be4b7f1af4a9cd10ca1bc582d8d9c50c62dd31c66815daea9d4e159a60",
-    "privacy-policy.html": "7e7187954485d701ee86cf2371214e0c0cc39fa19a30f98e0da3206e7f23c6c2",
-    "resources.html": "bb152c286a6db7f27aa8dbec3186785be4f282e9436931812d9f58f59cc7e5af",
+    "404.html": "29ed76c38da7536c05f7d99e0f399a95ffef6a1bd30d81e719720f7eb5f8f225",
+    "aboutme.html": "1622c8719c7cfb427d5ec0595f03f2bbc02c22ba2e559ee8dd6c167c5cdc80df",
+    "blog/Navigating-the-Shift-Transitioning-Your-Blog-to-HubSpot-CMS.html": "c2fe24f2dda5afff4813f8818749ab7b9b6c9256a73531be973d3ff4bc6c8a71",
+    "blog/hubdb-data-management-in-hubspot.html": "4c4afda8db318f269faee4c80c482b15784369109d6a9f7d6853682b19a1d075",
+    "blog/implement-dynamic-news-content-in-hubspot.html": "d4709e8fa5678ae6b8813edd3a3207a3dd547ef9f12e832eae23e2724d3addcb",
+    "blog.html": "73dbe3e5258e4ab362efe5d6055616b2e95c58c2bfb56976669d8ff3c9d30546",
+    "case-studies/case-study-cultura.html": "e773672a125dc51dfdfbd31d247d43ed38614e2e5b00d89c06b29b20446ae01d",
+    "case-studies/case-study-hubspot-to-teamwork-integration.html": "b754dda4f4842700ac8a6ab28f12bab44cf43d4de81d872c9706c018aacfca3b",
+    "case-studies/case-study-resources-center-hubdb.html": "ae084c94dfcc6c412744ee508e9f6720312ef3288961a4a0d944170567d8a5d0",
+    "index.html": "54773154bb544cd9ca6eda062f098e92ba34515a7b3013142c9cb1a86280fce1",
+    "privacy-policy.html": "65757ed072dd0ec9f427a357902be4fc4387afeb30d2cf20f323204c66ecfb72",
+    "resources.html": "9adb3b39a79d6fc6cdc255edb51f37045c5b8eaccdc751f68e112bac2faaa81c",
     "robots.txt": "6a8f4cd975de352d93d49f76e1e7f503784ac42b7ea148594c3a2d1383a83fce",
     "sitemap.xml": "0bde16466542c3c22b28a6b6fd3fe5745162cceb72874dc63db71af421e9e2e4",
     "static/redesign/build/geist-cyrillic-ext-wght-normal.DjL33-gN.woff2": "2317fa4bb293c9c0b110e18315d529235c47a0ddd3338cea3d8c7955e927899e",
@@ -201,7 +201,7 @@
     "static/redesign/media/fe71a7047cb6a2-480.webp": "8edd6df70a55c7f2e5fc3735711e1d5fb83b93c7ce3a8884638c0a296bcc13d5",
     "static/redesign/media/fe71a7047cb6a2-960.webp": "dadf795f7eb0947924ccf0d8bdab8870859ad272f6db7a4d2c73315b11c216e9",
     "static/redesign/media/fe71a7047cb6a2-social.jpg": "b6dabf477c1fba71bc75534370cde9663bcc0e6effab7b63747ae9458f8688e4",
-    "static/redesign/build/BaseLayout.astro_astro_type_script_index_0_lang.09crofQl.js": "d7a276ec72c8574c8d8e7ea28772aff8b18a14c9bf2a96270260af152b6b428d",
-    "static/redesign/build/BaseLayout.l3fGpSYT.css": "3ee6dacee124d104b0cb86dbf8990815b5bd3754c46e59973e3dffb6764f8d7b"
+    "static/redesign/build/BaseLayout.CbwzSjvn.css": "c45af7d43bef31e44f56cc704f3b3951525f719a75f974367b0c1575bf01f1b1",
+    "static/redesign/build/BaseLayout.astro_astro_type_script_index_0_lang.D4pFIYEn.js": "d2cdd3b91239114f9da2449e7e4e56bb4ec33553656fb4e3df4abe220c86e986"
   }
 }

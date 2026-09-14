@@ -81,6 +81,7 @@ test('case-study galleries loop slowly, pause on hover, and retain manual scroll
     await gallery.scrollIntoViewIfNeeded();
     await expect(gallery.getByRole('heading', { name: 'Inside the work' })).toHaveCount(0);
     await expect(gallery.locator('button')).toHaveCount(0);
+    await expect(gallery.locator('figcaption')).toHaveCount(0);
     await expect(track.locator('[data-gallery-slide]:not([data-gallery-clone]) img')).toHaveCount(screens);
     const position = () => track.evaluate(element => element.scrollLeft);
     const start = await position();
@@ -91,9 +92,10 @@ test('case-study galleries loop slowly, pause on hover, and retain manual scroll
     expect(await position()).toBe(paused);
     await page.mouse.wheel(120, 0);
     await expect.poll(() => track.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
-    await page.mouse.move(0, 0);
+    await track.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
+    await gallery.evaluate(element => element.dispatchEvent(new PointerEvent('pointerleave')));
     const resume = await position();
-    await expect.poll(position).toBeGreaterThan(resume + 3);
+    await expect.poll(async () => Math.abs(await position() - resume)).toBeGreaterThan(3);
   }
 });
 

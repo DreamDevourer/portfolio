@@ -141,7 +141,6 @@ function setupCaseGalleries() {
     let previous = 0;
     let position = 0;
     let hovered = false;
-    let visible = true;
     const originalWidth = () => (clones[0]?.offsetLeft ?? 0) - (originals[0]?.offsetLeft ?? 0);
     const stop = () => { cancelAnimationFrame(frame); frame = 0; previous = 0; };
     const normalize = () => {
@@ -161,14 +160,13 @@ function setupCaseGalleries() {
       position = track.scrollLeft;
       normalize();
       track.scrollLeft = position;
-      if (!hovered && !gallery.contains(document.activeElement) && !document.hidden && visible) frame = requestAnimationFrame(tick);
+      if (!hovered && !gallery.contains(document.activeElement) && !document.hidden) frame = requestAnimationFrame(tick);
     };
     gallery.addEventListener('pointerenter', () => { hovered = true; stop(); });
     gallery.addEventListener('pointerleave', () => { hovered = false; start(); });
     gallery.addEventListener('focusin', stop);
     gallery.addEventListener('focusout', () => queueMicrotask(start));
     document.addEventListener('visibilitychange', start);
-    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; start(); }).observe(gallery);
     start();
   });
 }

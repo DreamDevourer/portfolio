@@ -311,7 +311,6 @@ main { min-width: 0; }
 .case-gallery__slide a { display: block; overflow: hidden; }
 .case-gallery__slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; transition: transform .35s var(--ease); }
 .case-gallery__slide a:hover img, .case-gallery__slide a:focus-visible img { transform: scale(1.02); }
-.case-gallery__slide figcaption { margin-top: .55rem; color: var(--muted); font-size: .82rem; }
 .article-nav { position: sticky; top: 2rem; align-self: start; font: .72rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: .05em; }
 .article-nav a { display: block; color: var(--muted); text-decoration: none; padding: .28rem 0; }
 .article-nav a[data-active='true'] { color: var(--accent-dark); }

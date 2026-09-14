@@ -12,7 +12,6 @@ const { items, title } = Astro.props as { items: CaseStudyGalleryItem[]; title: 
         <a href={item.src} data-enlarge aria-label={`Enlarge: ${alt}`} data-cursor="image">
           <img src={item.src} srcset={item.srcset} sizes="(min-width: 1024px) 70vw, 86vw" width={item.width} height={item.height} alt={alt} loading="lazy" decoding="async" />
         </a>
-        <figcaption>{alt}</figcaption>
       </figure>;
     })}
   </div>
