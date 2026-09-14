@@ -28,6 +28,11 @@ export interface CaseStudyIntro {
   tools: string;
 }
 
+export interface CaseStudyGalleryItem {
+  source: string;
+  alt: string;
+}
+
 export interface PageRecord {
   id: string;
   route: string;
@@ -42,6 +47,7 @@ export interface PageRecord {
   date?: string;
   confidentiality?: string;
   caseIntro?: CaseStudyIntro;
+  gallery?: CaseStudyGalleryItem[];
   legacyCaseBody?: 'teamwork' | 'cultura';
   legacyPrivacyBody?: boolean;
   sections: ArticleSection[];

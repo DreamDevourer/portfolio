@@ -1,0 +1,27 @@
+---
+import media from '../data/media.json';
+import type { CaseStudyGalleryItem } from '../data/types';
+const { items, title } = Astro.props as { items: CaseStudyGalleryItem[]; title: string };
+---
+<section class="case-gallery" data-case-gallery aria-labelledby={`gallery-${title.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`}>
+  <div class="case-gallery__header">
+    <p class="eyebrow">Selected screens</p>
+    <h2 id={`gallery-${title.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`}>Inside the work</h2>
+    <div class="case-gallery__controls" aria-label={`${title} gallery controls`}>
+      <button type="button" data-gallery-previous aria-label="Previous screen">←</button>
+      <button type="button" data-gallery-next aria-label="Next screen">→</button>
+    </div>
+  </div>
+  <div class="case-gallery__track" data-gallery-track tabindex="0" aria-label={`${title} screens. Use the arrow keys or controls to browse.`}>
+    {items.map(({ source, alt }) => {
+      const item = media[source as keyof typeof media];
+      if (!item) throw new Error(`Missing prepared gallery media: ${source}`);
+      return <figure class="case-gallery__slide">
+        <a href={item.src} data-enlarge aria-label={`Enlarge: ${alt}`} data-cursor="image">
+          <img src={item.src} srcset={item.srcset} sizes="(min-width: 1024px) 70vw, 86vw" width={item.width} height={item.height} alt={alt} loading="lazy" decoding="async" />
+        </a>
+        <figcaption>{alt}</figcaption>
+      </figure>;
+    })}
+  </div>
+</section>

@@ -6,11 +6,13 @@ import LegacyCaseBody from '../components/LegacyCaseBody.astro';
 import LegacyPrivacyBody from '../components/LegacyPrivacyBody.astro';
 import LegacyTableOfContents from '../components/LegacyTableOfContents.astro';
 import CaseStudyIntro from '../components/CaseStudyIntro.astro';
+import CaseStudyGallery from '../components/CaseStudyGallery.astro';
 import type { PageRecord } from '../data/types';
 const { page, current } = Astro.props as { page: PageRecord; current: string };
 ---
 <BaseLayout title={page.title} description={page.description} current={current} image={page.image} imageAlt={page.imageAlt}>
   {page.kind === 'case-study' && page.caseIntro && <CaseStudyIntro page={page} />}
+  {page.kind === 'case-study' && page.gallery && <CaseStudyGallery items={page.gallery} title={page.title} />}
   <article class="article-layout">
     {page.legacyCaseBody ? <LegacyTableOfContents source={page.legacyCaseBody} /> : page.legacyPrivacyBody ? <LegacyTableOfContents source="privacy" /> : <TableOfContents sections={page.sections} />}
     <div>

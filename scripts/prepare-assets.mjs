@@ -8,7 +8,7 @@ const testimonials=JSON.parse(await fs.readFile('site/src/data/testimonials.json
 const sources=new Set([...projects.map(x=>x.image),...pages.map(x=>x.image).filter(Boolean),...testimonials.map(x=>x.image)]);
 const legacySources = new Set();
 const pageSource = await fs.readFile('site/src/data/pages.ts', 'utf8');
-for (const match of pageSource.matchAll(/(?:image:\s*'|image:\s*\")([^'\"]+)/g)) sources.add(match[1]);
+for (const match of pageSource.matchAll(/(?:image|source):\s*['\"]([^'\"]+)/g)) sources.add(match[1]);
 for (const file of ['case-study-hubspot-to-teamwork-integration.html', 'case-study-cultura.html']) {
   const legacy = await fs.readFile(path.join('site/legacy', file), 'utf8');
   for (const match of legacy.matchAll(/(?:src|href)=["']\{\{\s*imagesPath\s*\}\}([^"']+)["']/g)) {

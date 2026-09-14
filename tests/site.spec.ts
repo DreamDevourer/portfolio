@@ -69,6 +69,27 @@ test('case study preserves legacy body copy and editorial intro', async ({ page 
   await expect(page).toHaveURL(/#expected-results$/);
 });
 
+test('case-study galleries expose their original project screens and usable controls', async ({ page }) => {
+  for (const [route, screens] of [
+    ['/case-studies/case-study-hubspot-to-teamwork-integration.html', 5],
+    ['/case-studies/case-study-cultura.html', 5],
+    ['/case-studies/case-study-resources-center-hubdb.html', 4],
+  ]) {
+    await page.goto(route);
+    const gallery = page.locator('[data-case-gallery]');
+    const track = gallery.locator('[data-gallery-track]');
+    await expect(gallery.getByRole('heading', { name: 'Inside the work' })).toBeVisible();
+    await expect(track.locator('img')).toHaveCount(screens);
+    await expect(gallery.getByRole('button', { name: 'Previous screen' })).toBeDisabled();
+    await gallery.getByRole('button', { name: 'Next screen' }).click();
+    await expect.poll(() => track.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
+    await expect(gallery.getByRole('button', { name: 'Previous screen' })).toBeEnabled();
+    await track.focus();
+    await page.keyboard.press('ArrowRight');
+    await expect.poll(() => track.evaluate(element => element.scrollLeft)).toBeGreaterThan(10);
+  }
+});
+
 test('privacy anchors and floating back-to-top control follow scrolling', async ({ page }) => {
   await page.goto('/privacy-policy.html');
   await expect(page.getByRole('link', { name: 'AI USAGE POLICY' })).toHaveAttribute('href', '#ai-usage-policy');

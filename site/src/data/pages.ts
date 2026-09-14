@@ -16,6 +16,13 @@ export const pages: PageRecord[] = [
       process: 'Quick research, interviews, competitive analysis, ideation, prototyping, testing, evaluation',
       tools: 'Figma, Miro, HubSpot CMS, HubSpot CRM, ChatGPT, VSCode, Adobe Photoshop',
     },
+    gallery: [
+      { source: 'static/images/CRM-Carousel/01 - Panel IDLE (RIGHT SIDE).webp', alt: 'Portal association panel' },
+      { source: 'static/images/CRM-Carousel/02 - Panel TW Associated (RIGHT SIDE).webp', alt: 'Teamwork project association panel' },
+      { source: 'static/images/CRM-Carousel/03 - Panel PROJECT VIEW (RIGHT SIDE).webp', alt: 'Project view and task creation panel' },
+      { source: 'static/images/CRM-Carousel/04 - CRM Pipeline.webp', alt: 'Sending a HubSpot CRM record to Teamwork' },
+      { source: 'static/images/CRM-Carousel/05 - CRM Pipeline.webp', alt: 'Creating a project from a HubSpot CRM record' },
+    ],
     sections: [
       { id: 'overview', title: 'Overview', paragraphs: [
         'Professionals coordinating sales and project work need a reliable way to turn CRM information into work their delivery teams can act on. The project explored a HubSpot–Teamwork connection that makes contacts, deals, and companies useful starting points for tasks and projects.',
@@ -48,6 +55,13 @@ export const pages: PageRecord[] = [
       process: 'Research, interviews, survey, competitive analysis, ideation, prototyping, testing, evaluation',
       tools: 'Figma, Miro, Adobe Photoshop, Adobe Illustrator, HubSpot CMS, HubSpot CRM, Flask, VSCode',
     },
+    gallery: [
+      { source: 'static/images/Cultura-Carousel/01 - MainForms.webp', alt: 'Main job forms tab' },
+      { source: 'static/images/Cultura-Carousel/02 - MainJobListings.webp', alt: 'Job listings creation tab' },
+      { source: 'static/images/Cultura-Carousel/03 - MainApplicantsData.webp', alt: 'Applicants tab and recruitment processes' },
+      { source: 'static/images/Cultura-Carousel/04 - MainApplicantsData.webp', alt: 'Individual applicant data inspection' },
+      { source: 'static/images/Cultura-Carousel/05 - Onboarding.webp', alt: 'Onboarding process tutorial' },
+    ],
     sections: [
       { id: 'overview', title: 'Overview', paragraphs: [
         'Cultura explored how a recruitment team could centralize applicant management in HubSpot. The goal was to make the process clearer for hiring managers while respecting the practical constraints of a desktop-first operational product.',
@@ -78,6 +92,12 @@ export const pages: PageRecord[] = [
       process: 'HubSpot theme development, design and development collaboration, HubDB architecture',
       tools: 'HubSpot CMS, HubDB, Figma, VSCode',
     },
+    gallery: [
+      { source: 'static/images/hubdbHowTo.webp', alt: 'HubDB resource center interface' },
+      { source: 'static/images/codeHubDBNewsItem.svg', alt: 'HubDB content structure illustration' },
+      { source: 'static/images/searchNewsHubDB.svg', alt: 'Resource center search illustration' },
+      { source: 'static/images/edgeCasesHubDBNews.svg', alt: 'HubDB edge cases illustration' },
+    ],
     sections: [
       { id: 'overview', title: 'Overview', paragraphs: [
         'This engagement delivered a resource-library engine for FinThrive using HubSpot CMS and HubDB. It focused on making a structured content collection easier to maintain and browse.',

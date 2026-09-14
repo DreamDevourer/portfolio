@@ -119,6 +119,30 @@ function setupTestimonials() {
   });
 }
 
+function setupCaseGalleries() {
+  document.querySelectorAll<HTMLElement>('[data-case-gallery]').forEach((gallery) => {
+    const track = gallery.querySelector<HTMLElement>('[data-gallery-track]');
+    const previous = gallery.querySelector<HTMLButtonElement>('[data-gallery-previous]');
+    const next = gallery.querySelector<HTMLButtonElement>('[data-gallery-next]');
+    if (!track || !previous || !next) return;
+    const update = () => {
+      previous.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+    };
+    const move = (direction: -1 | 1) => track.scrollBy({ left: direction * track.clientWidth * .88, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    track.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      move(event.key === 'ArrowLeft' ? -1 : 1);
+    });
+    track.addEventListener('scroll', update, { passive: true });
+    new ResizeObserver(update).observe(track);
+    update();
+  });
+}
+
 function setupDialog() {
   const dialog = document.querySelector<HTMLDialogElement>('[data-image-dialog]');
   const image = document.querySelector<HTMLImageElement>('[data-dialog-image]');
@@ -258,6 +282,7 @@ setupNavigation();
 setupHeaderDock();
 setupExperience();
 setupTestimonials();
+setupCaseGalleries();
 setupDialog();
 setupEmail();
 setupContents();

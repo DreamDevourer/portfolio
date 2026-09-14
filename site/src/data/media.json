@@ -27,11 +27,39 @@
     "width": 1818,
     "height": 1844
   },
+  "static/images/CRM-Carousel/01 - Panel IDLE (RIGHT SIDE).webp": {
+    "social": "/static/redesign/media/bfeef2ce2ff283-social.jpg",
+    "src": "/static/redesign/media/bfeef2ce2ff283-338.webp",
+    "srcset": "/static/redesign/media/bfeef2ce2ff283-338.webp 338w",
+    "width": 338,
+    "height": 437
+  },
+  "static/images/CRM-Carousel/02 - Panel TW Associated (RIGHT SIDE).webp": {
+    "social": "/static/redesign/media/5ead2a197a29f5-social.jpg",
+    "src": "/static/redesign/media/5ead2a197a29f5-344.webp",
+    "srcset": "/static/redesign/media/5ead2a197a29f5-344.webp 344w",
+    "width": 344,
+    "height": 437
+  },
   "static/images/CRM-Carousel/03 - Panel PROJECT VIEW (RIGHT SIDE).webp": {
     "social": "/static/redesign/media/4590b91a6b541b-social.jpg",
     "src": "/static/redesign/media/4590b91a6b541b-352.webp",
     "srcset": "/static/redesign/media/4590b91a6b541b-352.webp 352w",
     "width": 352,
+    "height": 437
+  },
+  "static/images/CRM-Carousel/04 - CRM Pipeline.webp": {
+    "social": "/static/redesign/media/2ace2d56e3b9ad-social.jpg",
+    "src": "/static/redesign/media/2ace2d56e3b9ad-359.webp",
+    "srcset": "/static/redesign/media/2ace2d56e3b9ad-359.webp 359w",
+    "width": 359,
+    "height": 438
+  },
+  "static/images/CRM-Carousel/05 - CRM Pipeline.webp": {
+    "social": "/static/redesign/media/ecf45ebbce9f1a-social.jpg",
+    "src": "/static/redesign/media/ecf45ebbce9f1a-358.webp",
+    "srcset": "/static/redesign/media/ecf45ebbce9f1a-358.webp 358w",
+    "width": 358,
     "height": 437
   },
   "static/images/Competitive-Audit.webp": {
@@ -41,10 +69,38 @@
     "width": 1920,
     "height": 1080
   },
+  "static/images/Cultura-Carousel/01 - MainForms.webp": {
+    "social": "/static/redesign/media/a06eb67efbebf6-social.jpg",
+    "src": "/static/redesign/media/a06eb67efbebf6-1095.webp",
+    "srcset": "/static/redesign/media/a06eb67efbebf6-480.webp 480w, /static/redesign/media/a06eb67efbebf6-960.webp 960w, /static/redesign/media/a06eb67efbebf6-1095.webp 1095w",
+    "width": 1095,
+    "height": 900
+  },
+  "static/images/Cultura-Carousel/02 - MainJobListings.webp": {
+    "social": "/static/redesign/media/a3d67ac64fc7b8-social.jpg",
+    "src": "/static/redesign/media/a3d67ac64fc7b8-1095.webp",
+    "srcset": "/static/redesign/media/a3d67ac64fc7b8-480.webp 480w, /static/redesign/media/a3d67ac64fc7b8-960.webp 960w, /static/redesign/media/a3d67ac64fc7b8-1095.webp 1095w",
+    "width": 1095,
+    "height": 900
+  },
   "static/images/Cultura-Carousel/03 - MainApplicantsData.webp": {
     "social": "/static/redesign/media/9b5d0c90b8638f-social.jpg",
     "src": "/static/redesign/media/9b5d0c90b8638f-1095.webp",
     "srcset": "/static/redesign/media/9b5d0c90b8638f-480.webp 480w, /static/redesign/media/9b5d0c90b8638f-960.webp 960w, /static/redesign/media/9b5d0c90b8638f-1095.webp 1095w",
+    "width": 1095,
+    "height": 900
+  },
+  "static/images/Cultura-Carousel/04 - MainApplicantsData.webp": {
+    "social": "/static/redesign/media/eb39f44efd2c7e-social.jpg",
+    "src": "/static/redesign/media/eb39f44efd2c7e-1095.webp",
+    "srcset": "/static/redesign/media/eb39f44efd2c7e-480.webp 480w, /static/redesign/media/eb39f44efd2c7e-960.webp 960w, /static/redesign/media/eb39f44efd2c7e-1095.webp 1095w",
+    "width": 1095,
+    "height": 900
+  },
+  "static/images/Cultura-Carousel/05 - Onboarding.webp": {
+    "social": "/static/redesign/media/fe71a7047cb6a2-social.jpg",
+    "src": "/static/redesign/media/fe71a7047cb6a2-1095.webp",
+    "srcset": "/static/redesign/media/fe71a7047cb6a2-480.webp 480w, /static/redesign/media/fe71a7047cb6a2-960.webp 960w, /static/redesign/media/fe71a7047cb6a2-1095.webp 1095w",
     "width": 1095,
     "height": 900
   },
@@ -76,6 +132,13 @@
     "width": 100,
     "height": 100
   },
+  "static/images/codeHubDBNewsItem.svg": {
+    "social": "/static/redesign/media/c974f2ebe912c7-social.jpg",
+    "src": "/static/redesign/media/c974f2ebe912c7-1053.webp",
+    "srcset": "/static/redesign/media/c974f2ebe912c7-480.webp 480w, /static/redesign/media/c974f2ebe912c7-960.webp 960w, /static/redesign/media/c974f2ebe912c7-1053.webp 1053w",
+    "width": 1053,
+    "height": 473
+  },
   "static/images/darkHeroFeatured.webp": {
     "social": "/static/redesign/media/0128009291fc41-social.jpg",
     "src": "/static/redesign/media/0128009291fc41-1525.webp",
@@ -89,6 +152,13 @@
     "srcset": "/static/redesign/media/02d306087581b2-480.webp 480w, /static/redesign/media/02d306087581b2-960.webp 960w, /static/redesign/media/02d306087581b2-1024.webp 1024w",
     "width": 1024,
     "height": 628
+  },
+  "static/images/edgeCasesHubDBNews.svg": {
+    "social": "/static/redesign/media/c78972ae0d10f2-social.jpg",
+    "src": "/static/redesign/media/c78972ae0d10f2-1428.webp",
+    "srcset": "/static/redesign/media/c78972ae0d10f2-480.webp 480w, /static/redesign/media/c78972ae0d10f2-960.webp 960w, /static/redesign/media/c78972ae0d10f2-1428.webp 1428w",
+    "width": 1428,
+    "height": 395
   },
   "static/images/hubdbHowTo.webp": {
     "social": "/static/redesign/media/9adb096a0e4f6c-social.jpg",
@@ -110,5 +180,12 @@
     "srcset": "/static/redesign/media/779a473f9f1483-480.webp 480w, /static/redesign/media/779a473f9f1483-920.webp 920w",
     "width": 920,
     "height": 900
+  },
+  "static/images/searchNewsHubDB.svg": {
+    "social": "/static/redesign/media/75bd232550b2c3-social.jpg",
+    "src": "/static/redesign/media/75bd232550b2c3-1350.webp",
+    "srcset": "/static/redesign/media/75bd232550b2c3-480.webp 480w, /static/redesign/media/75bd232550b2c3-960.webp 960w, /static/redesign/media/75bd232550b2c3-1350.webp 1350w",
+    "width": 1350,
+    "height": 395
   }
 }
