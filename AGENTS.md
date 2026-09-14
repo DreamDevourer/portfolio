@@ -33,3 +33,7 @@ Use concise, imperative commits such as `Redesign Teamwork case study`. PRs need
 ## Case Study Galleries
 
 Case-study galleries are rendered by `site/src/components/CaseStudyGallery.astro` from each page's typed `gallery` data. `setupCaseGalleries()` creates a client-side duplicate sequence for a seamless 10px/s loop, pauses while the pointer or keyboard focus is inside the gallery, and resumes when that interaction ends while the tab is active. Keep the gallery static under `prefers-reduced-motion`; the native horizontal track remains manually scrollable. Preserve the borderless, title-free, full-viewport presentation, keep desktop slides within `clamp(28rem, 30vw, 44rem)`, and keep cloned links out of the focus order. Update the gallery interaction test whenever this behavior changes.
+
+## Working Checkout
+
+The repository root is the source of truth and must stay on `main`, aligned with `origin/main`. Use `site/src/data/pages.ts` for case-study pages and `site/src/data/projects.json` for homepage listings; never edit generated root HTML directly. The pre-cleanup legacy editor stack and prior uncommitted workspace live only in `_backup/2026-09-14-pre-main-cleanup/`, which is locally ignored through `.git/info/exclude` and must not be committed or deployed.
