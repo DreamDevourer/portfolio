@@ -69,7 +69,7 @@ test('case study preserves legacy body copy and editorial intro', async ({ page 
   await expect(page).toHaveURL(/#expected-results$/);
 });
 
-test('case-study galleries expose their original project screens and usable controls', async ({ page }) => {
+test('case-study galleries loop slowly, pause on hover, and retain manual scrolling', async ({ page }) => {
   for (const [route, screens] of [
     ['/case-studies/case-study-hubspot-to-teamwork-integration.html', 5],
     ['/case-studies/case-study-cultura.html', 5],
@@ -78,15 +78,22 @@ test('case-study galleries expose their original project screens and usable cont
     await page.goto(route);
     const gallery = page.locator('[data-case-gallery]');
     const track = gallery.locator('[data-gallery-track]');
-    await expect(gallery.getByRole('heading', { name: 'Inside the work' })).toBeVisible();
-    await expect(track.locator('img')).toHaveCount(screens);
-    await expect(gallery.getByRole('button', { name: 'Previous screen' })).toBeDisabled();
-    await gallery.getByRole('button', { name: 'Next screen' }).click();
+    await gallery.scrollIntoViewIfNeeded();
+    await expect(gallery.getByRole('heading', { name: 'Inside the work' })).toHaveCount(0);
+    await expect(gallery.locator('button')).toHaveCount(0);
+    await expect(track.locator('[data-gallery-slide]:not([data-gallery-clone]) img')).toHaveCount(screens);
+    const position = () => track.evaluate(element => element.scrollLeft);
+    const start = await position();
+    await expect.poll(position).toBeGreaterThan(start + 3);
+    await track.hover();
+    const paused = await position();
+    await page.waitForTimeout(300);
+    expect(await position()).toBe(paused);
+    await page.mouse.wheel(120, 0);
     await expect.poll(() => track.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
-    await expect(gallery.getByRole('button', { name: 'Previous screen' })).toBeEnabled();
-    await track.focus();
-    await page.keyboard.press('ArrowRight');
-    await expect.poll(() => track.evaluate(element => element.scrollLeft)).toBeGreaterThan(10);
+    await page.mouse.move(0, 0);
+    const resume = await position();
+    await expect.poll(position).toBeGreaterThan(resume + 3);
   }
 });
 

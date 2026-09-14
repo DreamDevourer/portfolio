@@ -122,24 +122,54 @@ function setupTestimonials() {
 function setupCaseGalleries() {
   document.querySelectorAll<HTMLElement>('[data-case-gallery]').forEach((gallery) => {
     const track = gallery.querySelector<HTMLElement>('[data-gallery-track]');
-    const previous = gallery.querySelector<HTMLButtonElement>('[data-gallery-previous]');
-    const next = gallery.querySelector<HTMLButtonElement>('[data-gallery-next]');
-    if (!track || !previous || !next) return;
-    const update = () => {
-      previous.disabled = track.scrollLeft <= 1;
-      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
-    };
-    const move = (direction: -1 | 1) => track.scrollBy({ left: direction * track.clientWidth * .88, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
-    previous.addEventListener('click', () => move(-1));
-    next.addEventListener('click', () => move(1));
-    track.addEventListener('keydown', (event) => {
-      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-      event.preventDefault();
-      move(event.key === 'ArrowLeft' ? -1 : 1);
+    if (!track || reducedMotion.matches) return;
+    const originals = [...track.querySelectorAll<HTMLElement>('[data-gallery-slide]')];
+    if (originals.length < 2) return;
+    const clones = originals.map((slide) => {
+      const clone = slide.cloneNode(true) as HTMLElement;
+      clone.dataset.galleryClone = 'true';
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+        link.removeAttribute('data-enlarge');
+        link.removeAttribute('data-cursor');
+        link.tabIndex = -1;
+      });
+      track.append(clone);
+      return clone;
     });
-    track.addEventListener('scroll', update, { passive: true });
-    new ResizeObserver(update).observe(track);
-    update();
+    let frame = 0;
+    let previous = 0;
+    let position = 0;
+    let hovered = false;
+    let visible = true;
+    const originalWidth = () => (clones[0]?.offsetLeft ?? 0) - (originals[0]?.offsetLeft ?? 0);
+    const stop = () => { cancelAnimationFrame(frame); frame = 0; previous = 0; };
+    const normalize = () => {
+      const width = originalWidth();
+      if (width && position >= width) position -= width;
+    };
+    const tick = (time: number) => {
+      // Ten pixels per second keeps the screens readable without feeling stationary.
+      position += previous ? Math.min(time - previous, 64) * .01 : 0;
+      previous = time;
+      normalize();
+      track.scrollLeft = position;
+      frame = requestAnimationFrame(tick);
+    };
+    const start = () => {
+      stop();
+      position = track.scrollLeft;
+      normalize();
+      track.scrollLeft = position;
+      if (!hovered && !gallery.contains(document.activeElement) && !document.hidden && visible) frame = requestAnimationFrame(tick);
+    };
+    gallery.addEventListener('pointerenter', () => { hovered = true; stop(); });
+    gallery.addEventListener('pointerleave', () => { hovered = false; start(); });
+    gallery.addEventListener('focusin', stop);
+    gallery.addEventListener('focusout', () => queueMicrotask(start));
+    document.addEventListener('visibilitychange', start);
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; start(); }).observe(gallery);
+    start();
   });
 }
 
