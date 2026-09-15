@@ -110,17 +110,21 @@ export const pages: PageRecord[] = [
     ]
   },
   {
-    id: 'about', route: 'aboutme.html', kind: 'page', title: 'Who I am.', description: 'About Nicolas Mendes.',
-    summary: 'A multidisciplinary product designer and HubSpot developer working across web design, front-end development, research, and product systems.',
+    id: 'about', route: 'aboutme.html', kind: 'page', title: 'HubSpot is where I work best.', description: 'About Nicolas Mendes, a HubSpot Specialist working across CRM, CMS, tracking, and optimization.',
+    summary: 'I help teams turn CRM and CMS requirements into connected HubSpot systems: the data, rules, experiences, and measurement that make the work useful.',
     image: 'static/images/Gallery-simple.webp', imageAlt: 'Portrait of Nicolas Mendes',
     sections: [
-      { id: 'practice', title: 'Practice', paragraphs: [
-        'I am Nicolas Mendes, a multidisciplinary product designer and developer. My work spans web design, front-end development, UI/UX research, and product applications.',
-        'I have worked remotely with teams and clients in the United States, Germany, Mexico, and Brazil. I value thoughtful collaboration, clear systems, and the work of turning complex requirements into something people can use.'
-      ], image: 'static/images/MAP.webp', imageAlt: 'Map of locations where Nicolas Mendes has worked', caption: 'A distributed practice shaped by international collaboration.' },
-      { id: 'experience', title: 'Experience', paragraphs: [
-        'My portfolio includes work for Remotish Agency, Maker Mockup, HubSpot CMS projects, and marketplace themes. I bring design education, inbound marketing knowledge, front-end practice, and Agile coursework into the same process.',
-        'If you need a website, design system, app prototype, or a more durable HubSpot implementation, I am available to discuss the problem.'
+      { id: 'hubspot-practice', title: 'A HubSpot practice', paragraphs: [
+        'I am Nicolas Mendes, Nick to most people I work with, a HubSpot Specialist focused on the space where CRM operations, CMS development, tracking, and conversion optimization meet. I help teams translate business rules into HubSpot implementations that are coherent for both the people operating them and the people using them.',
+        'That can mean shaping a CRM data model, mapping a workflow, building a CMS experience, connecting an API or Custom Object, or clarifying what needs to be measured before a team starts optimizing. The point is not to add more technology. It is to make the system support a real business decision and a better customer journey.'
+      ], image: 'static/images/MAP.webp', imageAlt: 'Map of locations where Nicolas Mendes has worked', caption: 'A remote HubSpot practice shaped by work with teams across the United States, the United Kingdom, and Latin America.' },
+      { id: 'approach', title: 'How I work', paragraphs: [
+        'My background in design helps me see the experience around the implementation; my technical practice keeps the work grounded in what the platform, data, and team can actually sustain. I work across HubSpot CRM and CMS, HubL, APIs, GraphQL, HubDB, custom objects, front-end development, QA, and experimentation, always in service of a connected system rather than a one-off page or workflow.',
+        'I have worked remotely with HubSpot agencies, SaaS teams, and cross-functional partners on CMS and CRM projects. Clear requirements, useful documentation, and direct collaboration matter to me because they are what keep a solution working after launch.'
+      ] },
+      { id: 'continuing-practice', title: 'Continuing practice', paragraphs: [
+        'I keep learning through HubSpot Academy, Inbound, webinars, client work, and focused study in product design, development, and business intelligence.',
+        'If you are working through a difficult HubSpot problem involving CRM logic, CMS delivery, tracking, or optimization, I am available to discuss the system behind it.'
       ] }
     ]
   },
