@@ -69,6 +69,28 @@ test('case study preserves legacy body copy and editorial intro', async ({ page 
   await expect(page).toHaveURL(/#expected-results$/);
 });
 
+test('long case-study contents stay below the docked header and remain scrollable', async ({ page }) => {
+  for (const width of [768, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 650 });
+    await page.goto('/case-studies/case-study-cultura.html');
+    await page.locator('.article-layout').evaluate(element => {
+      window.scrollTo({ top: element.getBoundingClientRect().top + window.scrollY + 500, behavior: 'instant' });
+    });
+    await expect(page.locator('.site-header')).toHaveAttribute('data-docked', 'true');
+    const geometry = await page.evaluate(() => {
+      const header = document.querySelector('.site-header__inner')!.getBoundingClientRect();
+      const contents = document.querySelector('.article-nav')!;
+      const nav = contents.getBoundingClientRect();
+      return { headerBottom: header.bottom, navTop: nav.top, navBottom: nav.bottom, navHeight: contents.clientHeight, scrollHeight: contents.scrollHeight };
+    });
+    expect(geometry.navTop).toBeGreaterThan(geometry.headerBottom);
+    expect(geometry.navBottom).toBeLessThanOrEqual(650);
+    expect(geometry.scrollHeight).toBeGreaterThan(geometry.navHeight);
+    await page.locator('.article-nav').evaluate(element => { element.scrollTop = element.scrollHeight; });
+    await expect(page.locator('.article-nav a').last()).toBeInViewport();
+  }
+});
+
 test('case-study galleries loop slowly, pause on hover, and retain manual scrolling', async ({ page }) => {
   for (const [route, screens] of [
     ['/case-studies/case-study-hubspot-to-teamwork-integration.html', 5],
